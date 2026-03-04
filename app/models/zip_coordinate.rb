@@ -1,0 +1,2 @@
+class ZipCoordinate < ApplicationRecord
+end

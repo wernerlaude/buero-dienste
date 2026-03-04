@@ -1,0 +1,32 @@
+// ===========================================
+// Layout
+// ===========================================
+.page {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
+  display: grid;
+  grid-template-columns: 1fr var(--sidebar-width);
+  gap: var(--space-xl);
+
+  &__main {
+    min-width: 0;
+  }
+
+  &__sidebar {
+    min-width: 0;
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+
+    &__sidebar {
+      order: -1;
+    }
+  }
+}
+
+// Volle Breite ohne Sidebar
+.page--full {
+  grid-template-columns: 1fr;
+}

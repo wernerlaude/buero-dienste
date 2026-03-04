@@ -1,0 +1,29 @@
+<nav class="navbar" data-controller="navbar">
+  <div class="navbar__inner">
+    <%= link_to root_path, class: "navbar__brand" do %>
+      <span class="navbar__brand-icon"><%=image_tag "svg/logo-icon.svg" %></span>
+      buero-dienstleistungen.com
+    <% end %>
+
+    <button class="navbar__toggle" data-action="click->navbar#toggle" aria-label="Menü öffnen">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+
+    <div class="navbar__nav" data-navbar-target="menu">
+      <%= link_to "Start", root_path, class: "navbar__link #{'navbar__link--active' if current_page?(root_path)}" %>
+      <%= link_to "Angebote", root_path, class: "navbar__link #{'navbar__link--active' if current_page?(root_path)}" %>
+      <%= link_to "Office Blogs", root_path, class: "navbar__link #{'navbar__link--active' if current_page?(root_path)}" %>
+      <%= link_to "Ressourcen", root_path, class: "navbar__link" %>
+      <%= link_to "Visitenkarte anlegen", new_user_path, class: "navbar__link" %>
+    </div>
+
+    <div class="navbar__actions">
+      <%# if logged_in? %>
+        <%#= link_to "Visitenkarte bearbeiten", edit_business_card_path, class: "navbar__link" %>
+        <span class="navbar__status"><%#= current_user.fullname %></span>
+      <%# end %>
+    </div>
+  </div>
+</nav>

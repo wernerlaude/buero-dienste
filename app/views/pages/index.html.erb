@@ -1,0 +1,77 @@
+<% content_for :hero do %>
+  <%= render "shared/hero" %>
+<% end %>
+
+<%# Intro %>
+<div class="intro-box">
+
+  <p class="intro-box__text">
+  <h2>Professionelle Unterstützung für Ihren Büroalltag</h2>
+  <h3>Entlasten Sie sich mit erfahrenen Bürodienstleistern</h3>
+  Auf <%= link_to "buero-dienstleistungen.com", root_path %> finden Sie Fachkräfte
+  für Büroservice, Buchhaltung, Telefonservice, digitale Assistenz und viele weitere
+  Aufgaben. Alle Dienstleister arbeiten eigenständig und rechnen direkt mit Ihnen ab –
+  ohne Vermittlungsgebühren oder versteckte Kosten.
+  </p>
+  <p class="intro-box__text">
+    Ob einmalige Unterstützung bei Projekten oder langfristige Zusammenarbeit:
+    Sie entscheiden, wann und wie viel Hilfe Sie brauchen.
+  </p>
+  <p class="intro-box__text">
+    Durchsuchen Sie die Angebote nach <strong>Fachbereich, Bundesland oder Postleitzahl</strong>
+    und nehmen Sie direkt Kontakt auf.
+  </p><br/>
+  <div class="intro-box__divider"></div>
+  <div class="intro-box__pills">
+    <span class="intro-box__pill">✓ Bundesweit verfügbar</span>
+    <span class="intro-box__pill">✓ Keine festen Kosten</span>
+    <span class="intro-box__pill">✓ Flexibel buchbar</span>
+    <span class="intro-box__pill">✓ Erfahrene Fachkräfte</span>
+  </div>
+</div>
+
+<%# Kategorien dynamisch aus Offers %>
+<% Offer.cached_by_category.sort_by { |cat_id, _| cat_id }.each do |cat_id, cat_offers| %>
+  <div class="section-header">
+    <h2 class="section-header__title"><%= cat_offers.first.category_name %></h2>
+  </div>
+
+  <div class="cards-grid">
+    <% cat_offers.each do |offer| %>
+      <%= render "shared/category_card", offer: offer %>
+    <% end %>
+  </div>
+<% end %>
+
+
+<%# SEO Content %>
+<div class="content-box content-box--text" style="margin-top: var(--space-2xl);">
+  <h2>Outsourcing von Bürodienstleistungen und Büroarbeiten</h2>
+  <h3>Unterstützung im Büro für individuelle Anforderungen</h3>
+  <p>Ein entscheidender Vorteil des Outsourcings von Büroservice Dienstleistungen liegt in der professionellen
+    Unterstützung, die Ihnen für vielfältige Aufgaben geboten wird. Von der Datenverarbeitung über Buchhaltung,
+    Telefonservice bis zur Terminplanung können Sie sich auf erfahrene Fachkräfte verlassen, die diese Aufgaben
+    effizient und kompetent erledigen. Unsere Partner übernehmen Projekte oder wiederkehrende Aufgaben zuverlässig und
+    entlasten Ihr Unternehmen nachhaltig.</p>
+  <p>Die Flexibilität externer Bürodienste ist ein weiterer Grund, warum sie so attraktiv sind. Egal, ob Sie
+    kurzfristige Unterstützung bei einem Projekt oder regelmäßige Hilfe für bestimmte Aufgaben benötigen – unsere
+    selbstständigen Bürodienstleister passen sich flexibel an Ihre individuellen Anforderungen an. Damit reagieren Sie
+    auch auf konjunkturelle Schwankungen oder Auftragsspitzen jederzeit souverän.</p>
+  <p>
+    Auf buero-dienstleistungen.com finden Sie erfahrene Anbieter für Büroservice,
+    Büroarbeiten, digitale Assistenz, Dokumentenmanagement und viele weitere Aufgaben.
+    Unsere selbstständigen Büroservice-Dienstleister stehen Ihnen flexibel zur Seite.
+  </p>
+  <p>
+    Die Zusammenarbeit mit externen Bürodienstleistern ermöglicht eine schlanke und
+    effektive Organisationsstruktur. Aufgaben werden gezielt an erfahrene Experten
+    ausgelagert, wodurch interne Abläufe optimiert werden.
+  </p>
+  <ul>
+    <li>Flexibilität bei Auftragsspitzen oder Personalengpässen</li>
+    <li>Keine festen Personalkosten, da bedarfsorientiert buchbar</li>
+    <li>Professionelle, erfahrene Fachkräfte</li>
+    <li>Bundesweite Verfügbarkeit</li>
+    <li>Optimierung interner Prozesse und Entlastung des Teams</li>
+  </ul>
+</div>

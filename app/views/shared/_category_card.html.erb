@@ -1,0 +1,15 @@
+<%= link_to offer_path(offer.slug), class: "category-card" do %>
+  <%= card_badge(offer) %>
+
+  <div class="category-card__icon">
+    <%= image_tag(offer.card_image.present? ? "svg/#{offer.card_image}" : "svg/lamp-desk.svg", alt: offer.card_title,
+                  class: "service-icon"
+        ) %>
+  </div>
+
+  <h3 class="category-card__title"><%= offer.ident %></h3>
+  <div class="category-card__description"><%= offer.header_title %></div>
+  <div class="category-card__count">
+    <span class="category-card__count-number"><%= offer.users.size %></span> Angebote
+  </div>
+<% end %>

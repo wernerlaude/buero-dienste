@@ -1,0 +1,129 @@
+// ===========================================
+// Sidebar
+// ===========================================
+.sidebar-card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-md);
+
+  &__header {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #fff;
+    background: var(--color-primary);
+    border-bottom: none;
+  }
+
+  &__body {
+    padding: var(--space-lg);
+  }
+}
+
+// Premium Entries
+.premium-entry {
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-border-light);
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  &__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-primary-light);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  &__info {
+    min-width: 0;
+  }
+
+  &__name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.125rem;
+  }
+
+  &__location {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-xs);
+  }
+
+  &__link {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+}
+
+// Sidebar Ad
+.sidebar-ad {
+  padding: var(--space-lg);
+  text-align: center;
+
+  &__title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-accent-dark);
+    margin-bottom: var(--space-xs);
+    padding-bottom: var(--space-xs);
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+  }
+
+  &__text {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+    line-height: 1.5;
+  }
+}
+
+// Sidebar Login
+.sidebar-login {
+  &__input {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
+    margin-bottom: var(--space-sm);
+    transition: border-color var(--transition-fast);
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+  }
+
+  &__hint {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+    margin-top: var(--space-sm);
+  }
+}
