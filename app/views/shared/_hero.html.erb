@@ -1,35 +1,10 @@
 <section class="hero">
   <div class="hero__inner">
     <div class="hero__content">
-      <span class="hero__eyebrow">✦ Über <%= User.online.count %> erfahrene Dienstleister</span>
-      <h1 class="hero__title">Finden Sie den passenden Bürodienstleister</h1>
-      <p class="hero__subtitle">Erfahrene Anbieter für Büroservice, digitale Assistenz und Dokumentenmanagement –
-        bundesweit, flexibel und zuverlässig.</p>
-
-      <div class="hero__search">
-        <%= form_with(url: root_path, method: :get, class: "hero__search") do |form| %>
-          <%= form.text_field :plz, placeholder: "PLZ eingeben …", class: "hero__search-input" %>
-          <%= form.submit "Suchen", class: "btn btn--accent btn--lg" %>
-        <% end %>
-      </div>
-
-      <div class="hero__stats">
-        <div>
-          <div class="hero__stat-value"><%= User.online.count %></div>
-          <div class="hero__stat-label">Dienstleister</div>
-        </div>
-        <div>
-          <div class="hero__stat-value"><%#= number_with_delimiter(@total_visits || 0) %></div>
-          <div class="hero__stat-label">Besuchte Angebote</div>
-        </div>
-        <div>
-          <div class="hero__stat-value"><%= Offer.count %></div>
-          <div class="hero__stat-label">Fachbereiche</div>
-        </div>
-      </div>
+      <%= yield :hero_content %>
     </div>
     <div class="hero__visual">
-      <%= image_tag "buero-frau.webp" %>
+      <%= yield :hero_picture %>
     </div>
   </div>
 </section>

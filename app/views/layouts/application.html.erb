@@ -8,8 +8,9 @@
   <%= javascript_importmap_tags %>
 </head>
 <body>
-<%= yield :hero %>
 
+
+<%= render "shared/hero" %>
 <%= render "shared/navbar" %>
 
 <% if notice || alert %>
