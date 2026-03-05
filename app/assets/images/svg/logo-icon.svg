@@ -1,11 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
-  <rect x="2" y="2" width="36" height="36" rx="8" fill="#1a365d"/>
+  <rect x="2" y="2" width="36" height="36" rx="8" fill="url(#icon-bg)"/>
   
-  <!-- Stilisiertes B -->
+  <!-- Stilisiertes B: obere Hälfte weiß, untere Gold -->
   <path d="M13 12h8a4 4 0 010 8h-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M13 20h9a4 4 0 010 8h-9" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M13 20h9a4 4 0 010 8h-9" stroke="#e8a838" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
   <line x1="13" y1="12" x2="13" y2="28" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
   
-  <!-- Akzent -->
-  <circle cx="29" cy="13" r="3" fill="#e8a838"/>
+  <!-- Gold Checkmark -->
+  <circle cx="30" cy="10" r="4" fill="#e8a838"/>
+  <path d="M28 10l1.5 1.5 3-3" stroke="#fff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <defs>
+    <linearGradient id="icon-bg" x1="2" y1="2" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2c5282"/>
+      <stop offset="100%" stop-color="#1a365d"/>
+    </linearGradient>
+  </defs>
 </svg>

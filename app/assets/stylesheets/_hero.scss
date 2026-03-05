@@ -3,8 +3,11 @@
 // ===========================================
 .hero {
   background: var(--color-bg-white);
+  border-bottom: 1px solid var(--color-border);
 
   &__inner {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
     display: flex;
     align-items: stretch;
     gap: 0;
@@ -12,13 +15,8 @@
 
   &__content {
     flex: 1;
-    max-width: 640px;
-    padding: var(--space-lg) var(--space-2xl);
-    margin-left: var(--space-lg);
-
-    @media (min-width: 1280px) {
-      margin-left: calc((100vw - var(--content-max-width)) / 2);
-    }
+    max-width: 600px;
+    padding: var(--space-xl) var(--space-xl) var(--space-xl) var(--space-lg);
   }
 
   &__eyebrow {
@@ -37,7 +35,7 @@
   }
 
   &__title {
-    font-family: var(--font-display) sans-serif;
+    font-family: var(--font-display), sans-serif;
     font-size: 1.875rem;
     font-weight: 700;
     color: var(--color-primary-dark);
@@ -59,14 +57,14 @@
   &__search {
     display: flex;
     gap: var(--space-sm);
-    max-width: 460px;
+    max-width: 400px;
   }
 
   &__search-input {
     flex: 1;
-    padding: 0.75rem 1rem;
-    font-family: var(--font-body);
-    font-size: 0.9375rem;
+    padding: 0.625rem 1rem;
+    font-family: var(--font-body), sans-serif;
+    font-size: 0.875rem;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-full);
     background: var(--color-bg);
@@ -98,7 +96,7 @@
   }
 
   &__stat-value {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--color-primary);
@@ -111,7 +109,7 @@
   }
 
   &__visual {
-    flex: 0 0 45%;
+    flex: 0 0 51.5%;
     background: linear-gradient(135deg, var(--color-primary-light) 0%, #dce8f5 100%);
     display: flex;
     align-items: center;

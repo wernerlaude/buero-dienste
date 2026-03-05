@@ -3,7 +3,8 @@
     <div class="hero__content">
       <span class="hero__eyebrow">✦ Über <%= User.online.count %> erfahrene Dienstleister</span>
       <h1 class="hero__title">Finden Sie den passenden Bürodienstleister</h1>
-      <p class="hero__subtitle">Erfahrene Anbieter für Büroservice, digitale Assistenz und Dokumentenmanagement – bundesweit, flexibel und zuverlässig.</p>
+      <p class="hero__subtitle">Erfahrene Anbieter für Büroservice, digitale Assistenz und Dokumentenmanagement –
+        bundesweit, flexibel und zuverlässig.</p>
 
       <div class="hero__search">
         <%= form_with(url: root_path, method: :get, class: "hero__search") do |form| %>
@@ -27,26 +28,8 @@
         </div>
       </div>
     </div>
-
     <div class="hero__visual">
-      <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 80%; max-width: 320px; opacity: 0.6;">
-        <rect x="130" y="40" width="140" height="180" rx="8" fill="white" stroke="#2c5282" stroke-width="2"/>
-        <line x1="155" y1="80" x2="245" y2="80" stroke="#a0c4e8" stroke-width="6" stroke-linecap="round"/>
-        <line x1="155" y1="100" x2="230" y2="100" stroke="#d0e3f5" stroke-width="6" stroke-linecap="round"/>
-        <line x1="155" y1="120" x2="240" y2="120" stroke="#d0e3f5" stroke-width="6" stroke-linecap="round"/>
-        <line x1="155" y1="140" x2="210" y2="140" stroke="#d0e3f5" stroke-width="6" stroke-linecap="round"/>
-        <circle cx="245" cy="65" r="16" fill="#e8a838"/>
-        <path d="M238 65l4 4 8-8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="90" cy="200" r="24" fill="#ebf2fa" stroke="#2c5282" stroke-width="2"/>
-        <circle cx="90" cy="192" r="8" fill="#2c5282"/>
-        <path d="M70 224c0-11 9-20 20-20s20 9 20 20" fill="#2c5282"/>
-        <circle cx="310" cy="120" r="28" fill="#ebf2fa" stroke="#2c5282" stroke-width="2"/>
-        <circle cx="310" cy="120" r="16" stroke="#2c5282" stroke-width="2" fill="none"/>
-        <line x1="322" y1="132" x2="336" y2="146" stroke="#2c5282" stroke-width="3" stroke-linecap="round"/>
-        <line x1="200" y1="220" x2="110" y2="200" stroke="#d0e3f5" stroke-width="1.5" stroke-dasharray="4 4"/>
-        <line x1="270" y1="130" x2="282" y2="120" stroke="#d0e3f5" stroke-width="1.5" stroke-dasharray="4 4"/>
-      </svg>
-      <%#= image_tag "hero-visual.webp", alt: "Bürodienstleistungen finden" %>
+      <%= image_tag "buero-frau.webp" %>
     </div>
   </div>
 </section>
