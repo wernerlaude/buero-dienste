@@ -9,10 +9,7 @@ class PagesController < ApplicationController
     get_besucheranzahl
   end
 
-  def faq; end
-
   def werbung; end
-  def about; end
   def impressum; end
   def datenschutz; end
 end

@@ -1,0 +1,223 @@
+<% content_for :hero_content do %>
+  <span class="hero__eyebrow">✦ Über <%= User.online.count %> erfahrene Dienstleister</span>
+  <h1 class="hero__title">Datenschutzerklärung</h1>
+  <p class="hero__subtitle">Datenschutzhinweise www.buero-dienstleistungen.com</p>
+
+<% end %>
+<% content_for :hero_picture do %>
+  <%= image_tag "hero/buero-frau.webp" %>
+<% end %>
+
+
+<div class="content-box content-box--compact">
+  <h2>Datenschutzerklärung</h2>
+  <p>
+    Diese Datenschutzerklärung informiert Sie darüber, wie wir personenbezogene Daten
+    erheben, nutzen und schützen. Sie gilt für sämtliche Datenverarbeitungen im Rahmen
+    unseres Webportals und unserer Online-Dienste.
+  </p>
+  <p>Alle Formulierungen gelten geschlechtsneutral.</p>
+  <p><strong>Aktualisiert: März 2026</strong></p>
+
+  <hr>
+
+  <h3>Verantwortliche Stelle</h3>
+  <p>
+    Werner Laude<br>
+    Veilchenweg 9<br>
+    91710 Gunzenhausen
+  </p>
+  <p>E-Mail: <%= mail_to "support@buero-dienstleistungen.com" %></p>
+
+  <h3>Welche Daten wir verarbeiten</h3>
+  <p>
+    Im Rahmen unseres Angebots verarbeiten wir unterschiedliche Kategorien
+    personenbezogener Daten:
+  </p>
+  <ul>
+    <li>Stammdaten (z.B. Name, Adresse)</li>
+    <li>Kontaktinformationen (z.B. E-Mail, Telefon)</li>
+    <li>Inhaltsdaten (z.B. Eingaben in Formularen)</li>
+    <li>Vertragsbezogene Daten (z.B. Leistungsumfang, Laufzeit)</li>
+  </ul>
+
+  <h3>Betroffene Personen</h3>
+  <ul>
+    <li>Kunden und Interessenten</li>
+    <li>Kommunikationspartner</li>
+    <li>Website-Besucher</li>
+    <li>Geschäfts- und Vertragspartner</li>
+  </ul>
+
+  <h3>Wofür wir Daten verwenden</h3>
+  <ul>
+    <li>Bereitstellung unserer Dienstleistungen und Kundenbetreuung</li>
+    <li>Bearbeitung von Kontaktanfragen</li>
+    <li>Gewährleistung der technischen Sicherheit</li>
+    <li>Organisation interner Geschäftsprozesse</li>
+    <li>Betrieb und Verbesserung unseres Webportals</li>
+  </ul>
+
+  <h3>Rechtsgrundlagen der Verarbeitung</h3>
+  <p>
+    Die Verarbeitung Ihrer Daten erfolgt auf Basis der Datenschutz-Grundverordnung (DSGVO)
+    sowie ergänzender nationaler Vorschriften, insbesondere des Bundesdatenschutzgesetzes (BDSG).
+  </p>
+  <ul>
+    <li><strong>Vertragserfüllung</strong> (Art. 6 Abs. 1 lit. b DSGVO) – wenn die Verarbeitung zur Durchführung eines
+      Vertrags oder vorvertraglicher Maßnahmen notwendig ist.
+    </li>
+    <li><strong>Gesetzliche Pflichten</strong> (Art. 6 Abs. 1 lit. c DSGVO) – wenn wir rechtlichen Anforderungen
+      nachkommen müssen.
+    </li>
+    <li><strong>Berechtigtes Interesse</strong> (Art. 6 Abs. 1 lit. f DSGVO) – wenn die Verarbeitung im Interesse eines
+      reibungslosen Geschäftsbetriebs liegt, ohne Ihre Grundrechte unverhältnismäßig einzuschränken.
+    </li>
+  </ul>
+
+  <h3>Technische Schutzmaßnahmen</h3>
+  <p>
+    Wir setzen angemessene technische und organisatorische Vorkehrungen ein, um Ihre Daten
+    vor unbefugtem Zugriff, Verlust oder Missbrauch zu schützen. Dazu gehören unter anderem
+    Zugangskontrollen, verschlüsselte Datenübertragung und regelmäßige Sicherheitsüberprüfungen.
+  </p>
+  <p>
+    <strong>Verschlüsselung:</strong> Unser Portal nutzt SSL/TLS-Verschlüsselung (erkennbar
+    am https:// in der Browser-Adressleiste), um alle übertragenen Daten zu schützen.
+  </p>
+
+  <h3>Weitergabe an Dritte</h3>
+  <p>
+    In bestimmten Fällen geben wir personenbezogene Daten an externe Dienstleister weiter,
+    beispielsweise an Hosting-Anbieter oder technische Dienstleister. In jedem Fall stellen
+    wir durch geeignete Vereinbarungen sicher, dass Ihre Daten auch beim Empfänger
+    angemessen geschützt werden.
+  </p>
+
+  <h3>Datenverarbeitung außerhalb der EU</h3>
+  <p>
+    Sollte eine Datenverarbeitung außerhalb der Europäischen Union oder des Europäischen
+    Wirtschaftsraums stattfinden, geschieht dies ausschließlich unter Einhaltung der
+    gesetzlichen Anforderungen – etwa auf Basis von EU-Standardvertragsklauseln oder
+    vergleichbaren Garantien (Art. 44–49 DSGVO).
+  </p>
+
+  <h3>Wann wir Daten löschen</h3>
+  <p>
+    Personenbezogene Daten werden gelöscht, sobald der Zweck der Verarbeitung entfällt oder
+    eine erteilte Einwilligung widerrufen wird. Gesetzliche Aufbewahrungsfristen
+    (z.B. steuerrechtliche Pflichten von bis zu 10 Jahren) bleiben davon unberührt.
+    Während dieser Fristen wird die Nutzung der Daten auf das gesetzlich Erforderliche beschränkt.
+  </p>
+
+  <h3>Cookies</h3>
+  <p>
+    <strong>Wir verwenden keine Tracking-Cookies.</strong> Auf unserem Portal kommen
+    ausschließlich technisch notwendige Cookies zum Einsatz!
+  </p>
+  <ul>
+    <li><strong>Session-Cookies:</strong> Werden automatisch gelöscht, wenn Sie den Browser schließen. Sie dienen der
+      grundlegenden Funktionalität wie dem Login-Status.
+    </li>
+    <li><strong>Dauerhafte Cookies:</strong> Können z.B. Spracheinstellungen oder den Anmeldestatus speichern und haben
+      eine begrenzte Lebensdauer.
+    </li>
+  </ul>
+  <p>
+    Sie können der Verwendung von Cookies jederzeit über Ihre Browser-Einstellungen
+    widersprechen (Art. 21 DSGVO).
+  </p>
+
+  <h3>Geschäftliche Datenverarbeitung</h3>
+  <p>
+    Im Rahmen von Vertragsbeziehungen verarbeiten wir die Daten unserer Geschäftspartner
+    und Kunden, um vereinbarte Leistungen zu erbringen, Anfragen zu beantworten und
+    geschäftliche Abläufe zu organisieren. Die Löschung erfolgt in der Regel nach Ablauf
+    der gesetzlichen Aufbewahrungsfristen (üblicherweise 4 bis 10 Jahre).
+  </p>
+
+  <h3>Nutzerkonten</h3>
+  <p>
+    Registrierte Nutzer können auf unserem Portal ein Kundenkonto anlegen. Diese Konten
+    sind nicht öffentlich zugänglich und werden von Suchmaschinen nicht erfasst. Bei
+    Kündigung des Kontos werden die zugehörigen Daten gelöscht, sofern keine gesetzliche
+    Aufbewahrungspflicht besteht. Wir empfehlen, eigene Daten vor der Kündigung zu sichern.
+  </p>
+
+  <h3>Eingebundene Dienste Dritter</h3>
+  <p>
+    Unser Portal bindet Inhalte externer Anbieter ein, beispielsweise Kartendarstellungen.
+    Dabei wird technisch bedingt Ihre IP-Adresse an den jeweiligen Anbieter übermittelt.
+    Wir achten darauf, nur Dienste einzubinden, die Ihre Daten ausschließlich zur
+    Bereitstellung der Inhalte nutzen.
+  </p>
+
+  <h3>Google Maps</h3>
+  <p>
+    Für Kartendarstellungen nutzen wir den Dienst Google Maps. Dabei können IP-Adressen
+    und Standortdaten verarbeitet werden. Anbieter: Google Cloud EMEA Limited,
+    70 Sir John Rogerson's Quay, Dublin 2, Irland. Rechtsgrundlage: Berechtigtes Interesse
+    (Art. 6 Abs. 1 lit. f DSGVO).
+    Weitere
+    Informationen: <%= link_to "Datenschutzerklärung von Google", "https://policies.google.com/privacy", target: "_blank", rel: "noopener" %>
+    .
+  </p>
+
+  <h3>Webhosting und Server-Logfiles</h3>
+  <p>
+    Unser Hosting-Anbieter erhebt bei jedem Seitenaufruf technische Zugriffsdaten
+    (Server-Logfiles). Dazu gehören unter anderem die aufgerufene Seite, Zeitpunkt des
+    Zugriffs, übertragene Datenmenge, Browser-Informationen und die IP-Adresse. Diese
+    Daten dienen der Sicherstellung des Betriebs und der Abwehr von Angriffen.
+    Logfiles werden nach spätestens 30 Tagen gelöscht oder anonymisiert.
+  </p>
+
+  <h3>Kontaktaufnahme</h3>
+  <p>
+    Wenn Sie uns per Formular, E-Mail oder Telefon kontaktieren, verarbeiten wir Ihre
+    Angaben zur Bearbeitung Ihres Anliegens. Die Rechtsgrundlage hierfür ist die
+    Vertragserfüllung bzw. unser berechtigtes Interesse an der Beantwortung Ihrer Anfrage.
+  </p>
+
+  <h3>Wichtige Begriffe</h3>
+  <ul>
+    <li><strong>Personenbezogene Daten:</strong> Sämtliche Informationen, die sich einer bestimmten oder bestimmbaren
+      natürlichen Person zuordnen lassen.
+    </li>
+    <li><strong>Verantwortlicher:</strong> Diejenige Stelle, die über Zweck und Mittel der Datenverarbeitung
+      entscheidet.
+    </li>
+    <li><strong>Verarbeitung:</strong> Jeder Vorgang im Zusammenhang mit personenbezogenen Daten, vom Erheben über das
+      Speichern bis zum Löschen.
+    </li>
+  </ul>
+
+</div>
+
+
+<%= content_for :sidebar do %>
+  <div class="sidebar-card">
+    <h3 class="sidebar-card__header">&nbsp;</h3>
+    <div class="sidebar-card__body">
+      <%= image_tag "svg/no-cookies.svg", alt: "Keine Cookies", title: "Keine" %><br />
+      <p>Wir setzen keine Cookies um Sie zu tracken!</p>
+      <p>Fonts (Schrifttypen) werden lokal auf meinem Server bereitgestellt. Ein Tracking/Verbindung zu Google findet
+        nicht statt.</p>
+    </div>
+  </div>
+<% end %>
+
+
+<% content_for :meta_title do %>
+  Büroservice Büroarbeiten Bürodienstleister finden
+<% end %>
+
+<% content_for :meta_desc do %>
+  Über 100 selbständige Büroservice Dienstleister übernehmen Bürodienste & Büroarbeiten! Fachgerechte und zuverlässige Unterstützung, bundesweit!
+<% end %>
+
+<% content_for :cano do %>
+  https://www.buero-dienstleistungen.com
+<% end %>
+
+<% content_for :main_class, "prose" %>

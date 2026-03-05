@@ -1,0 +1,37 @@
+<div data-toggle-tabs-target="panel" data-panel-id="bundesland" hidden>
+  <h3 class="category-label">Nach Bundesland</h3>
+
+  <div class="accordion">
+    <% @bundeslands.each do |bundesland| %>
+      <% if bundesland.users.any? %>
+        <details class="accordion__item">
+          <summary class="accordion__header">
+            <span class="accordion__title"><%= bundesland.name %></span>
+            <span class="pill"><%= bundesland.users.size %></span>
+          </summary>
+
+          <ul class="accordion__content">
+            <% bundesland.users.each do |user| %>
+              <li class="accordion__sub-item">
+                <%= link_to user_path(user), class: "accordion__sub-link" do %>
+                <span class="accordion__sub-info">
+                  <span class="accordion__sub-name"><%= user.fullname %></span>
+                  <span class="accordion__sub-company"><%= user.firmenname %></span>
+                </span>
+                  <span class="accordion__sub-location"><%= user.plz %> <%= user.ort %></span>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </details>
+      <% else %>
+        <div class="accordion__item">
+          <div class="accordion__header accordion__header--disabled">
+            <span class="accordion__title"><%= bundesland.name %></span>
+            <span class="pill">0</span>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

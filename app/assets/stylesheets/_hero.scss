@@ -23,7 +23,7 @@
     display: inline-flex;
     align-items: center;
     gap: var(--space-xs);
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -48,7 +48,7 @@
   }
 
   &__subtitle {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: var(--color-text-muted);
     line-height: 1.6;
     margin-bottom: var(--space-md);
@@ -64,7 +64,7 @@
     flex: 1;
     padding: 0.625rem 1rem;
     font-family: var(--font-body), sans-serif;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-full);
     background: var(--color-bg);
@@ -103,7 +103,7 @@
   }
 
   &__stat-label {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     color: var(--color-text-light);
     margin-top: 0.125rem;
   }

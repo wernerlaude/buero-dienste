@@ -1,0 +1,21 @@
+<div data-toggle-tabs-target="panel" data-panel-id="plz" hidden>
+  <div class="search-box">
+    <p class="search-box__intro">Geben Sie Ihre Postleitzahl ein und starten die Suche.</p>
+    <%= form_with url: search_users_path, method: :get, data: { turbo_frame: "search_results" }, class: "search-box__form" do |f| %>
+      <div class="search-box__field">
+        <%= f.label :plz, "📍 Postleitzahl" %>
+        <%= f.text_field :plz, placeholder: "z.B. 90403", required: true, pattern: "\\d{5}" %>
+      </div>
+      <div class="search-box__field">
+        <%= f.label :radius, "📏 Umkreis (km)" %>
+        <%= f.text_field :radius, inputmode: "numeric", placeholder: "z.B. 50", value: 50 %>
+      </div>
+      <div class="search-box__submit">
+        <%= f.submit "Suchen", class: "btn btn--primary" %>
+      </div>
+    <% end %>
+  </div>
+
+  <turbo-frame id="search_results">
+  </turbo-frame>
+</div>

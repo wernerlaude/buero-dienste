@@ -27,8 +27,10 @@
   </div>
 <% end %>
 <% content_for :hero_picture do %>
-  <%= image_tag "buero-frau.webp" %>
+  <%= image_tag "hero/buero-frau.webp" %>
 <% end %>
+
+
 
 <%# Intro %>
 <div class="intro-box">
@@ -58,22 +60,39 @@
   </div>
 </div>
 
-<%# Kategorien dynamisch aus Offers %>
-<% Offer.cached_by_category.sort_by { |cat_id, _| cat_id }.each do |cat_id, cat_offers| %>
-  <div class="section-header">
-    <h2 class="section-header__title"><%= cat_offers.first.category_name %></h2>
+<div data-controller="toggle-tabs" data-toggle-tabs-active-value="fachbereiche">
+
+  <%# Tab Navigation %>
+  <div class="toggle-container toggle-container--floating" id="kategorien">
+    <div class="toggle-switch">
+      <button type="button" class="toggle-option active"
+              data-toggle-tabs-target="tab"
+              data-tab-id="fachbereiche"
+              data-action="click->toggle-tabs#switch">
+        Nach Fachbereichen
+      </button>
+      <button type="button" class="toggle-option"
+              data-toggle-tabs-target="tab"
+              data-tab-id="bundesland"
+              data-action="click->toggle-tabs#switch">
+        Nach Bundesland
+      </button>
+      <button type="button" class="toggle-option"
+              data-toggle-tabs-target="tab"
+              data-tab-id="plz"
+              data-action="click->toggle-tabs#switch">
+        PLZ-Suche
+      </button>
+    </div>
   </div>
 
-  <div class="cards-grid">
-    <% cat_offers.each do |offer| %>
-      <%= render "shared/category_card", offer: offer %>
-    <% end %>
-  </div>
-<% end %>
+  <%= render "pages/category_cards"%>
+  <%= render "pages/bundesland", bundeslands: @bundeslands %>
+  <%= render "pages/plz_suche" %>
 
+</div>
 
-<%# SEO Content %>
-<div class="content-box content-box--text" style="margin-top: var(--space-2xl);">
+<div class="content-box content-box--text">
   <h2>Outsourcing von Bürodienstleistungen und Büroarbeiten</h2>
   <h3>Unterstützung im Büro für individuelle Anforderungen</h3>
   <p>Ein entscheidender Vorteil des Outsourcings von Büroservice Dienstleistungen liegt in der professionellen
@@ -103,3 +122,64 @@
     <li>Optimierung interner Prozesse und Entlastung des Teams</li>
   </ul>
 </div>
+
+
+<%=content_for :sidebar do %>
+  <div class="sidebar-card">
+    <%# if logged_in? %>
+    <h3 class="sidebar-card__header">Mein Bereich</h3>
+    <div class="sidebar-card__body">
+      <p class="premium-entry__name"><%#= current_user.name %></p>
+      <%#=link_to "Visitenkarte bearbeiten", edit_business_card_path, class: "btn btn--primary btn--full" %>
+      <div style="margin-top: var(--space-sm);">
+        <%#= button_to "Ausloggen", premium_auth_path, method: :delete, class: "btn btn--ghost btn--full" %>
+      </div>
+    </div>
+    <%# else %>
+    <h3 class="sidebar-card__header">Premium Login</h3>
+    <div class="sidebar-card__body">
+      <%#= turbo_frame_tag :login_frame do %>
+      <%#= form_with(url: premium_auth_path, data: { turbo_frame: "login_frame" }) do |form| %>
+      <div class="form-group">
+        <%#= form.email_field :email, placeholder: "Ihre E-Mail Adresse",
+                                 required: true, class: "sidebar-login__input" %>
+      </div>
+      <%#= form.submit "Code senden", class: "btn btn--primary btn--full" %>
+      <p class="sidebar-login__hint">
+        Wir senden Ihnen einen Verifikations-Code an Ihre registrierte E-Mail.
+      </p>
+      <%# end %>
+      <%# end %>
+    </div>
+    <%# end %>
+  </div>
+
+<%# Premium Einträge %>
+<%# if @premium_users.present? %>
+  <div class="sidebar-card">
+    <h3 class="sidebar-card__header">Premium Einträge</h3>
+    <div class="sidebar-card__body">
+      <%# @premium_users.each do |user| %>
+      <div class="premium-entry">
+        <div class="premium-entry__avatar"><%#= user.name.split.map(&:first).join %></div>
+        <div class="premium-entry__info">
+          <div class="premium-entry__name"><%#= user.name %></div>
+          <div class="premium-entry__location"><%#= user.plz %> <%#= user.ort %></div>
+          <%#= link_to "Profil besuchen →", user_path(user), class: "premium-entry__link" %>
+        </div>
+      </div>
+      <%# end %>
+    </div>
+  </div>
+<%# end %>
+
+<%# Werbung %>
+  <div class="sidebar-card">
+    <div class="sidebar-card__body sidebar-ad">
+      <div class="sidebar-ad__title">Werbung schalten</div>
+      <div class="sidebar-ad__text">Erreichen Sie Ihre Zielgruppe auf unserem Portal.</div>
+      <%#= link_to "Mehr erfahren", werbung_path, class: "btn btn--ghost" %>
+    </div>
+  </div>
+<% end %>
+

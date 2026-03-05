@@ -1,0 +1,20 @@
+<turbo-frame id="search_results">
+  <% if users.present? %>
+    <div class="result-list">
+      <div class="result-list__header"><%= users.size %> Anbieter gefunden</div>
+      <% users.each do |user| %>
+        <div class="result-list__item">
+          <%= link_to user_path(user), class: "result-list__link" do %>
+            <div class="result-list__info">
+              <span class="result-list__name"><%= user.fullname %></span>
+              <span class="result-list__meta"><%= user.firmenname %> · <%= user.ort %></span>
+            </div>
+            <span class="pill result-list__badge"><%= user.distance.round(1) %> km</span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-muted">Keine Anbieter im angegebenen Umkreis gefunden.</p>
+  <% end %>
+</turbo-frame>

@@ -1,6 +1,8 @@
 // ===========================================
 // Layout
 // ===========================================
+
+// Standard: Content + Sidebar (Startseite, Angebote)
 .page {
   max-width: var(--content-max-width);
   margin: 0 auto;
@@ -26,7 +28,120 @@
   }
 }
 
-// Volle Breite ohne Sidebar
+// Volle Breite ohne Sidebar (Visitenkarten, Profil-Show)
 .page--full {
   grid-template-columns: 1fr;
+}
+
+// Schmal zentriert (Blog, Impressum, Datenschutz)
+.page--narrow {
+  grid-template-columns: 1fr;
+  max-width: 800px;
+}
+
+// Mittelbreit ohne Sidebar (Blog-Index, FAQ)
+.page--medium {
+  grid-template-columns: 1fr;
+  max-width: 960px;
+}
+
+// ===========================================
+// Prose (Fließtext-Seiten)
+// ===========================================
+.prose {
+  h1 {
+    font-family: var(--font-display), sans-serif;
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--space-sm);
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-family: var(--font-display), sans-serif;
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-top: var(--space-2xl);
+    margin-bottom: var(--space-md);
+  }
+
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: var(--space-md);
+  }
+
+  a {
+    color: var(--color-primary);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: rgba(44, 82, 130, 0.3);
+    text-underline-offset: 2px;
+
+    &:hover {
+      text-decoration-color: var(--color-primary);
+    }
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  blockquote {
+    border-left: 4px solid var(--color-accent);
+    padding: var(--space-md) var(--space-lg);
+    margin: var(--space-lg) 0;
+    background: var(--color-accent-light);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-style: italic;
+    color: var(--color-text-muted);
+  }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: var(--color-border);
+    margin: var(--space-xl) 0;
+  }
+
+  img {
+    border-radius: var(--radius-md);
+    margin: var(--space-lg) 0;
+  }
+
+  // Tabellen in Prose
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-lg) 0;
+    font-size: 0.9375rem;
+
+    th, td {
+      padding: 0.625rem var(--space-md);
+      text-align: left;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    th {
+      font-weight: 600;
+      color: var(--color-primary);
+      border-bottom-color: var(--color-border);
+    }
+
+    tr:hover td {
+      background: var(--color-bg);
+    }
+  }
 }

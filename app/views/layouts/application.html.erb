@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= content_for?(:title) ? yield(:title) : "Bürodienstleistungen" %> | buero-dienstleistungen.com</title>
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <title><%= content_for(:meta_title) || "Buero Dienste" %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Buero Dienste">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="content-language" content="de_DE">
+  <meta name="description" content="<%= yield :meta_desc %>"/>
+
+  <meta property="og:locale" content="de_DE"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Bürodienstleistungen Büroservice Büroarbeiten"/>
+  <meta property="og:description" content="Finden Sie den passenden Bürodienstleister für Ihren Bedarf"/>
+  <meta property="og:url" content="https://www.buero-dienstleistungen.com/"/>
+  <meta property="og:site_name" content="Bürodienstleistungen & Büroservice"/>
+  <meta name="page-topic" content="Bürodienstleistungen & Büroservice einfach finden">
+  <meta name="robots" content="index,follow"/>
+  <meta name="robots" content="max-image-preview:large">
+  <meta name="google-site-verification" content="Is-GJdfnCiSznBbBPdDfQuzaikCIRcBz5lR7SYxbPw4"/>
+  <meta name="seobility" content="c4acddfe4057dc59d395212a268d0038">
+  <meta name="thumbnail" content="https://www.buero-dienstleistungen.com/images/thumbnail.webp"/>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <link rel="icon" href="/icon.png" type="image/png">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="icon" href="/icon.png" type="image/png">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+  <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="apple-touch-icon" href="<%= asset_path('apple-icon.png') %>">
+
+  <link rel="canonical" href="<%= yield :cano %>"/>
+
+  <%# Includes all stylesheet files in app/assets/stylesheets %>
+  <%= stylesheet_link_tag :application, "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
 </head>
 <body>
@@ -15,13 +48,17 @@
 
 <% if notice || alert %>
   <div class="flash-messages">
-    <% if notice %><div class="flash flash--notice" data-controller="flash"><%= notice %></div><% end %>
-    <% if alert %><div class="flash flash--alert" data-controller="flash"><%= alert %></div><% end %>
+    <% if notice %>
+      <div class="flash flash--notice" data-controller="flash"><%= notice %></div>
+    <% end %>
+    <% if alert %>
+      <div class="flash flash--alert" data-controller="flash"><%= alert %></div>
+    <% end %>
   </div>
 <% end %>
 
 <div class="page">
-  <main class="page__main">
+  <main class="page__main <%= yield(:main_class) %>">
     <%= yield %>
   </main>
 

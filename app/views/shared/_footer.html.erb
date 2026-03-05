@@ -1,11 +1,39 @@
 <footer class="footer">
   <div class="footer__inner">
-    <div class="footer__copy">© <%= Date.current.year %> buero-dienstleistungen.com · WebDesign WebPages</div>
-    <div class="footer__links">
-      <%#= link_to "Impressum", impressum_path, class: "footer__link" %>
-      <%#= link_to "Datenschutz", datenschutz_path, class: "footer__link" %>
-      <%#= link_to "FAQ", faq_path, class: "footer__link" %>
-      <%#= link_to "Werbung", werbung_path, class: "footer__link" %>
+    <div class="footer__section">
+      <h4 class="footer__heading">Bürodienste</h4>
+      <%= link_to "Büroservice", root_path, class: "footer__link" %>
+      <%= link_to "Buchhaltung", root_path, class: "footer__link" %>
+      <%= link_to "Schreibservice", root_path, class: "footer__link" %>
+      <%= link_to "Telefonservice", root_path, class: "footer__link" %>
     </div>
+
+    <div class="footer__section">
+      <h4 class="footer__heading">Digital</h4>
+      <%= link_to "Virtuelle Assistenz", root_path, class: "footer__link" %>
+      <%= link_to "Digitale Archivierung", root_path, class: "footer__link" %>
+      <%= link_to "Social Media", root_path, class: "footer__link" %>
+      <%= link_to "Scan Service", root_path, class: "footer__link" %>
+    </div>
+
+    <div class="footer__section">
+      <h4 class="footer__heading">Informationen</h4>
+      <%= link_to "Über uns", root_path, class: "footer__link" %>
+      <%= link_to "Werbung schalten", root_path, class: "footer__link" %>
+      <%= link_to "Office Blogs", root_path, class: "footer__link" %>
+      <%= link_to "Visitenkarte anlegen", new_user_path, class: "footer__link" %>
+    </div>
+
+    <div class="footer__section">
+      <h4 class="footer__heading">Rechtliches</h4>
+      <%= link_to "Impressum", impressum_path, class: "footer__link" %>
+      <%= link_to "Datenschutz", datenschutz_path, class: "footer__link" %>
+      <%= link_to "Werbung", werbung_path, class: "footer__link" %>
+      <%= link_to "Kontakt", impressum_path, class: "footer__link" %>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="footer__copy">© <%= Date.current.year %> buero-dienstleistungen.com · WebDesign WebPages</div>
   </div>
 </footer>

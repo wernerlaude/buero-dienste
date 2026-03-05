@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get "datenschutz" => "pages#datenschutz"
   get "impressum" => "pages#impressum"
 
+  get "users/search", to: "users#search", as: :search_users
+
   resources :bundeslands, only: :show, path: "buerodienstleister-in-ihrem-bundesland"
   resources :offers, only: %i[show], path: "angebot"
   resources :users, only: %i[show], path: "ihr-partner"

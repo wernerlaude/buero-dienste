@@ -1,0 +1,179 @@
+// ===========================================
+// Accordion
+// ===========================================
+.accordion {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-white);
+  border: 1px solid rgba(44, 82, 130, 0.2);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+
+  &__item {
+    border-bottom: 1px solid var(--color-border-light);
+    transition: border-color var(--transition-base);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &[open] {
+      .accordion__header {
+        background: var(--color-primary-light);
+      }
+
+      .accordion__header::after {
+        transform: rotate(225deg);
+      }
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: 0.625rem var(--space-lg);
+    cursor: pointer;
+    list-style: none;
+    transition: background var(--transition-fast);
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion__title {
+      flex: 1;
+    }
+
+    .pill {
+      margin-right: var(--space-sm);
+    }
+
+    &::after {
+      content: "";
+      width: 0.5rem;
+      height: 0.5rem;
+      border-right: 2px solid var(--color-text-muted);
+      border-bottom: 2px solid var(--color-text-muted);
+      transform: rotate(45deg);
+      transition: transform var(--transition-base);
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      background: var(--color-primary-light);
+    }
+
+    &--disabled {
+      cursor: default;
+      opacity: 0.5;
+
+      &:hover {
+        background: transparent;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  &__content {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      padding: 0;
+      margin: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  &__sub-item {
+    border-bottom: 1px solid var(--color-border-light);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__sub-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem var(--space-lg) 0.4rem var(--space-xl);
+    text-decoration: none;
+    transition: background var(--transition-fast);
+
+    &:hover {
+      background: var(--color-bg);
+    }
+  }
+
+  &__sub-info {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    min-width: 0;
+    flex: 1;
+  }
+
+  &__sub-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    white-space: nowrap;
+  }
+
+  &__sub-company {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__sub-location {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    white-space: nowrap;
+    margin-left: auto;
+    padding-left: var(--space-md);
+  }
+}
+
+// ===========================================
+// Pill (generisch, auch für Accordion)
+// ===========================================
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.75rem;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+// ===========================================
+// Category Label
+// ===========================================
+.category-label {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-lg);
+}

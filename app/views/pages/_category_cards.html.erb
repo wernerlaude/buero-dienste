@@ -1,0 +1,13 @@
+<div data-toggle-tabs-target="panel" data-panel-id="fachbereiche">
+  <% Offer.cached_by_category.sort_by { |cat_id, _| cat_id }.each do |cat_id, cat_offers| %>
+    <div class="section-header">
+      <h2 class="section-header__title"><%= cat_offers.first.category_name %></h2>
+    </div>
+
+    <div class="cards-grid">
+      <% cat_offers.each do |offer| %>
+        <%= render "shared/category_card", offer: offer %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
