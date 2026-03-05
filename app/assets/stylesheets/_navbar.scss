@@ -185,3 +185,8 @@
     box-shadow: 0 0 8px 5px rgba(34, 197, 94, 0);
   }
 }
+
+@keyframes logo-shine {
+  0%, 75%, 100% { transform: translateX(-100%); }
+  35% { transform: translateX(100%); }
+}

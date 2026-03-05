@@ -1,0 +1,21 @@
+<h2 class="section-header__title">Suchergebnis für PLZ <%= params[:plz] %></h2>
+<%= render "pages/search_results", users: @users %>
+
+<div style="margin-top: var(--space-lg);">
+  <div style="margin-top: var(--space-lg);">
+    <%= link_to root_path(anchor: "plz"), class: "btn btn--primary" do %>
+      <%= lucide_icon "search", size: 18 %> Erweiterte PLZ-Suche mit Umkreis
+    <% end %>
+  </div>
+</div>
+
+
+<% content_for :meta_title, "Suchergebnis PLZ #{params[:plz]}" %>
+
+<% content_for :meta_desc do %>
+  Über 100 selbständige Büroservice Dienstleister übernehmen Bürodienste & Büroarbeiten! Fachgerechte und zuverlässige Unterstützung, bundesweit!
+<% end %>
+
+<% content_for :cano do %>
+  https://www.buero-dienstleistungen.com
+<% end %>

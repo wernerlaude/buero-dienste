@@ -1,0 +1,20 @@
+<article class="partner-card">
+  <h3 class="sidebar-card__header"><%= gender(user.anrede) %></h3>
+  <div class="partner-card__image">
+    <% if user.header_image.attached? %>
+      <%= image_tag user.header_image, alt: user.fullname, title: user.fullname %>
+    <% else %>
+      <div class="partner-card__avatar"><%= user.initials %></div>
+    <% end %>
+  </div>
+  <div class="partner-card__body">
+    <h4 class="partner-card__name"><%= user.fullname %></h4>
+    <p class="partner-card__location"><%= user.ort_plz %></p>
+    <% if user.firmenname.present? %>
+      <p class="partner-card__company"><%= user.firmenname.truncate(45) %></p>
+    <% end %>
+  </div>
+  <div class="partner-card__action">
+    <%= link_to "» Profil besuchen «", user_path(user), class: "btn btn--accent" %>
+  </div>
+</article>

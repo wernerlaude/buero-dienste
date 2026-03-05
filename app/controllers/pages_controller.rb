@@ -1,11 +1,10 @@
 class PagesController < ApplicationController
-
   include Visitables
   def index
     @offers = Offer.cached_offers
     @blog_posts = BlogPost.cached_blogs
     @bundeslands =Bundesland.cached_bundeslands
-    @new_user ||= User.where(online: true).last
+    @new_partner ||= User.where(online: true).last
     get_besucheranzahl
   end
 

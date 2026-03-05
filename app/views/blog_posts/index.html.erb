@@ -1,0 +1,35 @@
+<% content_for :hero_content do %>
+  <span class="hero__eyebrow">✦ Über <%= User.online.count %> erfahrene Dienstleister</span>
+  <h1 class="hero__title">Lesenswerte Office Blogs, Erfahrungsberichte</h1>
+  <p class="hero__subtitle">Sie sind herzlich eingeladen Fachartikel einzustellen</p>
+
+<% end %>
+<% content_for :hero_picture do %>
+  <%= image_tag "hero/blog_posts.webp" %>
+<% end %>
+
+
+<div class="content-box content-box--compact">
+  <h2>Blog</h2>
+
+</div>
+
+<%= content_for :sidebar do %>
+  <div class="sidebar-card">
+  sidebar
+  </div>
+<% end %>
+
+<% content_for :meta_title do %>
+  Büroservice Büroarbeiten Bürodienstleister finden
+<% end %>
+
+<% content_for :meta_desc do %>
+  Über 100 selbständige Büroservice Dienstleister übernehmen Bürodienste & Büroarbeiten! Fachgerechte und zuverlässige Unterstützung, bundesweit!
+<% end %>
+
+<% content_for :cano do %>
+  https://www.buero-dienstleistungen.com
+<% end %>
+
+<% content_for :main_class, "prose" %>

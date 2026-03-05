@@ -69,10 +69,7 @@ class UsersController < ApplicationController
         if turbo_frame_request?
           render partial: "pages/search_results", locals: { users: @users }
         else
-          # Auch @offers laden für die index Seite!
-          @offers = Offer.includes(:category).all  # oder wie du es in index machst
-          # @bundeslands = Bundesland.all
-          render "pages/index"
+          render "users/search"
         end
       end
     end

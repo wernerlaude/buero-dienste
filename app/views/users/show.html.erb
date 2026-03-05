@@ -1,0 +1,144 @@
+<% content_for :meta_title, @user.firmenname.presence || @user.fullname %>
+
+<% content_for :hero_content do %>
+  <h1>Bürodienstleistungen - <%= @user.fullname %></h1>
+  <h2><%= @user.ort %></h2>
+<% end %>
+
+<section class="user-profile">
+  <%# Hero mit Padding %>
+  <div class="hero hero--compact">
+    <div class="container">
+      <% if @user.premium? %>
+        <span class="hero--compact__premium-badge">★ Premium Visitenkarte ★</span>
+      <% end %>
+      <div class="hero__content">
+        <h1 class="hero__title"><%= @user.firmenname.presence || @user.fullname %></h1>
+        <p class="hero__subtitle"><%= @user.ort %></p>
+        <% if @user.firmenmotto.present? %>
+          <p class="hero__claim"><%= @user.firmenmotto %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-layout">
+    <main class="page-layout__main">
+      <%# Eine Box für alles %>
+      <article class="content-box content-box--simple content-box--profile">
+        <div class="content-box__left">
+          <% if @user.header_image.attached? %>
+            <%= image_tag @user.header_image, alt: @user.fullname, title: @user.fullname, class: "content-box__avatar" %>
+          <% else %>
+            <div class="profile-avatar profile-avatar--initials">
+              <%= @user.initials %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="content-box__right">
+          <%# Berufsinfo %>
+          <%# if @user.berufsbezeichnung.present? %>
+            <p class="content-box__job"><%= @user.berufsbezeichnung %>Test title</p>
+          <%# end %>
+          <% if @user.qualifikation.present? %>
+            <p class="content-box__qualification"><%= @user.qualifikation %></p>
+          <% end %>
+          <hr class="profile"/>
+          <%# Beschreibung %>
+          <% if @user.beschreibung.present? %>
+            <div class="content-box__description">
+              <%= format_text(@user.beschreibung) %>
+            </div>
+          <% end %>
+
+          <%# Tätigkeitsbereiche als Tags %>
+          <% if @user.offers.any? %>
+            <div class="content-box__services">
+              <h4 class="content-box__services-title">Tätigkeitsbereiche</h4>
+              <ul class="service-list">
+                <% @user.offers.each do |offer| %>
+                  <li><%= offer.title %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <%# Zusatzangebote %>
+          <% if @user.other_offers.present? %>
+            <div class="content-box__extra">
+              <strong>Zusatzangebote:</strong> <%= @user.other_offers %>
+            </div>
+          <% end %>
+
+          <%# Button %>
+          <%= mail_to @user.email, "#{@user.fullname} kontaktieren",
+                      subject: "Ihre Visitenkarte auf: www.buero-dienstleistungen.com",
+                      class: "btn btn--primary" %>
+
+          <%# Erstberatung Badge %>
+          <% if @user.erstberatung? %>
+            <div class="content-box__badge">
+              <span class="badge badge--accent">✓ Kostenlose Erstberatung</span>
+            </div>
+          <% end %>
+        </div>
+      </article>
+    </main>
+
+    <% content_for :sidebar do %>
+
+      <div class="sidebar-box sidebar-box--logo">
+        <% if @user.uploads[0].present? %>
+          <%= image_tag @user.uploads[0], alt: "Logo #{@user.fullname}" %>
+        <% else %>
+          <%= image_tag "logo-platzhalter.png", alt: "Logo " + @user.fullname, title: "Logo " + @user.fullname %>
+        <% end %>
+      </div>
+
+
+      <%# Firmendaten + Kontakt in einer Box %>
+      <div class="sidebar-box">
+        <h3 class="sidebar-box__title">Kontakt</h3>
+        <div class="sidebar-box__content">
+          <% if @user.display_name? %>
+            <p class="sidebar-box__name"><%= @user.anrede %> <%= @user.fullname %></p>
+          <% end %>
+          <% if @user.firmenname.present? %>
+            <p><%= @user.firmenname %></p>
+          <% end %>
+          <% if @user.gesellschaftsform.present? %>
+            <p class="sidebar-box__meta"><%= @user.gesellschaftsform %></p>
+          <% end %>
+
+          <p class="sidebar-box__address">
+            <%= @user.strasse %><br>
+            <%= @user.plz %> <%= @user.ort %>
+          </p>
+
+          <p><%= mail_to @user.email, @user.email %></p>
+
+          <% if @user.telefon.present? %>
+            <p>Tel: <%= @user.telefon %></p>
+          <% end %>
+
+          <% if @user.mobile.present? %>
+            <p>Mobil: <%= @user.mobile %></p>
+          <% end %>
+
+          <% if @user.webpage.present? %>
+            <p><%= safe_webpage_link(@user.webpage) %></p>
+          <% end %>
+
+          <% if @user.maps.present? %>
+            <p class="sidebar-box__maps">
+              <%= link_to "→ Anfahrt Google Maps",
+                          "http://maps.google.com/?q=#{@user.fulladdress}",
+                          target: "_blank" %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

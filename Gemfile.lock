@@ -169,6 +169,8 @@ GEM
     loofah (2.25.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
+    lucide-rails (0.7.3)
+      railties (>= 4.1.0)
     mail (2.9.0)
       logger
       mini_mime (>= 0.1.1)
@@ -415,6 +417,7 @@ DEPENDENCIES
   jbuilder
   letter_opener
   lexxy (~> 0.1.26.beta)
+  lucide-rails
   mailgun-ruby
   mysql2 (~> 0.5)
   propshaft
@@ -498,6 +501,7 @@ CHECKSUMS
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
   loofah (2.25.0) sha256=df5ed7ac3bac6a4ec802df3877ee5cc86d027299f8952e6243b3dac446b060e6
+  lucide-rails (0.7.3) sha256=024d03f1158a72e99bd46fba7b6ec1bbb22f2eb64c5b59af82427974a093da49
   mail (2.9.0) sha256=6fa6673ecd71c60c2d996260f9ee3dd387d4673b8169b502134659ece6d34941
   mailgun-ruby (1.4.2) sha256=48abc4a75d4290d6d7cbdce923f5c2006a01f51f8d1b08a255737ef0baaf4fbc
   marcel (1.1.0) sha256=fdcfcfa33cc52e93c4308d40e4090a5d4ea279e160a7f6af988260fa970e0bee

@@ -1,0 +1,97 @@
+<% content_for :hero_content do %>
+  <span class="hero__eyebrow">✦ Über <%= User.online.count %> erfahrene Dienstleister</span>
+  <h1 class="hero__title"><%= @offer.header_title %></h1>
+  <p class="hero__subtitle"><%= @offer.header_subtitle %></p>
+
+  <div class="hero__stats">
+    <div>
+      <div class="hero__stat-value"><%= @offer.users.count %></div>
+      <div class="hero__stat-label">Dienstleister</div>
+    </div>
+  </div>
+<% end %>
+<% content_for :hero_picture do %>
+  <%= image_tag("hero/#{@offer.image}", alt: @offer.title) %>
+<% end %>
+
+
+
+<%# Intro %>
+<div class="intro-box intro-box--deco">
+  <h2>Überblick:</h2>
+  <p><%= format_text(@offer.short_desc) %></p>
+</div>
+
+<div class="content-box content-box--split">
+  <div class="content-box__left">
+    <h3 class="content-box__section-title">Premium Einträge:</h3>
+    <ul class="entry-list">
+      <% @users[:premium].each do |user| %>
+        <li class="entry-list__item">
+          <%= link_to user.fullname, user_path(user), class: "entry-list__link" %>
+        </li>
+      <% end %>
+    </ul>
+
+    <h3 class="content-box__section-title standard">Standard Einträge:</h3>
+    <ul class="entry-list">
+      <% @users[:standard].each do |user| %>
+        <li class="entry-list__item">
+          <%= link_to user.fullname, user_path(user), class: "entry-list__link" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="content-box__right">
+    <h3 class="content-box__section-title content-box__section-title--dark">Wo finden Sie Ihren Bürodienstleister?</h3>
+    <ul class="entry-list entry-list--subtle">
+      <% @users[:premium].each do |user| %>
+        <li class="entry-list__item">
+          <%= link_to user.ort_plz, "##{user.id}", class: "entry-list__link" %>
+        </li>
+      <% end %>
+    </ul>
+    <h3 class="content-box__section-title standard">Standard Einträge:</h3>
+    <ul class="entry-list entry-list--subtle">
+      <% @users[:standard].each do |user| %>
+        <li class="entry-list__item">
+          <%= link_to user.ort_plz, "##{user.id}", class: "entry-list__link" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+
+<%= content_for :sidebar do %>
+  <div class="sidebar-card">
+    <div class="sidebar-card__header"><%= @count_offers %> Angebote</div>
+    <div class="partner-list" data-controller="scroll-highlight">
+      <% if @users[:premium].present? %>
+        <h4 class="premium">Premium Einträge:</h4>
+        <% @users[:premium].each do |user| %>
+          <%= render "shared/users_card", user: user %>
+        <% end %>
+        <h4 class="standard">Standard Einträge:</h4>
+      <% end %>
+
+      <% @users[:standard].each do |user| %>
+        <%= render "shared/users_card", user: user %>
+      <% end %>
+
+    </div>
+  </div>
+<% end %>
+
+<% content_for :meta_title do %>
+  <%= @offer.header_title %>
+<% end %>
+
+<% content_for :meta_desc do %>
+  <%= @offer.meta_desc %>
+<% end %>
+
+<% content_for :cano do %>
+  https://www.buero-dienstleistungen.com/angebot/<%= @offer.id %>-<%= @offer.slug.parameterize %>
+<% end %>

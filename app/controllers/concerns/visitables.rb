@@ -12,12 +12,9 @@ module Visitables
   def get_besucheranzahl
     @user_days = ((Date.parse "2024-06-30")...Date.today).count
     @homepage_days = ((Date.parse "2025-08-05")...Date.today).count
-    @profiles_all ||= User.online.pluck(:count).sum
+    @visits_all ||= User.online.pluck(:count).sum
     @visits_min ||= User.minimum(:count)
     @visits_max ||= User.maximum(:count)
-    # @chat_views = PageView.chat.count
-    # @visits_all ||= PageView.homepage.count
-    # @visits_schnitt ||= @homepage_days > 0 ? (@visits_all.to_f / @homepage_days) : 0
   end
 
   private

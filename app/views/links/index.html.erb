@@ -1,0 +1,51 @@
+<% content_for :hero_content do %>
+  <span class="hero__eyebrow">✦ Über <%= User.online.count %> erfahrene Dienstleister</span>
+  <h1 class="hero__title">Hilfreiche Links für das Büro</h1>
+  <p class="hero__subtitle">Links und Informationen für Ihren Büroalltag, Firmen Informationen, Advertisment</p>
+  <p>Im Büro-Alltag gibt es Situationen wo Informationen der einen oder anderen hier gelisteten WebSeite weiterhelfen können.</p>
+
+<% end %>
+<% content_for :hero_picture do %>
+  <%= image_tag "hero/bulbs.webp", alt: "Hilfreiche links" %>
+<% end %>
+
+
+
+<div class="content-box content-box--compact">
+  <h2 class="blue">Links für Ihren Büroalltag und Firmen-Informationen</h2>
+  <h3 class="subtitle mb-3xl">Unterstützende Angebote und interessante Geschäftspartner</h3>
+
+  <% @links.each do |link| %>
+    <div class="link-card-list">
+      <div class="link-card">
+        <div class="link-card__image">
+          <%= link.header_image.attached? ? (image_tag link.header_image, alt: link.bezeichner) : (image_tag 'link-platzhalter.png', alt: 'Hilfreiche Links für Ihren Büroalltag - Platzhalter') %>
+        </div>
+        <div class="link-card__body">
+          <h3 class="link-card__title"><%= link.bezeichner %></h3>
+          <p class="link-card__description">
+            <%= format_text(link.beschreibung) %>
+          </p>
+          <span class="link-card__link">
+            <%= link_to link.bezeichner, link.target_url, :target => "_blank", rel:"noopener" %>
+            <%= image_tag "svg/link-2.svg", alt: "#{link.bezeichner}" %></span>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>
+
+
+<% content_for :meta_title do %>
+  Links und Informationen für Ihren Büroalltag
+<% end %>
+
+<% content_for :meta_desc do %>
+  Im Büro-Alltag bei Bürodienstleistungen gibt es Situationen wo Informationen der einen oder anderen WebSeite weiterhelfen kann
+<% end %>
+
+<% content_for :cano do %>
+  https://www.buero-dienstleistungen.com/hilfreiche-links
+<% end %>

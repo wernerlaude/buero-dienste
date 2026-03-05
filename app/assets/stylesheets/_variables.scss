@@ -5,13 +5,16 @@
   // Colors
 
   --color-primary-light: #E1ECF4;
-  //--color-primary-dark: #1a365d;
   --color-primary-dark: #2c5282;
   --color-primary: #28538F;
-  --color-navbar: #28538f;
+  //--color-navbar: #28538f;
+  --color-navbar: #418acc;
   --color-accent: #e8a838;
   --color-accent-dark: #d4922a;
+  --color-spot: #ffb703;
   --color-accent-light: #fef7eb;
+  --color-grey: #f6f4f4;
+
 
   --color-text: #2d3748;
   --color-text-muted: #718096;
@@ -23,7 +26,7 @@
   --color-border: #cacaca;
   --color-border-light: #dedee4;
 
-  --color-success: #419D78;
+  --color-success: #339988;
   --color-danger: #ef4444;
   --color-danger-dark: #dc2626;
   --color-warning: #ff6b35;
@@ -43,7 +46,7 @@
 
   // Radius
   --radius-sm: 6px;
-  --radius-md: 10px;
+  --radius-md: 8px;
   --radius-lg: 16px;
   --radius-full: 100px;
 
@@ -57,7 +60,7 @@
   --transition-base: 0.25s ease;
 
   // Layout
-  --sidebar-width: 280px;
-  --navbar-height: 60px;
-  --content-max-width: 1280px;
+  --sidebar-width: 18rem;
+  --navbar-height: 3rem;
+  --content-max-width: 80rem;
 }

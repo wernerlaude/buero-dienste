@@ -1,0 +1,18 @@
+Visitenkarte edit
+
+
+<%= form_with model: @user do |form| %>
+  <%= form.rich_text_area :content %>
+<% end %>
+
+<% content_for :meta_title do %>
+  Büroservice Büroarbeiten Bürodienstleister finden
+<% end %>
+
+<% content_for :meta_desc do %>
+  Über 100 selbständige Büroservice Dienstleister übernehmen Bürodienste & Büroarbeiten! Fachgerechte und zuverlässige Unterstützung, bundesweit!
+<% end %>
+
+<% content_for :cano do %>
+  https://www.buero-dienstleistungen.com
+<% end %>

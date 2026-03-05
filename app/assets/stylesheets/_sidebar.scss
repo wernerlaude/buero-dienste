@@ -54,6 +54,10 @@
     color: var(--color-primary);
   }
 
+  &--compact {
+    padding: 0.2rem 0;
+  }
+
   &__info {
     min-width: 0;
   }

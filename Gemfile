@@ -37,10 +37,9 @@ gem "sass-rails", "~> 6.0.0"
 gem "active_link_to"
 gem "rotp", "~> 6.3"
 gem "acts_as_textcaptcha"
-gem "geocoder"
 gem "mailgun-ruby"
 gem "sitemap_generator"
 gem "rotp", "~> 6.3"
 gem "whenever", require: false
-
+gem "lucide-rails"
 gem "lexxy", "~> 0.1.26.beta"

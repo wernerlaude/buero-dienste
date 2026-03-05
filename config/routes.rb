@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[show], path: "ihr-partner"
 
   resources :users, only: %i[new create], path: "visitenkarte-buchen"
+  resources :blog_posts, only: %i[index show], path: "office-blogs"
 
   get "up" => "rails/health#show", as: :rails_health_check
 end

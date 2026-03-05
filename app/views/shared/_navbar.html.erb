@@ -1,8 +1,13 @@
 <nav class="navbar" data-controller="navbar">
   <div class="navbar__inner">
     <%= link_to root_path, class: "navbar__brand" do %>
-      <span class="navbar__brand-icon"><%=image_tag "svg/logo-icon.svg" %></span>
-      buero-dienstleistungen.com
+  <span class="navbar__brand-icon">
+    <%= image_tag "svg/logo-icon.svg", size: "28x28" %>
+  </span>
+      <svg class="navbar__brand-building" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+      </svg>
+      Start
     <% end %>
 
     <button class="navbar__toggle" data-action="click->navbar#toggle" aria-label="Menü öffnen">
@@ -12,10 +17,8 @@
     </button>
 
     <div class="navbar__nav" data-navbar-target="menu">
-      <%= link_to "Start", root_path, class: "navbar__link #{'navbar__link--active' if current_page?(root_path)}" %>
-      <%= link_to "Angebote", root_path, class: "navbar__link #{'navbar__link--active' if current_page?(root_path)}" %>
-      <%= link_to "Office Blogs", root_path, class: "navbar__link #{'navbar__link--active' if current_page?(root_path)}" %>
-      <%= link_to "Ressourcen", root_path, class: "navbar__link" %>
+      <%= link_to "Office Blogs", blog_posts_path, class: "navbar__link #{'navbar__link--active' if current_page?(blog_posts_path)}" %>
+      <%= link_to "Hilfreiche Links", links_path, class: "navbar__link #{'navbar__link--active' if current_page?(links_path)}" %>
       <%= link_to "Visitenkarte anlegen", new_user_path, class: "navbar__link" %>
     </div>
 

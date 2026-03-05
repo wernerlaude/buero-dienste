@@ -5,8 +5,8 @@
     bundesweit, flexibel und zuverlässig.</p>
 
   <div class="hero__search">
-    <%= form_with(url: root_path, method: :get, class: "hero__search") do |form| %>
-      <%= form.text_field :plz, placeholder: "PLZ eingeben …", class: "hero__search-input" %>
+    <%= form_with(url: search_users_path, method: :get) do |form| %>
+      <%= form.text_field :plz, placeholder: "PLZ eingeben …", class: "hero__search-input", pattern: "\\d{5}" %>
       <%= form.submit "Suchen", class: "btn btn--accent btn--lg" %>
     <% end %>
   </div>
@@ -17,7 +17,7 @@
       <div class="hero__stat-label">Dienstleister</div>
     </div>
     <div>
-      <div class="hero__stat-value"><%#= number_with_delimiter(@total_visits || 0) %></div>
+      <div class="hero__stat-value"><%= @visits_all %></div>
       <div class="hero__stat-label">Besuchte Angebote</div>
     </div>
     <div>
@@ -30,28 +30,28 @@
   <%= image_tag "hero/buero-frau.webp" %>
 <% end %>
 
-
-
-<%# Intro %>
 <div class="intro-box">
 
-  <p class="intro-box__text">
-  <h2>Professionelle Unterstützung für Ihren Büroalltag</h2>
-  <h3>Entlasten Sie sich mit erfahrenen Bürodienstleistern</h3>
-  Auf <%= link_to "buero-dienstleistungen.com", root_path %> finden Sie Fachkräfte
-  für Büroservice, Buchhaltung, Telefonservice, digitale Assistenz und viele weitere
-  Aufgaben. Alle Dienstleister arbeiten eigenständig und rechnen direkt mit Ihnen ab –
-  ohne Vermittlungsgebühren oder versteckte Kosten.
-  </p>
-  <p class="intro-box__text">
-    Ob einmalige Unterstützung bei Projekten oder langfristige Zusammenarbeit:
-    Sie entscheiden, wann und wie viel Hilfe Sie brauchen.
-  </p>
-  <p class="intro-box__text">
-    Durchsuchen Sie die Angebote nach <strong>Fachbereich, Bundesland oder Postleitzahl</strong>
-    und nehmen Sie direkt Kontakt auf.
-  </p><br/>
-  <div class="intro-box__divider"></div>
+  <div class="intro-box__text">
+    <h2>Professionelle Unterstützung für Ihren Büroalltag</h2>
+    <h3>Entlasten Sie sich mit erfahrenen Bürodienstleistern</h3>
+    <p>
+      Auf <%= link_to "buero-dienstleistungen.com", root_path %> finden Sie Fachkräfte
+      für Büroservice, Buchhaltung, Telefonservice, digitale Assistenz und viele weitere
+      Aufgaben. Alle Dienstleister arbeiten eigenständig und rechnen direkt mit Ihnen ab –
+      ohne Vermittlungsgebühren oder versteckte Kosten.
+    </p>
+    <p>
+      Ob einmalige Unterstützung bei Projekten oder langfristige Zusammenarbeit:
+      Sie entscheiden, wann und wie viel Hilfe Sie brauchen.
+    </p>
+    <p>
+      Durchsuchen Sie die Angebote nach <strong>Fachbereich, Bundesland oder Postleitzahl</strong>
+      und nehmen Sie direkt Kontakt auf.
+    </p>
+  </div>
+  <br/>
+
   <div class="intro-box__pills">
     <span class="intro-box__pill">✓ Bundesweit verfügbar</span>
     <span class="intro-box__pill">✓ Keine festen Kosten</span>
@@ -62,7 +62,6 @@
 
 <div data-controller="toggle-tabs" data-toggle-tabs-active-value="fachbereiche">
 
-  <%# Tab Navigation %>
   <div class="toggle-container toggle-container--floating" id="kategorien">
     <div class="toggle-switch">
       <button type="button" class="toggle-option active"
@@ -86,7 +85,7 @@
     </div>
   </div>
 
-  <%= render "pages/category_cards"%>
+  <%= render "pages/category_cards" %>
   <%= render "pages/bundesland", bundeslands: @bundeslands %>
   <%= render "pages/plz_suche" %>
 
@@ -114,6 +113,24 @@
     effektive Organisationsstruktur. Aufgaben werden gezielt an erfahrene Experten
     ausgelagert, wodurch interne Abläufe optimiert werden.
   </p>
+
+</div>
+
+<div class="content-box content-box--text">
+  <h2>Effektive Organisationsstruktur durch Bürodienste</h2>
+  <h3>Professionelle Unterstützung für Ihr Büro</h3>
+  <p>
+    Die Zusammenarbeit mit externen, professionellen Büroservice Dienstleistern ermöglicht eine schlanke und effektive
+    Organisationsstruktur. Aufgaben werden gezielt an erfahrene Experten ausgelagert, wodurch interne Abläufe optimiert
+    und mögliche Engpässe vermieden werden. Das steigert nachhaltig Ihre Effizienz und schafft mehr Freiräume für
+    strategisch wichtige Themen.
+  </p>
+  <p>
+    Externe Bürodienstleister für Büroarbeiten leisten einen unschätzbaren Beitrag zu Produktivität und Qualität im
+    Arbeitsalltag. Ihre Kompetenz, die Zeit- und Kostenersparnis sowie die hohe Flexibilität machen sie zu einem
+    unverzichtbaren Bestandteil einer modernen Unternehmensorganisation – egal, ob für kleine Betriebe, Mittelständler,
+    Freiberufler oder Konzerne.
+  </p>
   <ul>
     <li>Flexibilität bei Auftragsspitzen oder Personalengpässen</li>
     <li>Keine festen Personalkosten, da bedarfsorientiert buchbar</li>
@@ -121,10 +138,28 @@
     <li>Bundesweite Verfügbarkeit</li>
     <li>Optimierung interner Prozesse und Entlastung des Teams</li>
   </ul>
+
+  <p>Unsere Plattform bringt Suchende und Dienstleister unkompliziert zusammen – bundesweit, flexibel und sicher. So
+    können Sie Ihre Büroaufgaben professionell auslagern und jederzeit zuverlässig abdecken. Lassen Sie sich beraten und
+    profitieren Sie von einem Netzwerk erfahrener Spezialisten.
+  </p>
+
+  <h4>Zusammenfassung</h4>
+  <p>
+    Bei uns gelistete Büroservice und Bürodienstleistungen bieten Unternehmen effektive Möglichkeiten, Büroaufgaben zu
+    erledigen und ihre Produktivität im Office zu steigern. Durch die Auslagerung dieser Aufgaben können Sie Zeit und
+    Geld sparen und sich auf ihre Kernkompetenzen konzentrieren.
+  </p>
+  <p>
+    Eine Zusammenarbeit mit einem unserer Büroservice Dienstleister verschafft Ihnen gewünschte Flexibilität und erlaubt
+    es Ihnen, auf konjunkturelle Schwankungen angemessen reagieren zu können. Gerade wenn viel Arbeit anliegt, können
+    Sie Ihre Termine halten.
+  </p>
+
 </div>
 
 
-<%=content_for :sidebar do %>
+<%= content_for :sidebar do %>
   <div class="sidebar-card">
     <%# if logged_in? %>
     <h3 class="sidebar-card__header">Mein Bereich</h3>
@@ -154,32 +189,46 @@
     <%# end %>
   </div>
 
-<%# Premium Einträge %>
-<%# if @premium_users.present? %>
-  <div class="sidebar-card">
-    <h3 class="sidebar-card__header">Premium Einträge</h3>
-    <div class="sidebar-card__body">
-      <%# @premium_users.each do |user| %>
-      <div class="premium-entry">
-        <div class="premium-entry__avatar"><%#= user.name.split.map(&:first).join %></div>
-        <div class="premium-entry__info">
-          <div class="premium-entry__name"><%#= user.name %></div>
-          <div class="premium-entry__location"><%#= user.plz %> <%#= user.ort %></div>
-          <%#= link_to "Profil besuchen →", user_path(user), class: "premium-entry__link" %>
-        </div>
-      </div>
-      <%# end %>
-    </div>
-  </div>
-<%# end %>
+  <%= render "shared/cta_card", image: "sidebar/cta.webp", visits_min: @visits_min, visits_max: @visits_max %>
+  <%= render "shared/new_partner", user: @new_partner %>
 
-<%# Werbung %>
+
+  <article class="partner-card">
+    <div class="partner-card__body">
+      <h4 class="partner-card__name">Werbung schalten</h4>
+      <p class="partner-card__company">Erreichen Sie Ihre Zielgruppe auf unserem Portal.</p>
+    </div>
+    <div class="partner-card__action">
+      <%= link_to "» Mehr erfahren «", werbung_path, class: "btn btn--accent" %>
+    </div>
+  </article>
+
   <div class="sidebar-card">
-    <div class="sidebar-card__body sidebar-ad">
-      <div class="sidebar-ad__title">Werbung schalten</div>
-      <div class="sidebar-ad__text">Erreichen Sie Ihre Zielgruppe auf unserem Portal.</div>
-      <%#= link_to "Mehr erfahren", werbung_path, class: "btn btn--ghost" %>
+    <h3 class="sidebar-card__header">Office Blogs</h3>
+    <div class="sidebar-card__body">
+      <% @blog_posts.each do |post| %>
+        <div class="premium-entry premium-entry--compact">
+          <div class="premium-entry__info">
+            <div class="premium-entry__name"><%= post.title.truncate(45) %></div>
+            <%= link_to "Weiterlesen →", blog_post_path(post), class: "premium-entry__link" %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
+<% end %>
+
+
+
+<% content_for :meta_title do %>
+  Büroservice Büroarbeiten Bürodienstleister finden
+<% end %>
+
+<% content_for :meta_desc do %>
+  Über 100 selbständige Büroservice Dienstleister übernehmen Bürodienste & Büroarbeiten! Fachgerechte und zuverlässige Unterstützung, bundesweit!
+<% end %>
+
+<% content_for :cano do %>
+  https://www.buero-dienstleistungen.com
 <% end %>
 
