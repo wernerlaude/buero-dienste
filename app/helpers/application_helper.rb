@@ -13,6 +13,10 @@ module ApplicationHelper
     content.to_s.html_safe
   end
 
+  def random_css_class
+    %w[filter-green filter-blue filter-safran].sample
+  end
+
   def icon(name, options = {})
     size = options[:size] || 24
     css_class = options[:class] || ""

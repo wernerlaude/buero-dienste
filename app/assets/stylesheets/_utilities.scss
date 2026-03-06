@@ -48,3 +48,19 @@
     display: none;
   }
 }
+
+// -------------------------------------------
+// Random Filter
+// -------------------------------------------
+
+.filter-green {
+  filter: invert(67%) sepia(75%) saturate(502%) hue-rotate(31deg) brightness(90%) contrast(86%);
+}
+
+.filter-safran {
+  filter: invert(31%) sepia(14%) saturate(2204%) hue-rotate(177deg) brightness(90%) contrast(94%);
+}
+
+.filter-blue {
+  filter: invert(40%) sepia(49%) saturate(618%) hue-rotate(176deg) brightness(93%) contrast(100%);
+}

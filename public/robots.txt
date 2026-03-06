@@ -1,1 +1,8 @@
 # See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+Sitemap: https://www.buero-dienstleistungen.com/sitemap.xml.gz
+
+User-agent: *
+Disallow: /neuer-partner/new
+
+User-agent: Claude-Web
+Allow: /

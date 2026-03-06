@@ -1,0 +1,13 @@
+<div class="sidebar-card">
+  <h3 class="sidebar-card__header">Office Blogs</h3>
+  <div class="sidebar-card__body">
+    <% blog_posts.each do |post| %>
+      <div class="premium-entry premium-entry--compact">
+        <div class="premium-entry__info">
+          <div class="premium-entry__name"><%= post.title.truncate(45) %></div>
+          <%= link_to "Weiterlesen →", blog_post_path(post), class: "premium-entry__link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

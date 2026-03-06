@@ -121,7 +121,8 @@
     margin: var(--space-lg) 0;
   }
 
-  // Tabellen in Prose
+
+  // Tabellen
   table {
     width: 100%;
     border-collapse: collapse;
@@ -144,4 +145,25 @@
       background: var(--color-bg);
     }
   }
+
+  // Blog Meta
+  .blog-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-border-light);
+
+    &__item {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+  }
+}
+article.prose {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
 }

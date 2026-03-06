@@ -1,0 +1,42 @@
+<% content_for :hero_content do %>
+  <span class="hero__eyebrow">✦ Über <%= User.online.count %> erfahrene Dienstleister</span>
+  <h1 class="hero__title">Blog Posts</h1>
+  <p class="hero__subtitle">Links und Informationen für Ihren Büroalltag, Firmen Informationen, Advertisment</p>
+  <p>Im Büro-Alltag gibt es Situationen wo Informationen der einen oder anderen hier gelisteten WebSeite weiterhelfen können.</p>
+
+<% end %>
+<% content_for :hero_picture do %>
+  <%= image_tag "hero/blog_posts.webp", alt: "Büro Blog Posts" %>
+<% end %>
+
+
+<article class="prose">
+  <h2><%= @blog_post.title %></h2>
+  <div class="blog-meta">
+  <span class="blog-meta__item">
+    <%= l(@blog_post.created_at, format: :long) %>
+  </span>
+  </div>
+  <div class="blog-content">
+  <%= format_text(@blog_post.content) %>
+  </div>
+</article>
+
+
+<%= content_for :sidebar do %>
+  <%= render "shared/sidebar_table", blog_posts: @more_posts %>
+<% end %>
+
+
+
+<% content_for :meta_title do %>
+  Links und Informationen für Ihren Büroalltag
+<% end %>
+
+<% content_for :meta_desc do %>
+  Im Büro-Alltag bei Bürodienstleistungen gibt es Situationen wo Informationen der einen oder anderen WebSeite weiterhelfen kann
+<% end %>
+
+<% content_for :cano do %>
+  https://www.buero-dienstleistungen.com/hilfreiche-links
+<% end %>

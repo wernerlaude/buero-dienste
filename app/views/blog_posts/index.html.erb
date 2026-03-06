@@ -4,20 +4,70 @@
   <p class="hero__subtitle">Sie sind herzlich eingeladen Fachartikel einzustellen</p>
 
 <% end %>
+
 <% content_for :hero_picture do %>
   <%= image_tag "hero/blog_posts.webp" %>
 <% end %>
 
 
 <div class="content-box content-box--compact">
-  <h2>Blog</h2>
+  <h2>Erfahrungsberichte & Praxiswissen aus dem Büroalltag</h2>
+  <h3>Office Blog – Ihre Erfahrungen zählen</h3>
+  <p>
+    Auf diesen Seiten finden Sie <strong>authentische Erfahrungsberichte</strong>,
+    <strong>Lernergebnisse</strong> und <strong>praxisnahe Tätigkeitsbeschreibungen</strong>
+    rund um das Thema <strong>Büro, Office-Organisation und Büro-Dienstleistungen</strong>.
+  </p>
+
+  <p>
+    Möchten Sie etwas aus Ihrem persönlichen Erfahrungsschatz teilen?
+    Dann laden wir Sie herzlich ein, Teil unseres Office Blogs zu werden.
+  </p>
+
+  <p>
+    Wir sind neugierig auf Ihre Perspektive! Im <strong>Office Blog</strong> veröffentlichen wir:
+  </p>
+
+  <ul>
+    <li>Erfahrungsberichte aus dem Büroalltag</li>
+    <li>Erfolge und Herausforderungen – gerne auch Misserfolge</li>
+    <li>Tätigkeitsbeschreibungen und Best Practices</li>
+    <li>Tipps, Learnings und Einblicke in Office Management und Büroorganisation</li>
+  </ul>
+
+  <p>
+    Ihr Beitrag bietet echten Mehrwert, inspiriert andere und fördert den Wissensaustausch
+    rund um moderne Büroarbeit.
+  </p>
 
 </div>
 
+<div class="content-box content-box--text">
+  <h4>Meistgelesene Artikel</h4>
+  <table class="blog-table">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Titel</th>
+      <th>Datum</th>
+      <th class="text-right">Gelesen</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @most_read_blog_posts.each do |blog_post| %>
+      <tr>
+        <td><%= image_tag "svg/file.svg", alt: "svg.icon", class: random_css_class %></td>
+        <td><%= link_to blog_post.list_title, blog_post %></td>
+        <td><%= l(blog_post.created_at, format: :extra_short) %></td>
+        <td class="text-right"><%= blog_post.count %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
 <%= content_for :sidebar do %>
-  <div class="sidebar-card">
-  sidebar
-  </div>
+  <%= render "shared/sidebar_table", blog_posts: @blog_posts %>
 <% end %>
 
 <% content_for :meta_title do %>
