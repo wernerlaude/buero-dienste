@@ -1,8 +1,9 @@
+<% content_for :main_class, "prose" %>
 <% content_for :hero_content do %>
   <span class="hero__eyebrow">✦ Über <%= User.online.count %> erfahrene Dienstleister</span>
-  <h1 class="hero__title">Blog Posts</h1>
-  <p class="hero__subtitle">Links und Informationen für Ihren Büroalltag, Firmen Informationen, Advertisment</p>
-  <p>Im Büro-Alltag gibt es Situationen wo Informationen der einen oder anderen hier gelisteten WebSeite weiterhelfen können.</p>
+  <h1 class="hero__title">Blog Post: <%= @blog_post.list_title %></h1>
+  <p class="hero__subtitle">Worum geht es?</p>
+  <p><%= @blog_post.teaser %></p>
 
 <% end %>
 <% content_for :hero_picture do %>
@@ -18,13 +19,25 @@
   </span>
   </div>
   <div class="blog-content">
-  <%= format_text(@blog_post.content) %>
+    <%= format_text(@blog_post.content) %>
   </div>
 </article>
 
 
 <%= content_for :sidebar do %>
-  <%= render "shared/sidebar_table", blog_posts: @more_posts %>
+  <div class="sidebar-card">
+    <%# if logged_in? %>
+    <h3 class="sidebar-card__header">Mein Bereich</h3>
+    <div class="sidebar-card__body">
+      <p class="premium-entry__name"><%#= current_user.name %></p>
+      <%#=link_to "Visitenkarte bearbeiten", edit_business_card_path, class: "btn btn--primary btn--full" %>
+      <div style="margin-top: var(--space-sm);">
+        <%#= button_to "Ausloggen", premium_auth_path, method: :delete, class: "btn btn--ghost btn--full" %>
+      </div>
+    </div>
+  </div>
+
+  <%= render "shared/sidebar_table", blog_posts: @more_posts, header: "Mehr Blogs" %>
 <% end %>
 
 

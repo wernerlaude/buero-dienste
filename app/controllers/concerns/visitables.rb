@@ -17,6 +17,10 @@ module Visitables
     @visits_max ||= User.maximum(:count)
   end
 
+  def get_blogs_read
+    @blogs_all ||= BlogPost.online.pluck(:count).sum
+  end
+
   private
 
   def lookup_user_by_cookie

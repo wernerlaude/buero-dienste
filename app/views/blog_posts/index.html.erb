@@ -1,8 +1,18 @@
+<% content_for :main_class, "prose" %>
 <% content_for :hero_content do %>
   <span class="hero__eyebrow">✦ Über <%= User.online.count %> erfahrene Dienstleister</span>
   <h1 class="hero__title">Lesenswerte Office Blogs, Erfahrungsberichte</h1>
   <p class="hero__subtitle">Sie sind herzlich eingeladen Fachartikel einzustellen</p>
-
+  <div class="hero__stats">
+    <div>
+      <div class="hero__stat-value"><%= @blog_posts.online.count %></div>
+      <div class="hero__stat-label">Blog Posts</div>
+    </div>
+    <div>
+      <div class="hero__stat-value"><%= @blogs_all %></div>
+      <div class="hero__stat-label">Gelesene Blog Artikel</div>
+    </div>
+  </div>
 <% end %>
 
 <% content_for :hero_picture do %>
@@ -82,4 +92,3 @@
   https://www.buero-dienstleistungen.com
 <% end %>
 
-<% content_for :main_class, "prose" %>

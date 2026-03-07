@@ -1,0 +1,215 @@
+// ===========================================
+// Profile (User Show)
+// ===========================================
+
+// Kompakter Hero ohne Visual
+// Kompakter Hero mit Deko
+.hero--compact {
+  background: linear-gradient(135deg, #fff 0%, #edf2f7 100%);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(44, 82, 130, 0.04);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    right: 150px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(232, 168, 56, 0.06);
+  }
+
+  .hero__inner {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hero__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    background: none;
+    margin-right: 15%;
+  }
+}
+
+.profile-avatar--hero {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display), sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.15);
+  border: 3px solid rgba(232, 168, 56, 0.3);
+}
+
+// Profil Split: Text links, Bild rechts
+.profile-split {
+  display: flex;
+  gap: 0;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.profile-main {
+  flex: 1;
+  padding: var(--space-sm) var(--space-lg) var(--space-lg) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-image {
+  flex: 0 0 320px;
+  max-height: 300px;
+  overflow: hidden;
+  margin: calc(var(--space-lg) * -1);
+  margin-left: 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+
+  @media (max-width: 768px) {
+    flex: none;
+    height: 250px;
+    margin: 0 calc(var(--space-lg) * -1) calc(var(--space-lg) * -1);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    order: -1;
+  }
+}
+
+// Profil Texte
+.profile-firma {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.profile-motto {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.profile-description {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.profile-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.profile-address {
+  margin-top: var(--space-sm);
+}
+
+.profile-maps {
+  margin-top: var(--space-sm);
+}
+
+// Avatar
+.profile-avatar--large {
+  width: 140px;
+  height: 140px;
+  margin: var(--space-lg) auto;
+  background: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display), sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+
+// Badge
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+
+  &--accent {
+    background: var(--color-accent-light);
+    color: var(--color-accent-dark);
+    border: 1px solid rgba(232, 168, 56, 0.3);
+  }
+}
+
+.sidebar-card--muted {
+  background: var(--color-bg);
+
+  .partner-card__image {
+    height: auto;
+    padding: var(--space-lg);
+    background: var(--color-bg-white);
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 150px;
+      object-fit: contain;
+    }
+  }
+}
+
+.contact-block {
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border-light);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  p {
+    margin-bottom: 0.2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

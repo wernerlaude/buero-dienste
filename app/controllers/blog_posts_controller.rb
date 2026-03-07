@@ -1,7 +1,10 @@
 class BlogPostsController < ApplicationController
+
+  include Visitables
   def index
     @blog_posts = BlogPost.sortiert.online
     @most_read_blog_posts = BlogPost.most_read
+    get_blogs_read
   end
 
   def show

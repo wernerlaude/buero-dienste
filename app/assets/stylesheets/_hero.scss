@@ -46,6 +46,18 @@
       font-size: 1.75rem;
     }
   }
+  &__title2 {
+    font-family: var(--font-display), sans-serif;
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    line-height: 1.2;
+    margin-bottom: var(--space-sm);
+
+    @media (max-width: 768px) {
+      font-size: 1.75rem;
+    }
+  }
 
   &__subtitle {
     font-size: 1rem;
@@ -109,7 +121,7 @@
   }
 
   &__visual {
-    flex: 0 0 40%;
+    flex: 0 0 40.5%;
     background: linear-gradient(135deg, var(--color-primary-light) 0%, #dce8f5 100%);
     display: flex;
     align-items: center;

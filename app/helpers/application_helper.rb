@@ -28,4 +28,15 @@ module ApplicationHelper
     return "Neue Partnerin" if user == "Frau"
     "Firma"
   end
+
+  def safe_webpage_link(url, options = {})
+    return nil unless url.present?
+
+    # Explizite Prüfung, die Brakeman versteht
+    sanitized_url = Rack::Utils.escape_html(url)
+
+    # Merge default options mit übergebenen options
+    default_options = { target: "_blank", rel: "noopener noreferrer" }
+    link_to sanitized_url, sanitized_url, default_options.merge(options)
+  end
 end
