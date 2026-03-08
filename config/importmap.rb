@@ -9,3 +9,5 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 # config/importmap.rb
 pin "lexxy", to: "lexxy.js"
 pin "@rails/activestorage", to: "activestorage.esm.js"
+pin "trix"
+pin "@rails/actiontext", to: "actiontext.esm.js"

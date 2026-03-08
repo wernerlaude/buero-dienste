@@ -39,6 +39,33 @@
   <%= stylesheet_link_tag :application, "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "lexxy" %>
   <%= javascript_importmap_tags %>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.buero-dienstleistungen.com",
+  "name": "Büro Dienstleistungen",
+  "description": "Finden Sie professionelle Büroservices, digitale Assistenz, Dokumentenservices und mehr. Anbieter vergleichen und direkt kontaktieren.",
+  "inLanguage": "de",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Büro Dienstleistungen",
+    "url": "https://www.buero-dienstleistungen.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.buero-dienstleistungen.com/images/thumbnail.webp"
+    }
+  },
+ "image": [
+    "https://www.buero-dienstleistungen.com/images/buero-dienstleistungen.webp"
+  ],
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.buero-dienstleistungen.com/suche?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 </head>
 <body>
 

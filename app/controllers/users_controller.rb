@@ -18,8 +18,8 @@ class UsersController < ApplicationController
     @user.booked_at = Date.today if params[:user][:premium]
     respond_to do |format|
       if @user.save
-        NoticeMailer.with(user: @user).welcome_email.deliver_now
-        NoticeMailer.with(user: @user).notice_email.deliver_now
+        #NoticeMailer.with(user: @user).welcome_email.deliver_now
+        #NoticeMailer.with(user: @user).notice_email.deliver_now
         format.html { redirect_to success_path }
       else
         format.html { render :new, status: :unprocessable_entity }

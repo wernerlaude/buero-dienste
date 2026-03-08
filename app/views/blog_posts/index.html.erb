@@ -76,19 +76,22 @@
   </table>
 </div>
 
+
 <%= content_for :sidebar do %>
-  <%= render "shared/sidebar_table", blog_posts: @blog_posts %>
+  <div class="sidebar-card">
+  <%= render "shared/sidebar_table", blog_posts: @blog_posts, header: "Blogs Post" %>
+  </div>
 <% end %>
 
 <% content_for :meta_title do %>
-  Büroservice Büroarbeiten Bürodienstleister finden
+Fachartikel zu verschiedenen Themen rund ums Büro.
 <% end %>
 
 <% content_for :meta_desc do %>
-  Über 100 selbständige Büroservice Dienstleister übernehmen Bürodienste & Büroarbeiten! Fachgerechte und zuverlässige Unterstützung, bundesweit!
+Leser und Agenturen können hier Blog Artikel einstellen. Fachartikel und Erfahrungen zu Themen rund um das Büro.
 <% end %>
 
 <% content_for :cano do %>
-  https://www.buero-dienstleistungen.com
+https://www.buero-dienstleistungen.com/office-blogs
 <% end %>
 

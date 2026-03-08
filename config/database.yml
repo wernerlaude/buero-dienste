@@ -14,7 +14,7 @@ sqlite: &sqlite
 development:
   primary:
     <<: *default
-    database: buero_dienste_dev
+    database: buero_dev
     socket: /tmp/mysql.sock
 
 production:
@@ -22,17 +22,17 @@ production:
     adapter: mysql2
     encoding: utf8mb4
     collation: utf8mb4_general_ci
-    database: buero_dienste_prod
-    username: "werner"
-    password: "Taxi4343!"
+    database: buero_production
+    username: "buero"
+    password: "Taxi4343;"
     socket: /var/run/mysqld/mysqld.sock
   cache:
     adapter: mysql2
     encoding: utf8mb4
     collation: utf8mb4_general_ci
-    database: buero_dienste_prod_cache
-    username: "werner"
-    password: "Taxi4343!"
+    database: buero_production_cache
+    username: "buero"
+    password: "Taxi4343;"
     socket: /var/run/mysqld/mysqld.sock
     migrations_paths: db/cache_migrate
   queue:

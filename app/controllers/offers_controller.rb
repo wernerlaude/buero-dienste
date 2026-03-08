@@ -7,11 +7,11 @@ class OffersController < ApplicationController
 
   private
   def grouped_offers(offer)
-    Rails.cache.fetch([ "users_offers", offer.id ], expires_in: 12.hours) do
-      users = offer.users.includes(:header_image_attachment)
+    Rails.cache.fetch(["users_offers", offer.id], expires_in: 12.hours) do
+      users = offer.users.with_attached_header_image
       {
-        premium: users.premium.plz.online,
-        standard: users.standard.plz.online
+        premium: users.premium.plz.online.to_a,
+        standard: users.standard.plz.online.to_a
       }
     end
   end

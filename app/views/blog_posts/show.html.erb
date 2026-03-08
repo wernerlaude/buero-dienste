@@ -31,8 +31,13 @@
       <h4 class="sidebar-card__title">Beitrag von: <%= @blog_post.user.fullname %></h4>
       <p class="sidebar-card__subtitle">erstellt am: <%= l(@blog_post.created_at, format: :extra_short) %></p>
       <% if @blog_post.bildnachweis.present? %>
-        <p class="sidebar-card__link">
-          Bild: <%= link_to @blog_post.bildnachweis %>
+        <p class="sidebar-card__subtitle">
+          <b>Bildquelle: </b>
+          <% if @blog_post.bildnachweis.start_with?("http") %>
+            <%= link_to URI.parse(@blog_post.bildnachweis).host, @blog_post.bildnachweis, target: "_blank", rel: "noopener" %>
+          <% else %>
+            <%= @blog_post.bildnachweis %>
+          <% end %>
         </p>
       <% end %>
       <p class="sidebar-card__subtitle blue"><b>Lesezeit:</b> <%= @blog_post.lesezeit %> min<br/><b>Aufrufe:</b> <%= @blog_post.count %></p>
@@ -45,13 +50,13 @@
 
 
 <% content_for :meta_title do %>
-  Links und Informationen für Ihren Büroalltag
+<%= @blog_post.meta_title %>
 <% end %>
 
 <% content_for :meta_desc do %>
-  Im Büro-Alltag bei Bürodienstleistungen gibt es Situationen wo Informationen der einen oder anderen WebSeite weiterhelfen kann
+Bürodienstleistungen: OfficeBlog - <%= @blog_post.meta_desc %>
 <% end %>
 
 <% content_for :cano do %>
-  https://www.buero-dienstleistungen.com/hilfreiche-links
+https://www.buero-dienstleistungen.com/office-blogs/<%= @blog_post.id %>-<%= @blog_post.meta_title.parameterize %>
 <% end %>

@@ -143,3 +143,15 @@
     </div>
   </div>
 <% end %>
+
+<% content_for :meta_title do %>
+<%= @user.meta_title + ' in ' + @user.ort %>
+<% end %>
+
+<% content_for :meta_desc do %>
+<%= @user.meta_desc %>
+<% end %>
+
+<% content_for :cano do %>
+https://www.buero-dienstleistungen.com/ihr-partner/<%= @user.id %>-<%= @user.for_cano.parameterize %>
+<% end %>
