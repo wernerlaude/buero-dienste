@@ -1,5 +1,4 @@
 class BlogPostsController < ApplicationController
-
   include Visitables
   def index
     @blog_posts = BlogPost.sortiert.online

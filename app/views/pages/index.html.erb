@@ -161,16 +161,6 @@
 
 <%= content_for :sidebar do %>
   <div class="sidebar-card">
-    <%# if logged_in? %>
-    <h3 class="sidebar-card__header">Mein Bereich</h3>
-    <div class="sidebar-card__body">
-      <p class="premium-entry__name"><%#= current_user.name %></p>
-      <%#=link_to "Visitenkarte bearbeiten", edit_business_card_path, class: "btn btn--primary btn--full" %>
-      <div style="margin-top: var(--space-sm);">
-        <%#= button_to "Ausloggen", premium_auth_path, method: :delete, class: "btn btn--ghost btn--full" %>
-      </div>
-    </div>
-    <%# else %>
     <h3 class="sidebar-card__header">Premium Login</h3>
     <div class="sidebar-card__body">
       <%#= turbo_frame_tag :login_frame do %>
@@ -180,8 +170,8 @@
                                  required: true, class: "sidebar-login__input" %>
       </div>
       <%#= form.submit "Code senden", class: "btn btn--primary btn--full" %>
-      <p class="sidebar-login__hint">
-        Wir senden Ihnen einen Verifikations-Code an Ihre registrierte E-Mail.
+      <p class="sidebar-login__hintttt">
+        Dieser Bereich wird gerade überarbeitet. In dringenden Fällen direkt anmailen: support@buero-dienstleistungen.com
       </p>
       <%# end %>
       <%# end %>

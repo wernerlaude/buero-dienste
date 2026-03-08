@@ -26,14 +26,16 @@
 
 <%= content_for :sidebar do %>
   <div class="sidebar-card">
-    <%# if logged_in? %>
-    <h3 class="sidebar-card__header">Mein Bereich</h3>
+    <h3 class="sidebar-card__header">Daten</h3>
     <div class="sidebar-card__body">
-      <p class="premium-entry__name"><%#= current_user.name %></p>
-      <%#=link_to "Visitenkarte bearbeiten", edit_business_card_path, class: "btn btn--primary btn--full" %>
-      <div style="margin-top: var(--space-sm);">
-        <%#= button_to "Ausloggen", premium_auth_path, method: :delete, class: "btn btn--ghost btn--full" %>
-      </div>
+      <h4 class="sidebar-card__title">Beitrag von: <%= @blog_post.user.fullname %></h4>
+      <p class="sidebar-card__subtitle">erstellt am: <%= l(@blog_post.created_at, format: :extra_short) %></p>
+      <% if @blog_post.bildnachweis.present? %>
+        <p class="sidebar-card__link">
+          Bild: <%= link_to @blog_post.bildnachweis %>
+        </p>
+      <% end %>
+      <p class="sidebar-card__subtitle blue"><b>Lesezeit:</b> <%= @blog_post.lesezeit %> min<br/><b>Aufrufe:</b> <%= @blog_post.count %></p>
     </div>
   </div>
 

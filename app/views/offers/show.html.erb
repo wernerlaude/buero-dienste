@@ -63,26 +63,64 @@
   </div>
 </div>
 
+<% all_users = (@users[:premium] || []) + (@users[:standard] || []) %>
+<% if all_users.size > 13 %>
+  <div class="content-box content-box--compact">
+    <% remaining_premium = @users[:premium].drop(13) %>
+    <% if remaining_premium.any? %>
+      <h3 class="content-box__section-title">Weitere Premium Einträge</h3>
+      <div class="cards-grid cards-grid--compact">
+        <% remaining_premium.each do |user| %>
+          <%= render "shared/users_card", user: user %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if @users[:standard].any? %>
+      <h3 class="content-box__section-title standard">Standard Einträge</h3>
+      <div class="cards-grid cards-grid--compact">
+        <% @users[:standard].each do |user| %>
+          <%= render "shared/users_card", user: user %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 
 <%= content_for :sidebar do %>
   <div class="sidebar-card">
     <div class="sidebar-card__header"><%= @count_offers %> Angebote</div>
-    <div class="partner-list" data-controller="scroll-highlight">
-      <% if @users[:premium].present? %>
-        <h4 class="premium">Premium Einträge:</h4>
-        <% @users[:premium].each do |user| %>
+    <div class="partner-list">
+      <% all_users = (@users[:premium] || []) + (@users[:standard] || []) %>
+
+      <% if all_users.size <= 13 %>
+        <%# Alle passen in die Sidebar %>
+        <% if @users[:premium].present? %>
+          <h4 class="premium">Premium Einträge:</h4>
+          <% @users[:premium].each do |user| %>
+            <%= render "shared/users_card", user: user %>
+          <% end %>
+          <h4 class="standard">Standard Einträge:</h4>
+        <% end %>
+        <% @users[:standard].each do |user| %>
           <%= render "shared/users_card", user: user %>
         <% end %>
-        <h4 class="standard">Standard Einträge:</h4>
+      <% else %>
+        <%# Nur erste 13 in der Sidebar %>
+        <% if @users[:premium].present? %>
+          <h4 class="premium">Premium Einträge:</h4>
+          <% @users[:premium].first(13).each do |user| %>
+            <%= render "shared/users_card", user: user %>
+          <% end %>
+        <% end %>
       <% end %>
-
-      <% @users[:standard].each do |user| %>
-        <%= render "shared/users_card", user: user %>
-      <% end %>
-
     </div>
   </div>
+
 <% end %>
+
+
 
 <% content_for :meta_title do %>
   <%= @offer.header_title %>
