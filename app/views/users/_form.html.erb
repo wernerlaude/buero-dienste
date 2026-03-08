@@ -1,0 +1,301 @@
+<%= form_with model: user do |form| %>
+  <%# Premium oder Kostenlos %>
+  <div class="content-box content-box--compact form-section">
+    <div class="form-section__split">
+      <div class="form-section__icon">
+        <%= image_tag 'svg/form-1.svg', alt: "Premium" %>
+        <span class="form-section__label">Premium oder Kostenlos</span>
+      </div>
+      <div class="form-section__fields">
+        <div class="form-group">
+          <div class="form-radio-group">
+            <label class="form-radio">
+              <%= form.radio_button :premium, true %>
+              <span>Ja, ich möchte Premium</span>
+            </label>
+            <label class="form-radio">
+              <%= form.radio_button :premium, false %>
+              <span>Kostenlose Variante</span>
+            </label>
+          </div>
+          <p class="form-hint"><b>Premium Inserenten</b> werden durchschnittlich doppelt so oft geklickt. Wenn Sie die Premium Variante wählen, unterstützen Sie diesen WebAuftritt einmalig mit
+            48.-€. Danke dafür :-)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# Persönliche Informationen %>
+  <div class="content-box content-box--compact form-section">
+    <div class="form-section__split">
+      <div class="form-section__icon">
+        <%= image_tag 'svg/form-2.svg', alt: "Person" %>
+        <span class="form-section__label">Persönliche Informationen</span>
+      </div>
+      <div class="form-section__fields">
+        <div class="form-group">
+          <label>Anrede</label>
+          <%= form.select :anrede, %w{ Frau Herr Firma }, { prompt: 'Bitte Ihre Anrede wählen', include_blank: true }, class: "form-control" %>
+        </div>
+        <div class="form-group form-group--row">
+          <div class="form-group">
+            <label class="required">Vorname</label>
+            <%= form.text_field :vorname, placeholder: "Vorname", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <label class="required">Nachname</label>
+            <%= form.text_field :nachname, placeholder: "Nachname", class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Qualifikation</label>
+          <%= form.text_field :qualifikation, placeholder: "Beisp. Dipl. Ökonom", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label>Berufsbezeichnung</label>
+          <%= form.text_field :berufsbezeichnung, placeholder: "Beisp. Steuerfachwirt", class: "form-control" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# Büro-Anschrift %>
+  <div class="content-box content-box--compact form-section">
+    <div class="form-section__split">
+      <div class="form-section__icon">
+        <%= image_tag 'svg/form-3.svg', alt: "Adresse" %>
+        <span class="form-section__label">Ihre Büro-Anschrift</span>
+      </div>
+      <div class="form-section__fields">
+        <div class="form-group">
+          <label class="required">Bundesland</label>
+          <%= form.select :bundesland_id, Bundesland.sortiert.map { |t| [t.name, t.id] }, { prompt: "Bitte wählen - Wichtig" }, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label class="required">Straße</label>
+          <%= form.text_field :strasse, class: "form-control" %>
+        </div>
+        <div class="form-group form-group--row">
+          <div class="form-group" style="flex: 0 0 120px;">
+            <label class="required">PLZ</label>
+            <%= form.text_field :plz, placeholder: "PLZ", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <label class="required">Ort</label>
+            <%= form.text_field :ort, placeholder: "Ort", class: "form-control" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# Kommunikation %>
+  <div class="content-box content-box--compact form-section">
+    <div class="form-section__split">
+      <div class="form-section__icon">
+        <%= image_tag 'svg/form-4.svg', alt: "Kommunikation" %>
+        <span class="form-section__label">Kommunikation</span>
+      </div>
+      <div class="form-section__fields">
+        <div class="form-group form-group--row">
+          <div class="form-group">
+            <label class="required">Telefon</label>
+            <%= form.telephone_field :telefon, placeholder: "+49 123 456 789", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <label>Mobil</label>
+            <%= form.telephone_field :mobile, placeholder: "+49 123 456 789", class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="required">E-Mail</label>
+          <%= form.email_field :email, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label>Webseite</label>
+          <%= form.url_field :webpage, placeholder: "http://www.meine-webseite.de", class: "form-control" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# Firmendaten %>
+  <div class="content-box content-box--compact form-section">
+    <div class="form-section__split">
+      <div class="form-section__icon">
+        <%= image_tag 'svg/form-5.svg', alt: "Firma" %>
+        <span class="form-section__label">Firmendaten</span>
+      </div>
+      <div class="form-section__fields">
+        <div class="form-group">
+          <label>Firmenname</label>
+          <%= form.text_field :firmenname, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label class="required">Gesellschaftsform</label>
+          <%= form.select :gesellschaftsform, %w{ Einzelunternehmer Einzelunternehmerin Freiberufler Freiberuflerin Kleinunternehmer Kleinunternehmerin Personenunternehmen GmbH GbR AG Limited }, { prompt: 'Bitte wählen', include_blank: true }, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label>Leitspruch</label>
+          <%= form.text_field :firmenmotto, placeholder: "Wir sind die Besten", class: "form-control" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# Angebot %>
+  <div class="content-box content-box--compact form-section">
+    <div class="form-section__split">
+      <div class="form-section__icon">
+        <%= image_tag 'svg/form-6.svg', alt: "Angebot" %>
+        <span class="form-section__label">Ihr Angebot</span>
+        <p class="form-hint">Sie können mehrere Boxen anklicken.</p>
+      </div>
+      <div class="form-section__fields">
+        <% Offer.ranking.group_by(&:category).each do |category, offers| %>
+          <div class="form-category">
+            <h4 class="content-box__section-title"><%= offers.first.category_name %></h4>
+            <% offers.each do |offer| %>
+              <label class="form-checkbox">
+                <%= form.check_box :offer_ids, { multiple: true }, offer.id, nil %>
+                <span><%= offer.header_title %></span>
+              </label>
+            <% end %>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          <label>Weitere Angebote</label>
+          <%= form.text_area :other_offers, class: "form-control" %>
+        </div>
+
+
+        <div class="form-group">
+          <label>Referenzen</label>
+          <%= form.text_area :references, class: "form-control" %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <%# Beschreibung %>
+  <div class="content-box content-box--compact form-section">
+    <div class="form-section__split">
+      <div class="form-section__icon">
+        <%= image_tag 'svg/form-7.svg', alt: "Beschreibung" %>
+        <span class="form-section__label">Ihr Angebot</span>
+        <p class="form-hint">B → fett, I → kursiv, oo → URL. Text markieren und Button klicken.</p>
+      </div>
+      <div class="form-section__fields">
+        <div class="form-group" data-controller="char-count" data-char-count-max-value="2000">
+          <lexxy-editor placeholder="Beschreiben Sie bitte Ihr Angebot – kein copy/paste aus Word - Mindestes einen Satz">
+            <%= form.hidden_field :beschreibung, id: "user_beschreibung", value: user.beschreibung&.to_s %>
+          </lexxy-editor>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# Bilder Upload %>
+  <div class="content-box content-box--compact form-section">
+    <div class="form-section__split">
+      <div class="form-section__icon">
+        <%= image_tag 'svg/form-8.svg', alt: "Bilder" %>
+        <span class="form-section__label">Ihre Bilder</span>
+      </div>
+      <div class="form-section__fields">
+
+        <%# Profilbild %>
+        <div class="form-group" data-controller="image-preview">
+          <label>Profilbild / Gesichtsfoto</label>
+          <div class="upload-preview">
+            <% if user.header_image.attached? %>
+              <img data-image-preview-target="preview" src="<%= url_for(user.header_image) %>" alt="Vorschau">
+            <% else %>
+              <div class="upload-preview__placeholder" data-image-preview-target="placeholder">
+                Noch kein Bild gewählt
+              </div>
+              <img data-image-preview-target="preview" class="hidden" alt="Vorschau">
+            <% end %>
+          </div>
+          <%= form.file_field :header_image, accept: "image/jpeg,image/png,image/webp",
+                              data: { image_preview_target: "input", action: "change->image-preview#preview" },
+                              class: "form-control" %>
+          <p class="form-hint">Ein freundliches Foto von Ihnen (max. 5 MB, JPG oder PNG)</p>
+        </div>
+
+        <%# Firmenlogo %>
+        <div class="form-group" data-controller="image-preview">
+          <label>Firmenlogo</label>
+          <div class="upload-preview">
+            <% if user.uploads.any? %>
+              <img data-image-preview-target="preview" src="<%= url_for(user.uploads.first) %>" alt="Logo">
+            <% else %>
+              <div class="upload-preview__placeholder" data-image-preview-target="placeholder">
+                Noch kein Logo gewählt
+              </div>
+              <img data-image-preview-target="preview" class="hidden" alt="Logo">
+            <% end %>
+          </div>
+          <%= form.file_field :uploads, accept: "image/jpeg,image/png,image/webp,image/svg+xml",
+                              data: { image_preview_target: "input", action: "change->image-preview#preview" },
+                              class: "form-control" %>
+          <p class="form-hint">Logo Ihrer Firma (max. 5 MB, JPG, PNG oder SVG)</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <%# Formalitäten %>
+  <div class="content-box content-box--compact form-section">
+    <div class="form-section__split">
+      <div class="form-section__icon">
+        <%= image_tag 'svg/form-9.svg', alt: "Formalitäten" %>
+        <span class="form-section__label">Formalitäten</span>
+      </div>
+      <div class="form-section__fields">
+        <label class="form-checkbox">
+          <%= form.check_box :erstberatung %>
+          <span>Ich biete eine kostenfreie Erstberatung an!</span>
+        </label>
+        <label class="form-checkbox">
+          <%= form.check_box :maps %>
+          <span>Google Maps darf meine Büroadresse anzeigen!</span>
+        </label>
+        <label class="form-checkbox">
+          <%= form.check_box :datenschutz %>
+          <span class="required">Die Einwilligungserklärung (rechts oben) akzeptiere ich!</span>
+        </label>
+        <label class="form-checkbox">
+          <%= form.check_box :copyright %>
+          <span class="required">Für meine Texte und Bilder besitze ich die Urheberrechte!</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <%# Absenden %>
+  <div class="content-box content-box--compact form-section">
+    <div class="form-section__split">
+      <div class="form-section__icon">
+        <%= image_tag 'svg/form-!.svg', alt: "Absenden" %>
+        <span class="form-section__label">Absenden</span>
+      </div>
+      <div class="form-section__fields">
+        <%= form.submit "» Formular absenden «", class: "btn btn--primary btn--full btn--lg" %>
+        <p class="form-hint">
+          Bitte senden Sie sonstige Bilder, sowie evt. Korrekturen direkt an
+          <%= mail_to "support@buero-dienstleistungen.com" %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <% if user.errors.any? %>
+    <div class="flash flash--alert">
+      <strong>Leider kann das Formular nicht gesendet werden!</strong>
+      <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+    </div>
+  <% end %>
+<% end %>

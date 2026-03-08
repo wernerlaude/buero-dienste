@@ -1,29 +1,76 @@
 <% content_for :hero_content do %>
   <span class="hero__eyebrow">✦ Über <%= User.online.count %> erfahrene Dienstleister</span>
-  <h1 class="hero__title">Hilfreiche Links für das Büro</h1>
-  <p class="hero__subtitle">Links und Informationen für Ihren Büroalltag, Firmen Informationen, Advertisment</p>
-  <p>Im Büro-Alltag gibt es Situationen wo Informationen der einen oder anderen hier gelisteten WebSeite weiterhelfen können.</p>
+  <h1 class="hero__title">Inserieren Sie Ihr Angebot auf diesem Portal!</h1>
+  <p class="hero__subtitle">Das Formular auszufüllen dauert nur ca. 2 Minuten…</p>
+  <p></p>
+
+  <div class="hero__stats">
+    <div>
+      <div class="hero__stat-value"><%= @visits_all %></div>
+      <div class="hero__stat-label">Besuchte Angebote insgesamt</div>
+    </div>
+    <div>
+      <div class="hero__stat-value"><%= @visits_min %> - <%= @visits_max %></div>
+      <div class="hero__stat-label">Channcen gesehen zu werden</div>
+    </div>
+  </div>
+
 
 <% end %>
 <% content_for :hero_picture do %>
-  <%= image_tag "hero/bulbs.webp", alt: "Hilfreiche links" %>
+  <%= image_tag "hero/fernglass.webp", alt: "Visitenkarte anlegen" %>
 <% end %>
 
 
 
-Visitenkarte
+<div class="content-box content-box--compact">
+  <h2>Meine Visitenkarte anlegen</h2>
+  <h3>Bitte füllen Sie alle betreffende Felder aus…</h3>
+  <p>Die markierten Felder ausfüllen, sonst kann das Formular nicht gesendet werden.</p>
+</div>
+
+<%= turbo_frame_tag :userform_frame do %>
+  <%= render "form", user: @user %>
+<% end %>
+
+<%= content_for :sidebar do %>
+  <div class="sidebar-card sidebar-card--muted">
+    <h3 class="sidebar-card__header">Datenschutz</h3>
+    <div class="sidebar-card__body">
+      <p class="premium-entry__name">Ich gehe sorgfältig mit Ihren Daten um</p>
+
+      <div class="contact-block">
+        <p class="premium-entry__name">Was geschieht nach dem Absenden?</p>
+        <p>Ihr Eintrag wird nach kurzer redaktioneller Prüfung freigeschaltet.
+          Bitte beachten Sie das Copyright bei Ihren Texten oder Bildern.
+          Zusätzliche Texte / Bilder können Sie gerne per Mail einsenden.</p>
+      </div>
+
+      <div class="contact-block">
+        <p class="premium-entry__name">Einwilligungserklärung</p>
+        <p>…zur Übermittlung, Verarbeitung und Nutzung von Daten</p>
+        <p>Ich möchte gerne meine Dienstleistung(en) auf dieser Plattform anbieten und bin damit
+          einverstanden, dass die hierfür erforderlichen Angaben dieses Formulars zur Datenverarbeitung
+          und Datennutzung übermittelt werden. Die vorstehende Einwilligungserklärung ist freiwillig und
+          kann jederzeit für die Zukunft widerrufen werden. Die Daten aus dem Formular werden unmittelbar
+          an mich geschickt und bleiben auf meinem Server gespeichert, so lange Sie der Nutzung zustimmen.</p>
+        <p>Auf Anfrage erhalten Sie jederzeit Auskunft über die zu Ihrer Person gespeicherten Daten.</p>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 
 
 
 <% content_for :meta_title do %>
-  Büroservice Büroarbeiten Bürodienstleister finden
+  Visitenkarten anlegen buero-dienstleistungen.com
 <% end %>
 
 <% content_for :meta_desc do %>
-  Über 100 selbständige Büroservice Dienstleister übernehmen Bürodienste & Büroarbeiten! Fachgerechte und zuverlässige Unterstützung, bundesweit!
+  Ihre Visitenkarte bei buero-dienstleistungen.com - Informationen über Sie und Ihr Angebot
 <% end %>
 
 <% content_for :cano do %>
-  https://www.buero-dienstleistungen.com
+  https://www.buero-dienstleistungen.com/visitenkarte-anlegen
 <% end %>

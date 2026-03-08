@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="55px" viewBox="0 0 48 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>form-4</title>
+    <defs>
+        <polygon id="path-1" points="9.59538462 23.9516129 9.59538462 19.6693548 0 19.6693548 0 16.5846774 5.62153846 0 9.59538462 0 3.65076923 16.1491935 9.59538462 16.1491935 9.59538462 9.10887097 13.2138462 9.10887097 13.2138462 16.1491935 15.54 16.1491935 15.54 19.6693548 13.2138462 19.6693548 13.2138462 23.9516129"></polygon>
+    </defs>
+    <g id="form-4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(6, 12.32)">
+            <line x1="0" y1="29.6219758" x2="35" y2="29.6219758" id="Line" stroke="#8BBB1B" stroke-width="4" stroke-linecap="square"></line>
+            <g id="4" transform="translate(10.325, 0)" fill="#8BBB1B" fill-rule="nonzero">
+                <g id="Path">
+                    <use xlink:href="#path-1"></use>
+                    <use xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

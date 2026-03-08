@@ -50,7 +50,6 @@
 // ===========================================
 .prose {
   h1 {
-    font-family: var(--font-display), sans-serif;
     font-size: 1.875rem;
     font-weight: 700;
     color: var(--color-primary-dark);
@@ -59,7 +58,6 @@
   }
 
   h2 {
-    font-family: var(--font-display), sans-serif;
     font-size: 1.375rem;
     font-weight: 700;
     color: var(--color-primary);
@@ -70,9 +68,28 @@
   h3 {
     font-size: 1.125rem;
     font-weight: 600;
-    color: var(--color-text);
     margin-top: var(--space-xl);
     margin-bottom: var(--space-sm);
+  }
+
+  h4 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    &.blue{
+      color: var(--color-blue);
+    }
+  }
+
+  h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+    &.blue{
+      color: var(--color-blue);
+    }
   }
 
   p {

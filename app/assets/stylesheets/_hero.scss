@@ -35,7 +35,6 @@
   }
 
   &__title {
-    font-family: var(--font-display), sans-serif;
     font-size: 1.875rem;
     font-weight: 700;
     color: var(--color-primary-dark);
@@ -47,7 +46,6 @@
     }
   }
   &__title2 {
-    font-family: var(--font-display), sans-serif;
     font-size: 1.375rem;
     font-weight: 700;
     color: var(--color-primary-dark);
@@ -108,7 +106,6 @@
   }
 
   &__stat-value {
-    font-family: var(--font-display), sans-serif;
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--color-primary);

@@ -1,0 +1,9 @@
+<% if object.errors.any? %>
+    <p><%= object.errors.count.to_s+' Fehler ' + 'verhinderte'.pluralize(object.errors.count) %> das Absenden:</p>
+
+  <ul class="form-error-list">
+    <% object.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>

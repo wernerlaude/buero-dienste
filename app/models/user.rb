@@ -2,6 +2,8 @@ class User < ApplicationRecord
   include Visitable
 
   before_create :generate_otp_secret
+  after_validation :geocode, on: %i[create update]
+  geocoded_by :fulladdress
 
   belongs_to :bundesland
   has_and_belongs_to_many :offers
@@ -18,7 +20,24 @@ class User < ApplicationRecord
     attachable.variant :medium, resize_to_limit: [ 330, 330 ]
   end
 
-  geocoded_by :fulladdress
+  validates :vorname, :nachname, :strasse, :plz, :ort, :email, presence: true
+  validates_numericality_of :plz
+  validates_length_of :plz, is: 5
+  validates :datenschutz, acceptance: { message: " wurde gelesen und akzeptiert?" }
+  validates :copyright, acceptance: { message: " wird beachtet?" }
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/ }
+  validates :email, uniqueness: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true, uniqueness: true
+  validates :bundesland_id, presence: { message: " wählen" }
+
+  validates_length_of :other_offers, maximum: 255, allow_blank: true
+  validate :at_least_one_phone_number
+
+  validates :webpage, format: {
+    with: /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/,
+    message: "muss eine gültige HTTP/HTTPS URL sein",
+    allow_blank: true
+  }
 
   scope :premium, -> { where(premium: true) }
   scope :standard, -> { where(premium: false) }
@@ -65,9 +84,16 @@ class User < ApplicationRecord
     "#{id}-#{for_cano.parameterize}"
   end
 
+  private
   def self.users_count
     Rails.cache.fetch("users_count", expires_in: 1.day) do
       online.count
+    end
+  end
+
+  def at_least_one_phone_number
+    if telefon.blank? && mobile.blank?
+      errors.add(:base, "Entweder Telefon oder Mobilnummer muss ausgefüllt sein")
     end
   end
 end

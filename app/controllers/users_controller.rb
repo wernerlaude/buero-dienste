@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  include Visitables
   def new
     @user = User.new
+    get_besucheranzahl
   end
 
   def edit
@@ -74,4 +76,12 @@ class UsersController < ApplicationController
       end
     end
   end
+end
+
+def user_params
+  params.expect(user: [ :anrede, :vorname, :nachname, :strasse, :plz, :ort, :telefon, :mobile, :email,
+                        :webpage, :qualifikation, :bundesland_id, :maps, :erstberatung, :datenschutz, :copyright,
+                        :vertragsbegin, :gesellschaftsform, :firmenname, :firmenmotto, :other_offers, :beschreibung,
+                        :premium, :latitude, :longitude,
+                        :references, :berufsbezeichnung, offer_ids: [] ])
 end

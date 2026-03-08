@@ -14,3 +14,10 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym "RESTful"
 # end
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.irregular "bietet", "bieten"
+  inflect.plural "verhinderte", "verhinderten"
+  inflect.plural "Angebot", "Angebote"
+  inflect.plural "bietet", "bieten"
+  inflect.plural "weiterer", "weitere"
+end

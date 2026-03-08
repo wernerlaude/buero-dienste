@@ -1,0 +1,268 @@
+// ===========================================
+// Forms – Basis
+// ===========================================
+.form-group {
+  margin-bottom: var(--space-md);
+
+  label {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--space-xs);
+  }
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--color-text);
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1);
+  }
+
+  &--error {
+    border-color: var(--color-danger);
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+  }
+}
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+.form-hint {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-md);
+  line-height: 1.5;
+}
+
+.form-error {
+  font-size: 0.875rem;
+  color: var(--color-danger);
+  margin-top: var(--space-xs);
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+// ===========================================
+// Form Sections (Registrierung)
+// ===========================================
+.form-section {
+  margin-bottom: var(--space-md);
+}
+
+.form-section__split {
+  display: flex;
+  gap: var(--space-xl);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+}
+
+.form-section__icon {
+  flex: 0 0 140px;
+  text-align: center;
+
+  img {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-sm);
+  }
+}
+
+.form-section__label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.form-section__fields {
+  flex: 1;
+  min-width: 0;
+}
+
+// Felder nebeneinander
+.form-group--row {
+  display: flex;
+  gap: var(--space-md);
+
+  .form-group {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+// Radio Buttons
+.form-radio-group {
+  display: flex;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.form-radio {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  cursor: pointer;
+  font-size: 0.9375rem;
+  color: var(--color-text);
+
+  input[type="radio"] {
+    accent-color: var(--color-primary);
+    width: 18px;
+    height: 18px;
+  }
+}
+
+// Checkboxen
+.form-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-xs) 0;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  color: var(--color-text);
+
+  input[type="checkbox"] {
+    accent-color: var(--color-primary);
+    width: 18px;
+    height: 18px;
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+  }
+}
+
+// Kategorie-Gruppen (Angebote)
+.form-category {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border-light);
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  .content-box__section-title {
+    margin-bottom: var(--space-sm);
+  }
+}
+
+// Required Marker
+.required {
+  &::after {
+    content: " *";
+    color: var(--color-danger-dark);
+    font-weight: 700;
+  }
+}
+
+// Upload Preview
+.upload-preview {
+  margin-bottom: var(--space-sm);
+  width: 160px;
+  height: 160px;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__placeholder {
+    font-size: 0.8125rem;
+    color: var(--color-text-light);
+    text-align: center;
+    padding: var(--space-md);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.form-error-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-sm) 0 0;
+
+  li {
+    padding: 0.15rem 0;
+    font-size: 0.9375rem;
+    color: var(--color-danger-dark);
+
+    &::before {
+      content: "→ ";
+      color: var(--color-danger);
+      background: none;
+      width: auto;
+      height: auto;
+      position: static;
+      border-radius: 0;
+    }
+  }
+}
+
+// In _forms.scss
+.field_with_errors {
+  display: contents;
+
+  input, select, textarea {
+    border-color: var(--color-danger);
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+  }
+
+  label {
+    color: var(--color-danger-dark);
+  }
+}

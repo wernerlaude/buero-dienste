@@ -42,4 +42,5 @@ gem "sitemap_generator"
 gem "rotp", "~> 6.3"
 gem "whenever", require: false
 gem "lucide-rails"
-gem "lexxy", "~> 0.1.26.beta"
+gem "lexxy", "~> 0.1.4.beta"
+

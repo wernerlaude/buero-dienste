@@ -416,7 +416,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   letter_opener
-  lexxy (~> 0.1.26.beta)
+  lexxy (~> 0.1.4.beta)
   lucide-rails
   mailgun-ruby
   mysql2 (~> 0.5)

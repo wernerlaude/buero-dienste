@@ -1,0 +1,179 @@
+// ===========================================
+// Lexxy Editor (Rich Text)
+// ===========================================
+lexxy-editor {
+  display: block;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg-white);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+
+  &:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1);
+  }
+
+  // Toolbar
+  .lexxy-toolbar {
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border-light);
+    padding: 0.375rem 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.125rem;
+  }
+
+  .lexxy-toolbar-button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+
+    &.active,
+    &[aria-pressed="true"] {
+      background: var(--color-primary);
+      color: #fff;
+    }
+  }
+
+  .lexxy-toolbar-separator {
+    width: 1px;
+    background: var(--color-border-light);
+    margin: 0.25rem 0.375rem;
+  }
+
+  // Editor Content Area
+  .lexxy-content,
+  [contenteditable] {
+    padding: var(--space-lg);
+    min-height: 200px;
+    font-family: var(--font-body), sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    outline: none;
+
+    p {
+      margin-bottom: var(--space-md);
+    }
+
+    h1, h2, h3 {
+      color: var(--color-primary-dark);
+      margin-top: var(--space-lg);
+      margin-bottom: var(--space-sm);
+    }
+
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.25rem; }
+    h3 { font-size: 1.125rem; }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+
+    blockquote {
+      border-left: 4px solid var(--color-accent);
+      padding: var(--space-sm) var(--space-md);
+      margin: var(--space-md) 0;
+      background: var(--color-accent-light);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      color: var(--color-text-muted);
+      font-style: italic;
+    }
+
+    code {
+      background: var(--color-bg);
+      padding: 0.125rem 0.375rem;
+      border-radius: 3px;
+      font-size: 0.9375rem;
+    }
+
+    pre {
+      background: var(--color-primary-dark);
+      color: #e2e8f0;
+      padding: var(--space-md);
+      border-radius: var(--radius-sm);
+      overflow-x: auto;
+      margin: var(--space-md) 0;
+    }
+
+    ul, ol {
+      margin: var(--space-md) 0;
+      padding-left: var(--space-xl);
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: var(--radius-sm);
+    }
+  }
+
+  // Placeholder
+  [contenteditable]:empty::before,
+  .lexxy-placeholder {
+    color: var(--color-text-light);
+    font-style: italic;
+  }
+}
+
+// Rendered Lexxy Content (Show-Ansicht)
+.lexxy-content {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text);
+
+  p {
+    margin-bottom: var(--space-md);
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  a {
+    color: var(--color-primary);
+  }
+}
+
+// Toolbar Buttons ausblenden
+lexxy-toolbar {
+  // Color/Highlight
+  [name="highlight"] {
+    display: none;
+  }
+
+  // Code
+  [name="code"] {
+    display: none;
+  }
+
+  // Upload/Bild
+  [name="upload"] {
+    display: none;
+  }
+
+  // Tabelle
+  [name="table"] {
+    display: none;
+  }
+}
+
+lexxy-editor {
+  [contenteditable] {
+    min-height: 400px;
+  }
+}
