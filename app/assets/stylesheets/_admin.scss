@@ -1,0 +1,275 @@
+// ===========================================
+// Admin Layout
+// ===========================================
+
+// Admin Navbar
+.navbar--admin {
+  background: var(--color-primary-dark);
+
+  .navbar__brand-icon {
+    font-size: 1.25rem;
+  }
+
+  .navbar__brand-text {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+  }
+}
+
+// Admin Page Layout
+.page--admin {
+  .page__sidebar--admin {
+    position: sticky;
+    top: calc(var(--navbar-height) + var(--space-md));
+    align-self: flex-start;
+  }
+
+  .content-box--compact {
+    margin-bottom: var(--space-lg);
+  }
+}
+// Admin Navigation
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      border-left-color: var(--color-primary);
+    }
+
+    &--active {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      font-weight: 600;
+      border-left-color: var(--color-accent);
+    }
+  }
+
+  &__icon {
+    font-size: 1.125rem;
+    width: 1.5rem;
+    text-align: center;
+  }
+}
+
+// Admin Content Styles
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+  }
+}
+
+// Admin Stats Cards
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-stat {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+
+  &__value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-xs);
+  }
+
+  &__label {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  &--accent .admin-stat__value {
+    color: var(--color-accent-dark);
+  }
+
+  &--success .admin-stat__value {
+    color: var(--color-success);
+  }
+}
+
+
+
+// Breadcrumbs
+.admin-breadcrumbs {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Detail Grid
+.admin-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-detail {
+  margin-bottom: var(--space-md);
+
+  &__label {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-xs);
+  }
+
+  p {
+    font-size: 0.9375rem;
+    color: var(--color-text);
+  }
+}
+
+// Content Preview
+.admin-content-preview {
+  overflow-y: auto;
+  background: var(--color-bg);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-light);
+}
+
+// Qualitäts-Analyse
+.admin-quality {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+
+  &__item {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
+    font-size: 0.9375rem;
+
+    &--success {
+      background: rgba(22, 163, 74, 0.08);
+      color: var(--color-success);
+    }
+
+    &--warning {
+      background: rgba(239, 68, 68, 0.08);
+      color: var(--color-danger);
+    }
+
+    &--info {
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+  }
+}
+
+// Admin Aktionen
+.admin-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin: var(--space-xl) 0;
+}
+
+// Dimmed Row
+.admin-table__row--dimmed {
+  opacity: 0.5;
+}
+
+.admin-table__actions {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: center;
+
+  a, button {
+    font-size: 1.125rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.2rem;
+  }
+}
+
+// Badges
+.badge--success {
+  background: rgba(22, 163, 74, 0.1);
+  color: var(--color-success);
+  padding: 0.2rem 0.625rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.badge--muted {
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  padding: 0.2rem 0.625rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+// Danger Button
+.btn--danger {
+  background: var(--color-danger);
+  color: #fff;
+  border: none;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--color-danger-dark);
+  }
+}
+
+// Text Helper
+.text-muted {
+  color: var(--color-text-muted);
+}

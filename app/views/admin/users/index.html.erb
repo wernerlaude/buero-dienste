@@ -1,0 +1,83 @@
+<div class="admin-breadcrumbs">
+  <%= link_to "Admin", admin_root_path %> › <span>User</span>
+</div>
+
+<div class="admin-header">
+  <h1>User Verwaltung (<%= @users.count %>)</h1>
+</div>
+
+<%# Filter %>
+<div class="content-box content-box--compact">
+  <%= form_with url: admin_users_path, method: :get, local: true do |f| %>
+    <div class="form-group--row">
+      <div class="form-group">
+        <%= f.select :filter,
+            options_for_select([['Alle', ''], ['Online', 'online'], ['Premium', 'premium'], ['Standard', 'standard']], params[:filter]),
+            {}, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.select :bundesland_id,
+            options_from_collection_for_select(@bundeslands, :id, :name, params[:bundesland_id]),
+            { prompt: "Alle Bundesländer" }, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.select :sort,
+            options_for_select([['Neueste zuerst', ''], ['Name', 'name'], ['Stadt', 'city'], ['PLZ', 'plz']], params[:sort]),
+            {}, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Filtern", class: "btn btn--primary" %>
+        <%= link_to "Reset", admin_users_path, class: "btn btn--ghost" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%# Tabelle %>
+<% if @users.any? %>
+  <div class="content-box content-box--compact">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Aufr.</th>
+          <th>Name</th>
+          <th>Bundesland</th>
+          <th>Typ</th>
+          <th>Erstellt</th>
+          <th>Aktionen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr class="<%= 'admin-table__row--dimmed' unless user.online? %>">
+            <td>
+              <span class="badge badge--<%= user.online? ? 'success' : 'muted' %>"><%= user.online? ? 'Online' : 'Offline' %></span>
+            </td>
+            <td><%= user.count %></td>
+            <td>
+              <strong><%= link_to user.fullname, admin_user_path(user) %></strong>
+              <% if user.firmenname.present? %>
+                <br><small class="text-muted"><%= user.firmenname %></small>
+              <% end %>
+            </td>
+            <td><%= user.bundesland&.name || '-' %></td>
+            <td><%= user.premium? ? '⭐' : '' %></td>
+            <td><small><%= l(user.created_at, format: :extra_short) %></small></td>
+            <td>
+              <div class="admin-table__actions">
+                <%= link_to "✏️", edit_admin_user_path(user), title: "Bearbeiten" %>
+                <%= button_to "🗑️", admin_user_path(user), method: :delete,
+                    form: { data: { turbo_confirm: "User '#{user.fullname}' löschen?" } } %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="content-box content-box--compact" style="text-align: center; padding: 3rem;">
+    <p>Keine User gefunden.</p>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<% flash.each do |type, message| %>
+  <% css_class = case type.to_s
+                 when "notice", "success" then "flash--notice"
+                 when "alert", "error"   then "flash--alert"
+                 else "flash--notice"
+                 end %>
+  <div class="flash <%= css_class %>" data-controller="flash" data-flash-target="message">
+    <%= message %>
+  </div>
+<% end %>

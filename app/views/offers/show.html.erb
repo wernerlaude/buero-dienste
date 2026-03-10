@@ -52,7 +52,7 @@
         </li>
       <% end %>
     </ul>
-    <h3 class="content-box__section-title standard">Standard Einträge:</h3>
+    <h3 class="content-box__section-title standard">Sonstige Einträge:</h3>
     <ul class="entry-list entry-list--subtle">
       <% @users[:standard].each do |user| %>
         <li class="entry-list__item">
@@ -77,7 +77,7 @@
     <% end %>
 
     <% if @users[:standard].any? %>
-      <h3 class="content-box__section-title standard">Standard Einträge</h3>
+      <h3 class="content-box__section-title standard">Weitere Einträge</h3>
       <div class="cards-grid cards-grid--compact">
         <% @users[:standard].each do |user| %>
           <%= render "shared/users_card", user: user %>
@@ -131,5 +131,5 @@
 <% end %>
 
 <% content_for :cano do %>
-https://www.buero-dienstleistungen.com/angebot/<%= @offer.id %>-<%= @offer.slug.parameterize %>
+https://www.buero-dienstleistungen.com/angebot/<%= @offer.slug.parameterize %>
 <% end %>

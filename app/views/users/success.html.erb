@@ -1,0 +1,29 @@
+<div class="content-box content-box--compact content-box--split">
+  <div class="content-box__left">
+    <h2>Sie haben sich erfolgreich eingetragen!</h2>
+    <h3>Vielen Dank</h3>
+    <p><strong>Eine Bestätigungs-Mail an Ihre E-Mail ist unterwegs!</strong></p>
+    <p>Bitte prüfen Sie auch Ihren Spam-Ordner!<br>
+      Falls Sie keine E-Mail innerhalb der nächsten Stunde erhalten,
+      melden Sie sich bitte bei mir!</p>
+    <p>support@buero-dienstleistungen.com</p>
+  </div>
+
+  <div class="content-box__right">
+    <h3 class="content-box__section-title">Wie geht es weiter?</h3>
+    <p>Ich werde Ihren Eintrag zeitnah redigieren und freischalten.</p>
+    <p>Texte sind werbewirksam.<br>
+      Als <strong>Premium Kunde</strong> können Sie jederzeit Ihren Eintrag
+      (Bilder, Logo, Text) ergänzen.</p>
+    <p>Auch im Nachhinein können Sie zu Premium wechseln! Einfach mich anmailen.</p>
+    <p>Falls Sie Ihre <strong>Tätigkeit aufgeben sollten</strong>,
+      sagen Sie mir bitte Bescheid. Ich lösche Ihren Eintrag.</p>
+    <div class="contact-block">
+      <p><strong>Bilder und Korrekturen mailen Sie bitte an:</strong><br>
+        <%= mail_to "support@buero-dienstleistungen.com" %></p>
+    </div>
+  </div>
+</div>
+
+
+<% content_for :meta_title, "Erfolgreich eingetragen" %>

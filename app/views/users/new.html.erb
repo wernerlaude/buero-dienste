@@ -29,9 +29,8 @@
   <p>Die markierten Felder ausfüllen, sonst kann das Formular nicht gesendet werden.</p>
 </div>
 
-<%= turbo_frame_tag :userform_frame do %>
-  <%= render "form", user: @user %>
-<% end %>
+<%= render "form", user: @user %>
+
 
 <%= content_for :sidebar do %>
   <div class="sidebar-card sidebar-card--muted">
@@ -71,5 +70,5 @@ Ihre Visitenkarte bei buero-dienstleistungen.com - Informationen über Sie und I
 <% end %>
 
 <% content_for :cano do %>
-https://www.buero-dienstleistungen.com/visitenkarte-anlegen
+https://www.buero-dienstleistungen.com/visitenkarte-buchen/new
 <% end %>

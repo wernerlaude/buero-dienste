@@ -2,8 +2,12 @@ class User < ApplicationRecord
   include Visitable
 
   before_create :generate_otp_secret
-  after_validation :geocode, on: %i[create update]
+  #after_validation :geocode, on: %i[create update]
   geocoded_by :fulladdress
+
+  after_save :clear_related_caches
+  after_destroy :clear_related_caches
+
 
   belongs_to :bundesland
   has_and_belongs_to_many :offers
@@ -11,6 +15,7 @@ class User < ApplicationRecord
   has_many :access_tokens, dependent: :destroy
 
   has_rich_text :beschreibung
+
 
   has_one_attached :header_image do |attachable|
     attachable.variant :medium, resize_to_limit: [ 330, 330 ]
@@ -88,6 +93,14 @@ class User < ApplicationRecord
   def self.users_count
     Rails.cache.fetch("users_count", expires_in: 1.day) do
       online.count
+    end
+  end
+
+  def clear_related_caches
+    Offer.clear_offers_cache
+    # Auch die grouped_offers Caches leeren
+    offers.each do |offer|
+      Rails.cache.delete(["users_offers", offer.id])
     end
   end
 

@@ -1,0 +1,16 @@
+Hallo <%= @user.anrede %> <%= @user.fullname %>
+===============================================
+
+Vielen Dank für Ihre Buchung auf Buero-dienstleistungen.com am:
+<%=l(Time.now, :format=> :default) %>
+
+Falls Sie noch Texte, Bilder oder Logos habe die wir für Sie online stellen können, senden Sie diese bitte per mail zu.
+Ihr Eintrag wird nach kurzer redaktioneller Prüfung zeitnah freigeschaltet.
+
+Für eine Antwort nutzen Sie bitte diese email: support@buero-dienstleistungen.com
+Sollten Sie innerhalb der nächsten 5 Tagen nichts von uns hören, nehmen Sie bitte Kontakt mit uns auf.
+
+Gruss vom Webmaster,
+Werner Laude
+
+<%= @url %>

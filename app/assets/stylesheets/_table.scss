@@ -51,3 +51,39 @@
     text-align: right;
   }
 }
+
+// Admin Tabelle
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+
+  th {
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: var(--space-sm) var(--space-md);
+    text-align: left;
+  }
+
+  td {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.9375rem;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+
+  tr:hover td {
+    background: var(--color-primary-light);
+  }
+
+  .actions {
+    display: flex;
+    gap: var(--space-xs);
+  }
+}

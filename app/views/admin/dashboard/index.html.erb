@@ -1,0 +1,67 @@
+<div class="admin-header">
+  <h1>Übersicht</h1>
+</div>
+
+<%# Besucher Stats %>
+<div class="admin-stats">
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= number_with_delimiter(@visits_all) %></div>
+    <div class="admin-stat__label">Besucher gesamt</div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @visits_schnitt %></div>
+    <div class="admin-stat__label">Besucher im Schnitt</div>
+  </div>
+  <div class="admin-stat admin-stat--accent">
+    <div class="admin-stat__value"><%= @chat_views %></div>
+    <div class="admin-stat__label">Chat Aufrufe</div>
+  </div>
+</div>
+
+<%# Chat Stats %>
+<div class="content-box content-box--compact">
+  <h3 class="content-box__section-title">Chat Anfragen</h3>
+  <div class="admin-stats">
+    <div class="admin-stat">
+      <div class="admin-stat__value"><%= @chat_stats[:total] %></div>
+      <div class="admin-stat__label">Gesamt</div>
+    </div>
+    <div class="admin-stat">
+      <div class="admin-stat__value"><%= @chat_stats[:today] %></div>
+      <div class="admin-stat__label">Heute</div>
+    </div>
+    <div class="admin-stat admin-stat--success">
+      <div class="admin-stat__value"><%= @chat_stats[:answered_rate] %>%</div>
+      <div class="admin-stat__label">Antwortrate</div>
+    </div>
+    <div class="admin-stat admin-stat--accent">
+      <div class="admin-stat__value"><%= @chat_stats[:needs_attention] %></div>
+      <div class="admin-stat__label">Brauchen Hilfe</div>
+    </div>
+  </div>
+</div>
+
+<%# Letzte Aktivitäten %>
+<% if @recent_activities.present? %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Letzte Aktivitäten</h3>
+    <table class="admin-table">
+      <thead>
+      <tr>
+        <th>Aktivität</th>
+        <th>Status</th>
+        <th>Zeit</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @recent_activities.each do |activity| %>
+        <tr>
+          <td><%= activity[:title] %></td>
+          <td><span class="badge badge--<%= activity[:status] == 'answered' ? 'success' : 'muted' %>"><%= activity[:status] %></span></td>
+          <td><small><%= time_ago_in_words(activity[:time]) %></small></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

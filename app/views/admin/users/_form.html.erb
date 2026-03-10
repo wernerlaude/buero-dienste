@@ -1,0 +1,235 @@
+<%= form_with model: [:admin, user], local: true,
+              data: { controller: "user-edit", action: "submit->user-edit#validateForm" } do |form| %>
+
+  <%# Status %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Status & Einstellungen</h3>
+    <div class="form-group--row">
+      <div class="form-group">
+        <%= form.label :online, "Online-Status" %>
+        <%= form.select :online,
+            options_for_select([['Offline', false], ['Online', true]], user.online),
+            {}, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :premium, "Premium-Status" %>
+        <%= form.select :premium,
+            options_for_select([['Standard', false], ['Premium', true]], user.premium),
+            {}, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group--row">
+      <label class="form-checkbox"><%= form.check_box :maps %><span>Karten-Anzeige</span></label>
+      <label class="form-checkbox"><%= form.check_box :erstberatung %><span>Erstberatung</span></label>
+      <label class="form-checkbox"><%= form.check_box :datenschutz %><span>Datenschutz</span></label>
+      <label class="form-checkbox"><%= form.check_box :copyright %><span>Copyright</span></label>
+    </div>
+  </div>
+
+  <%# Persönliche Daten %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Persönliche Daten</h3>
+    <div class="form-group--row">
+      <div class="form-group">
+        <%= form.label :anrede %>
+        <%= form.select :anrede, options_for_select(%w[Herr Frau Firma], user.anrede),
+            { prompt: "Bitte wählen" }, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :vorname, "Vorname *" %>
+        <%= form.text_field :vorname, placeholder: "Vorname", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :nachname, "Nachname *" %>
+        <%= form.text_field :nachname, placeholder: "Nachname", class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= form.label :email, "E-Mail *" %>
+      <%= form.email_field :email, placeholder: "user@example.com", class: "form-control" %>
+    </div>
+  </div>
+
+  <%# Firma %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Firma & Beruf</h3>
+    <div class="form-group--row">
+      <div class="form-group">
+        <%= form.label :firmenname %>
+        <%= form.text_field :firmenname, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :gesellschaftsform %>
+        <%= form.text_field :gesellschaftsform, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group--row">
+      <div class="form-group">
+        <%= form.label :berufsbezeichnung %>
+        <%= form.text_field :berufsbezeichnung, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :qualifikation %>
+        <%= form.text_field :qualifikation, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= form.label :firmenmotto %>
+      <%= form.text_field :firmenmotto, placeholder: "Slogan oder Motto", class: "form-control" %>
+    </div>
+  </div>
+
+  <%# Adresse %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Adresse & Kontakt</h3>
+    <div class="form-group">
+      <%= form.label :strasse, "Straße *" %>
+      <%= form.text_field :strasse, class: "form-control" %>
+    </div>
+    <div class="form-group--row">
+      <div class="form-group" style="flex: 0 0 120px;">
+        <%= form.label :plz, "PLZ *" %>
+        <%= form.text_field :plz, maxlength: 5, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :ort, "Ort *" %>
+        <%= form.text_field :ort, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :bundesland_id, "Bundesland *" %>
+        <%= form.select :bundesland_id,
+            options_from_collection_for_select(@bundeslands, :id, :name, user.bundesland_id),
+            { prompt: "Bitte wählen" }, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group--row">
+      <div class="form-group">
+        <%= form.label :telefon %>
+        <%= form.telephone_field :telefon, placeholder: "+49 123 456789", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :mobile, "Mobil" %>
+        <%= form.telephone_field :mobile, placeholder: "+49 170 1234567", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :webpage, "Webseite" %>
+        <%= form.text_field :webpage, placeholder: "https://...", class: "form-control" %>
+      </div>
+    </div>
+    <p class="form-hint">Mindestens eine Telefonnummer (Festnetz oder Mobil) erforderlich.</p>
+  </div>
+
+  <%# Inhalte %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Inhalte</h3>
+    <div class="form-group" data-controller="char-count" data-char-count-max-value="2000">
+      <%= form.rich_text_area :beschreibung,
+                              placeholder: "Beschreiben Sie bitte Ihr Angebot – kein copy/paste aus Word - Mindestens einen Satz" %>
+      <p class="form-hint" data-char-count-target="counter">Zeichen. Bitte mindestens einen Satz…</p>
+    </div>
+    <div class="form-group">
+      <%= form.label :other_offers, "Weitere Angebote" %>
+      <%= form.text_field :other_offers, maxlength: 255, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :references, "Referenzen" %>
+      <%= form.text_area :references, rows: 4, class: "form-control" %>
+    </div>
+  </div>
+
+  <%# SEO %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">SEO & Meta-Daten</h3>
+    <div class="form-group">
+      <%= form.label :meta_title, "Meta-Titel" %>
+      <%= form.text_field :meta_title, placeholder: "SEO-Titel (max. 60 Zeichen)", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :meta_desc, "Meta-Beschreibung" %>
+      <%= form.text_area :meta_desc, rows: 3, placeholder: "SEO-Beschreibung (max. 160 Zeichen)", class: "form-control" %>
+    </div>
+  </div>
+
+  <%# Medien %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Medien & Uploads</h3>
+
+    <div class="form-group">
+      <label>Profilbild</label>
+      <% if user.header_image.attached? && user.header_image.persisted? %>
+        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-sm);">
+          <%= image_tag user.header_image, style: "max-width: 120px; border-radius: var(--radius-sm);" %>
+          <div>
+            <small><%= user.header_image.blob.filename %> (<%= number_to_human_size(user.header_image.blob.byte_size) %>)</small><br>
+            <%= link_to "Löschen", delete_image_attachment_admin_user_path(user.header_image.id),
+                data: { turbo_method: :delete, turbo_confirm: "Bild löschen?" }, class: "btn btn--danger" %>
+          </div>
+        </div>
+      <% else %>
+        <%= form.file_field :header_image, accept: "image/*", class: "form-control" %>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <label>Logo</label>
+      <% if user.uploads[0].present? %>
+        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-sm);">
+          <%= image_tag user.uploads[0], style: "max-width: 120px; border-radius: var(--radius-sm);" %>
+          <div>
+            <small><%= user.uploads[0].blob.filename %> (<%= number_to_human_size(user.uploads[0].blob.byte_size) %>)</small><br>
+            <%= link_to "Löschen", delete_image_attachment_admin_user_path(user.uploads[0].id),
+                data: { turbo_method: :delete, turbo_confirm: "Logo löschen?" }, class: "btn btn--danger" %>
+          </div>
+        </div>
+      <% else %>
+        <%= form.file_field :uploads, multiple: true, accept: "image/*", class: "form-control" %>
+      <% end %>
+    </div>
+  </div>
+
+  <%# Termine %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Termine & Verträge</h3>
+    <div class="form-group--row">
+      <div class="form-group">
+        <%= form.label :vertragsbegin, "Vertragsbeginn" %>
+        <%= form.date_field :vertragsbegin, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :booked_at, "Gebucht am" %>
+        <%= form.datetime_local_field :booked_at, value: user.booked_at&.strftime("%Y-%m-%dT%H:%M"), class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :count, "Counter" %>
+        <%= form.number_field :count, min: 0, readonly: true, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <%# Angebote %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Angebote</h3>
+    <% Offer.ranking.group_by(&:category).each do |category, offers| %>
+      <div class="form-category">
+        <h4 class="content-box__section-title"><%= offers.first.category_name %></h4>
+        <% offers.each do |offer| %>
+          <label class="form-checkbox">
+            <%= form.check_box :offer_ids, { multiple: true }, offer.id, nil %>
+            <span><%= offer.header_title %></span>
+          </label>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <%# Aktionen %>
+  <div class="admin-actions">
+    <%= form.submit user.persisted? ? "Änderungen speichern" : "User erstellen", class: "btn btn--primary btn--lg" %>
+    <%= link_to "Zurück", admin_users_path, class: "btn btn--ghost" %>
+    <% if user.persisted? %>
+      <%= button_to "Löschen", admin_user_path(user), method: :delete, class: "btn btn--danger",
+          form: { data: { turbo_confirm: "User '#{user.fullname}' permanent löschen?" } } %>
+    <% end %>
+  </div>
+
+<% end %>

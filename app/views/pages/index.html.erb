@@ -1,6 +1,6 @@
 <% content_for :hero_content do %>
   <span class="hero__eyebrow">✦ Über <%= User.online.count %> erfahrene Dienstleister</span>
-  <h1 class="hero__title">Finden Sie den passenden Bürodienstleister</h1>
+  <h1 class="hero__title">Bürodienstleistungen - Büroservice</h1>
   <p class="hero__subtitle">Erfahrene Anbieter für Büroservice, digitale Assistenz und Dokumentenmanagement –
     bundesweit, flexibel und zuverlässig.</p>
 
@@ -27,15 +27,15 @@
   </div>
 <% end %>
 <% content_for :hero_picture do %>
-  <%= image_tag "hero/buero-frau.webp" %>
+  <%= image_tag "hero/buero-frau.webp", alt: "Büroservice Bürodienstleister" %>
 <% end %>
 
 <div class="intro-box">
 
   <div class="intro-box__text">
     <h2>Professionelle Unterstützung für Ihren Büroalltag</h2>
-    <h3>Entlasten Sie sich mit erfahrenen Bürodienstleistern</h3>
-    <p>
+    <h3>Finden Sie hier den passenden Bürodienstleister</h3>
+    <p><b>Entlasten Sie sich mit erfahrenen Bürodienstleistern!</b><br />
       Auf <%= link_to "buero-dienstleistungen.com", root_path %> finden Sie Fachkräfte
       für Büroservice, Buchhaltung, Telefonservice, digitale Assistenz und viele weitere
       Aufgaben. Alle Dienstleister arbeiten eigenständig und rechnen direkt mit Ihnen ab –

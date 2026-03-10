@@ -1,0 +1,81 @@
+<div class="admin-breadcrumbs">
+  <%= link_to "Admin", admin_root_path %> › <span>Blog-Posts</span>
+</div>
+
+<%# Header %>
+<div class="admin-header">
+  <h1>Blog-Posts Verwaltung</h1>
+  <%= link_to "Neuer Blog-Post", new_admin_blog_post_path, class: "btn btn--primary" %>
+</div>
+
+<%# Stats %>
+<div class="admin-stats">
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @stats[:total] %></div>
+    <div class="admin-stat__label">Gesamt</div>
+  </div>
+  <div class="admin-stat admin-stat--success">
+    <div class="admin-stat__value"><%= @stats[:online] %></div>
+    <div class="admin-stat__label">Online</div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= number_with_delimiter(@stats[:total_views]) %></div>
+    <div class="admin-stat__label">Aufrufe</div>
+  </div>
+</div>
+
+<%# Tabelle %>
+<% if @blog_posts.any? %>
+  <div class="content-box content-box--compact">
+    <h3>Blog-Posts (<%= @blog_posts.count %>)</h3>
+    <table class="admin-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Titel & Teaser</th>
+        <th>Status</th>
+        <th>Bearbeitet</th>
+        <th>Aktionen</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @blog_posts.each do |post| %>
+        <tr class="<%= 'admin-table__row--dimmed' unless post.online? %>">
+          <td><%=post.id %></td>
+          <td>
+            <%= link_to (post.list_title.presence || post.title), admin_blog_post_path(post) %>
+            <% if post.teaser.present? %>
+              <br><small class="text-muted"><%= truncate(post.teaser, length: 120) %></small>
+            <% end %>
+          </td>
+          <td>
+            <% if post.online? %>
+              <span class="badge badge--success">Online</span>
+            <% else %>
+              <span class="badge badge--muted">Entwurf</span>
+            <% end %>
+          </td>
+          <td>
+            <small><%= time_ago_in_words(post.updated_at) %></small>
+            <br><small class="text-muted"><%= l(post.updated_at, format: :short) %></small>
+          </td>
+          <td>
+            <div class="admin-table__actions">
+              <%= link_to "👁️", admin_blog_post_path(post), title: "Anzeigen" %>
+              <%= link_to "✏️", edit_admin_blog_post_path(post), title: "Bearbeiten" %>
+              <%= button_to "🗑️", admin_blog_post_path(post),
+                            method: :delete,
+                            form: { data: { turbo_confirm: "Blog-Post '#{post.title}' löschen?" } } %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="content-box content-box--compact" style="text-align: center; padding: 3rem;">
+    <p>Keine Blog-Posts vorhanden.</p>
+    <%= link_to "Ersten Blog-Post erstellen", new_admin_blog_post_path, class: "btn btn--primary" %>
+  </div>
+<% end %>

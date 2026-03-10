@@ -1,15 +1,10 @@
 <% content_for :hero_content do %>
   <span class="hero__eyebrow">✦ Über <%= User.online.count %> erfahrene Dienstleister</span>
-  <h1 class="hero__title">Finden Sie den passenden Bürodienstleister</h1>
-  <p class="hero__subtitle">Erfahrene Anbieter für Büroservice, digitale Assistenz und Dokumentenmanagement –
-    bundesweit, flexibel und zuverlässig.</p>
+  <h1 class="hero__title">Ein Inserat oder einen Backlink buchen</h1>
+  <p class="hero__subtitle">Diese WebPage wird laufend gepflegt und basiert auf modernsten Technologien. Unser Ranking wird täglich
+    überwacht und der WebAuftritt optimiert.</p>
 
-  <div class="hero__search">
-    <%= form_with(url: root_path, method: :get, class: "hero__search") do |form| %>
-      <%= form.text_field :plz, placeholder: "PLZ eingeben …", class: "hero__search-input" %>
-      <%= form.submit "Suchen", class: "btn btn--accent btn--lg" %>
-    <% end %>
-  </div>
+
 
   <div class="hero__stats">
     <div>
@@ -27,7 +22,7 @@
   </div>
 <% end %>
 <% content_for :hero_picture do %>
-  <%= image_tag "buero-frau.webp" %>
+  <%= image_tag "hero/buero-frau.webp", alt: "Werbung buchen" %>
 <% end %>
 
 
@@ -35,10 +30,22 @@
 <%# Intro %>
 <div class="intro-box">
 
-  <p class="intro-box__text">intro
+  <p class="intro-box__text">Inhalte kommen bald
 </div>
 
 <div class="content-box content-box--text">
-  <h2>content</h2>
+  <h2>Werbung auf https://www.buero-dienstleistungen.com</h2>
 
 </div>
+
+<% content_for :meta_title do %>
+  Werben Sie für sich und Ihr Unternehmen
+<% end %>
+
+<% content_for :meta_desc do %>
+  Visitenkarten, Werbung, Inserate und Backlinks schalten auf www.buero-dienstleistungen.com
+<% end %>
+
+<% content_for :cano do %>
+  https://www.buero-dienstleistungen.com/werbung
+<% end %>

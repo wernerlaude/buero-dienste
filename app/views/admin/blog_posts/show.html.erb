@@ -1,0 +1,174 @@
+<div class="admin-breadcrumbs">
+  <%= link_to "Admin", admin_root_path %> ›
+  <%= link_to "Blog-Posts", admin_blog_posts_path %> ›
+  <span><%= truncate(@blog_post.title, length: 50) %></span>
+</div>
+
+<%# Header %>
+<div class="admin-header">
+  <h1><%= @blog_post.title %></h1>
+  <%= link_to "Bearbeiten", edit_admin_blog_post_path(@blog_post), class: "btn btn--primary" %>
+</div>
+
+<%# Performance %>
+<div class="admin-stats">
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @blog_post.online? ? "✅" : "⏸️" %></div>
+    <div class="admin-stat__label"><%= @blog_post.online? ? "Online" : "Entwurf" %></div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= number_with_delimiter(@blog_post.count || 0) %></div>
+    <div class="admin-stat__label">Aufrufe</div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @blog_post.ratings_count || 0 %></div>
+    <div class="admin-stat__label">Bewertungen</div>
+  </div>
+  <% if @blog_post.ratings_count.to_i > 0 %>
+    <div class="admin-stat admin-stat--accent">
+      <div class="admin-stat__value">⭐ <%= @blog_post.average_rating %></div>
+      <div class="admin-stat__label">Durchschnitt</div>
+    </div>
+  <% end %>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @blog_post.content.present? ? @blog_post.content.split.count : 0 %></div>
+    <div class="admin-stat__label">Wörter</div>
+  </div>
+</div>
+
+<%# Grundinformationen %>
+<div class="content-box content-box--compact">
+  <h3 class="content-box__section-title">Grundinformationen</h3>
+  <div class="admin-detail-grid">
+    <div class="admin-detail">
+      <span class="admin-detail__label">Haupttitel</span>
+      <p><%= @blog_post.title %></p>
+    </div>
+    <% if @blog_post.list_title.present? %>
+      <div class="admin-detail">
+        <span class="admin-detail__label">Listen-Titel</span>
+        <p><%= @blog_post.list_title %></p>
+      </div>
+    <% end %>
+    <% if @blog_post.subtitle.present? %>
+      <div class="admin-detail">
+        <span class="admin-detail__label">Untertitel</span>
+        <p><%= @blog_post.subtitle %></p>
+      </div>
+    <% end %>
+    <div class="admin-detail">
+      <span class="admin-detail__label">Autor</span>
+      <p><%= @blog_post.user&.fullname || "Kein Autor" %></p>
+    </div>
+    <div class="admin-detail">
+      <span class="admin-detail__label">Erstellt</span>
+      <p><%= l(@blog_post.created_at, format: :long) %></p>
+    </div>
+    <div class="admin-detail">
+      <span class="admin-detail__label">Zuletzt bearbeitet</span>
+      <p><%= l(@blog_post.updated_at, format: :long) %></p>
+    </div>
+  </div>
+</div>
+
+<%# Inhalte %>
+<div class="content-box content-box--compact">
+  <h3 class="content-box__section-title">Inhalte</h3>
+
+  <% if @blog_post.teaser.present? %>
+    <div class="admin-detail">
+      <span class="admin-detail__label">Teaser (<%= @blog_post.teaser.length %> Zeichen)</span>
+      <p><%= simple_format(@blog_post.teaser) %></p>
+    </div>
+  <% end %>
+
+  <% if @blog_post.content.present? %>
+    <div class="admin-detail">
+      <span class="admin-detail__label">Hauptinhalt (<%= @blog_post.content.split.count %> Wörter)</span>
+      <div class="admin-content-preview">
+        <%= format_me(@blog_post.content) %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%# SEO %>
+<% if @blog_post.meta_title.present? || @blog_post.meta_desc.present? %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">SEO & Meta-Daten</h3>
+    <div class="admin-detail-grid">
+      <% if @blog_post.meta_title.present? %>
+        <div class="admin-detail">
+          <span class="admin-detail__label">Meta-Titel (<%= @blog_post.meta_title.length %> Zeichen)</span>
+          <p><%= @blog_post.meta_title %></p>
+        </div>
+      <% end %>
+      <% if @blog_post.meta_desc.present? %>
+        <div class="admin-detail">
+          <span class="admin-detail__label">Meta-Beschreibung (<%= @blog_post.meta_desc.length %> Zeichen)</span>
+          <p><%= @blog_post.meta_desc %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%# Medien %>
+<% if @blog_post.bildnachweis.present? || @blog_post.verweis.present? %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Medien & Verweise</h3>
+    <div class="admin-detail-grid">
+      <% if @blog_post.bildnachweis.present? %>
+        <div class="admin-detail">
+          <span class="admin-detail__label">Bildnachweis</span>
+          <p><%= @blog_post.bildnachweis %></p>
+        </div>
+      <% end %>
+      <% if @blog_post.verweis.present? %>
+        <div class="admin-detail">
+          <span class="admin-detail__label">Verweis</span>
+          <p><%= link_to @blog_post.verweis, @blog_post.verweis, target: "_blank", rel: "noopener" %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%# Qualitätsanalyse %>
+<div class="content-box content-box--compact">
+  <h3 class="content-box__section-title">Inhaltsqualität</h3>
+  <div class="admin-quality">
+    <% if @blog_post.title.present? %>
+      <% title_length = @blog_post.title.length %>
+      <div class="admin-quality__item admin-quality__item--<%= title_length.between?(30, 60) ? 'success' : 'warning' %>">
+        <span><%= title_length.between?(30, 60) ? '✅' : '⚠️' %> Titel: <%= title_length %> Zeichen
+          <%= '– optimal' if title_length.between?(30, 60) %>
+          <%= '– zu kurz (30-60 empfohlen)' if title_length < 30 %>
+          <%= '– zu lang' if title_length > 60 %></span>
+      </div>
+    <% end %>
+
+    <% if @blog_post.content.present? %>
+      <% word_count = @blog_post.content.split.count %>
+      <div class="admin-quality__item admin-quality__item--<%= word_count >= 300 ? 'success' : 'warning' %>">
+        <span><%= word_count >= 300 ? '✅' : '⚠️' %> Inhalt: <%= word_count %> Wörter
+          <%= '– ausführlich' if word_count >= 300 %>
+          <%= '– kurz (300+ empfohlen)' if word_count < 300 %></span>
+      </div>
+    <% end %>
+
+    <% seo_score = [@blog_post.meta_title.present?, @blog_post.meta_desc.present?, @blog_post.teaser.present?].count(true) %>
+    <div class="admin-quality__item admin-quality__item--<%= seo_score >= 2 ? 'success' : 'warning' %>">
+      <span><%= seo_score >= 2 ? '✅' : '⚠️' %> SEO: <%= seo_score %>/3 Felder ausgefüllt</span>
+    </div>
+  </div>
+</div>
+
+<%# Aktionen %>
+<div class="admin-actions">
+  <%= link_to "← Zurück", admin_blog_posts_path, class: "btn btn--ghost" %>
+  <%= link_to "Bearbeiten", edit_admin_blog_post_path(@blog_post), class: "btn btn--primary" %>
+  <%= button_to "Löschen", admin_blog_post_path(@blog_post),
+                method: :delete, class: "btn btn--danger",
+                form: { data: { turbo_confirm: "Blog-Post '#{@blog_post.title}' permanent löschen?" } } %>
+</div>

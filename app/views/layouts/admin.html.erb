@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Dashboard | buero-dienstleistungen.com</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "lexxy" %>
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+
+<%# Admin Navbar %>
+<nav class="navbar navbar--admin">
+  <div class="navbar__inner">
+    <div class="navbar__brand">
+      <span class="navbar__brand-icon">⚡</span>
+      <span class="navbar__brand-text">Admin Dashboard</span>
+    </div>
+    <div class="navbar__nav">
+      <%= link_to "Zur Webseite", root_path, class: "navbar__link", target: "_blank" %>
+      <%#= link_to "Logout", destroy_admin_session_path, data: { turbo_method: :delete }, class: "navbar__link" %>
+    </div>
+  </div>
+</nav>
+
+<div class="page page--admin">
+  <%# Main Content LINKS %>
+  <main class="page__main">
+    <%= render "shared/flash_message" %>
+    <%= yield %>
+  </main>
+
+  <%# Sidebar RECHTS %>
+  <aside class="page__sidebar page__sidebar--admin">
+    <div class="sidebar-card">
+      <h3 class="sidebar-card__header">Navigation</h3>
+      <div class="sidebar-card__body">
+        <nav class="admin-nav">
+          <%= link_to admin_dashboard_path, class: "admin-nav__item #{'admin-nav__item--active' if current_page?(admin_dashboard_path)}" do %>
+            <span class="admin-nav__icon">📊</span>
+            <span>Dashboard</span>
+          <% end %>
+
+          <%= link_to admin_users_path, class: "admin-nav__item #{'admin-nav__item--active' if current_page?(admin_users_path)}" do %>
+            <span class="admin-nav__icon">👥</span>
+            <span>User</span>
+          <% end %>
+
+          <%= link_to admin_offers_path, class: "admin-nav__item #{'admin-nav__item--active' if current_page?(admin_offers_path)}" do %>
+            <span class="admin-nav__icon">📋</span>
+            <span>Angebote</span>
+          <% end %>
+
+          <%= link_to admin_blog_posts_path, class: "admin-nav__item #{'admin-nav__item--active' if current_page?(admin_blog_posts_path)}" do %>
+            <span class="admin-nav__icon">📝</span>
+            <span>Blog Posts</span>
+          <% end %>
+
+        </nav>
+      </div>
+    </div>
+  </aside>
+</div>
+
+</body>
+</html>

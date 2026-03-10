@@ -3,7 +3,11 @@
   <% if @user.premium? %>
     <span class="hero__eyebrow">★ Premium Visitenkarte</span>
   <% end %>
-  <h1 class="hero__title"><%= @user.fullname %></h1>
+  <h1 class="hero__title">
+    <%= @user.fullname %> – <%= @user.berufsbezeichnung.presence || @user.firmenname.presence || "Bürodienstleister" %>
+  </h1>
+  <% content_for :title, "#{@user.fullname} – #{@user.berufsbezeichnung.presence || @user.firmenname.presence || 'Bürodienstleister'} in #{@user.ort}" %>
+
   <h2 class="hero__title2"><%= @user.firmenname.presence %></h2>
   <p class="hero__subtitle"><%= @user.ort %><%= " · #{@user.berufsbezeichnung}" if @user.berufsbezeichnung.present? %></p>
   <% if @user.offers.any? %>

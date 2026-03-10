@@ -1,0 +1,128 @@
+<div class="admin-breadcrumbs">
+  <%= link_to "Admin", admin_root_path %> ›
+  <%= link_to "Angebote", admin_offers_path %> ›
+  <span><%= @offer.card_title %></span>
+</div>
+
+<div class="admin-header">
+  <h1><%= @offer.card_title %></h1>
+  <%= link_to "Bearbeiten", edit_admin_offer_path(@offer), class: "btn btn--primary" %>
+</div>
+
+<%# Stats %>
+<div class="admin-stats">
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @offer.online? ? '✅' : '⏸️' %></div>
+    <div class="admin-stat__label"><%= @offer.online? ? 'Online' : 'Offline' %></div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= number_with_delimiter(@offer.count || 0) %></div>
+    <div class="admin-stat__label">Aufrufe</div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @offer.users.count %></div>
+    <div class="admin-stat__label">Anbieter</div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @offer.position || 0 %></div>
+    <div class="admin-stat__label">Position</div>
+  </div>
+</div>
+
+<%# Grundinformationen %>
+<div class="content-box content-box--compact">
+  <h3 class="content-box__section-title">Grundinformationen</h3>
+  <div class="admin-detail-grid">
+    <div class="admin-detail"><span class="admin-detail__label">Titel</span><p><%= @offer.card_title %></p></div>
+    <div class="admin-detail"><span class="admin-detail__label">Kategorie</span><p><%= @offer.category_name %></p></div>
+    <% if @offer.ident.present? %>
+      <div class="admin-detail"><span class="admin-detail__label">Identifikator</span><p><%= @offer.ident %></p></div>
+    <% end %>
+    <% if @offer.slug.present? %>
+      <div class="admin-detail"><span class="admin-detail__label">URL-Slug</span><p><%= @offer.slug %></p></div>
+    <% end %>
+    <div class="admin-detail"><span class="admin-detail__label">Erstellt</span><p><%= l(@offer.created_at, format: :long) %></p></div>
+    <div class="admin-detail"><span class="admin-detail__label">Bearbeitet</span><p><%= l(@offer.updated_at, format: :long) %></p></div>
+  </div>
+</div>
+
+<%# Beschreibungen %>
+<% if @offer.short_desc.present? || @offer.description.present? %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Beschreibungen</h3>
+    <% if @offer.short_desc.present? %>
+      <div class="admin-detail">
+        <span class="admin-detail__label">Kurzbeschreibung (<%= @offer.short_desc.length %> Zeichen)</span>
+        <p><%= format_text(@offer.short_desc) %></p>
+      </div>
+    <% end %>
+    <% if @offer.description.present? %>
+      <div class="admin-detail">
+        <span class="admin-detail__label">Beschreibung (<%= @offer.description.split.count %> Wörter)</span>
+        <div class="admin-content-preview"><%= format_text(@offer.description) %></div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%# Keywords %>
+<% if @offer.keywords.present? %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Keywords</h3>
+    <div class="intro-box__pills">
+      <% @offer.keywords.split(',').map(&:strip).each do |keyword| %>
+        <span class="intro-box__pill"><%= keyword %></span>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%# Anbieter %>
+<div class="content-box content-box--compact">
+  <h3 class="content-box__section-title">Anbieter (<%= @offer.users.count %>)</h3>
+  <% if @offer.users.any? %>
+    <div class="admin-detail-grid">
+      <% @offer.users.each do |user| %>
+        <div class="admin-detail">
+          <p>
+            <%= link_to user.fullname, admin_user_path(user) %>
+            <span class="badge badge--<%= user.premium? ? 'accent' : 'muted' %>"><%= user.premium? ? 'Premium' : 'Standard' %></span>
+          </p>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-muted">Keine Anbieter zugeordnet.</p>
+  <% end %>
+</div>
+
+<%# Qualitätsanalyse %>
+<div class="content-box content-box--compact">
+  <h3 class="content-box__section-title">Analyse</h3>
+  <div class="admin-quality">
+    <div class="admin-quality__item admin-quality__item--<%= @offer.count.to_i > 20 ? 'success' : 'warning' %>">
+      <span><%= @offer.count.to_i > 20 ? '🔥' : '👁️' %> Aufrufe: <%= @offer.count || 0 %></span>
+    </div>
+    <div class="admin-quality__item admin-quality__item--<%= @offer.users.count >= 5 ? 'success' : @offer.users.count > 0 ? 'info' : 'warning' %>">
+      <span>👥 Anbieter: <%= @offer.users.count %></span>
+    </div>
+    <% if @offer.keywords.present? %>
+      <div class="admin-quality__item admin-quality__item--<%= @offer.keywords.split(',').count.between?(3, 10) ? 'success' : 'info' %>">
+        <span>🔍 Keywords: <%= @offer.keywords.split(',').count %></span>
+      </div>
+    <% else %>
+      <div class="admin-quality__item admin-quality__item--warning"><span>🔍 Keywords fehlen</span></div>
+    <% end %>
+    <div class="admin-quality__item admin-quality__item--<%= @offer.position.to_i <= 5 ? 'success' : 'info' %>">
+      <span>📍 Position: <%= @offer.position %></span>
+    </div>
+  </div>
+</div>
+
+<%# Aktionen %>
+<div class="admin-actions">
+  <%= link_to "← Zurück", admin_offers_path, class: "btn btn--ghost" %>
+  <%= link_to "Bearbeiten", edit_admin_offer_path(@offer), class: "btn btn--primary" %>
+  <%= button_to "Löschen", admin_offer_path(@offer), method: :delete, class: "btn btn--danger",
+      form: { data: { turbo_confirm: "Angebot '#{@offer.card_title}' permanent löschen?" } } %>
+</div>

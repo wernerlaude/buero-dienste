@@ -45,12 +45,12 @@
       font-size: 1.75rem;
     }
   }
-  &__title2 {
-    font-size: 1.375rem;
-    font-weight: 700;
+  &__title_2 {
+    font-size: 1.275rem;
+    font-weight: 600;
     color: var(--color-primary-dark);
     line-height: 1.2;
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-md);
 
     @media (max-width: 768px) {
       font-size: 1.75rem;

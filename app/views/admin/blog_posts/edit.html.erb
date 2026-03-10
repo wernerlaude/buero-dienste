@@ -1,0 +1,51 @@
+<div class="admin-breadcrumbs">
+  <%= link_to "Admin", admin_root_path %> ›
+  <%= link_to "Blog-Posts", admin_blog_posts_path %> ›
+  <span>Bearbeiten</span>
+</div>
+
+<div class="admin-header">
+  <h1>Blog-Post bearbeiten</h1>
+</div>
+
+<%# Quick Stats %>
+<div class="admin-stats">
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @blog_post.online? ? "✅" : "⏸️" %></div>
+    <div class="admin-stat__label"><%= @blog_post.online? ? "Online" : "Entwurf" %></div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= number_with_delimiter(@blog_post.count || 0) %></div>
+    <div class="admin-stat__label">Aufrufe</div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @blog_post.ratings_count || 0 %></div>
+    <div class="admin-stat__label">Bewertungen</div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= l(@blog_post.created_at, format: :short) %></div>
+    <div class="admin-stat__label">Erstellt</div>
+  </div>
+</div>
+
+<%= render "form", blog_post: @blog_post %>
+
+<%# Empfehlungen %>
+<% warnings = [] %>
+<% warnings << "Teaser fehlt – verbessert Darstellung in Listen." unless @blog_post.teaser.present? %>
+<% warnings << "Meta-Titel fehlt – verbessert SEO." unless @blog_post.meta_title.present? %>
+<% warnings << "Meta-Beschreibung fehlt – wird in Suchergebnissen angezeigt." unless @blog_post.meta_desc.present? %>
+<% warnings << "Artikel sehr kurz (#{@blog_post.content&.split&.count || 0} Wörter) – 300+ empfohlen." if @blog_post.content.present? && @blog_post.content.split.count < 100 %>
+
+<% if warnings.any? %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Empfehlungen</h3>
+    <div class="admin-quality">
+      <% warnings.each do |warning| %>
+        <div class="admin-quality__item admin-quality__item--warning">
+          <span>⚠️ <%= warning %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

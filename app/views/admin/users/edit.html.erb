@@ -1,0 +1,57 @@
+<div class="admin-breadcrumbs">
+  <%= link_to "Admin", admin_root_path %> ›
+  <%= link_to "User", admin_users_path %> ›
+  <%= link_to @user.fullname, admin_user_path(@user) %> ›
+  <span>Bearbeiten</span>
+</div>
+
+<div class="admin-header">
+  <h1>User bearbeiten: <%= @user.fullname %></h1>
+  <%= link_to "Anzeigen", admin_user_path(@user), class: "btn btn--ghost" %>
+</div>
+
+<%# Quick Stats %>
+<div class="admin-stats">
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @user.online? ? '🟢' : '⏸️' %></div>
+    <div class="admin-stat__label"><%= @user.online? ? 'Online' : 'Offline' %> · <%= @user.premium? ? 'Premium' : 'Standard' %></div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= number_with_delimiter(@user.count) %></div>
+    <div class="admin-stat__label">Aufrufe</div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @user.offers.count %></div>
+    <div class="admin-stat__label">Angebote</div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= l(@user.created_at, format: :short) %></div>
+    <div class="admin-stat__label">Erstellt</div>
+  </div>
+</div>
+
+<%= render "form", user: @user %>
+
+<%# Empfehlungen %>
+<% warnings = [] %>
+<% warnings << "Datenschutz nicht akzeptiert" unless @user.datenschutz? %>
+<% warnings << "Copyright nicht akzeptiert" unless @user.copyright? %>
+<% warnings << "Beschreibung fehlt" unless @user.beschreibung.present? %>
+<% warnings << "Header-Bild fehlt" unless @user.header_image.attached? %>
+<% warnings << "Meta-Titel fehlt" unless @user.meta_title.present? %>
+<% warnings << "Meta-Beschreibung fehlt" unless @user.meta_desc.present? %>
+<% warnings << "Keine Angebote zugeordnet" if @user.offers.empty? %>
+<% warnings << "Geocodierung fehlt – Adresse prüfen" if @user.latitude.blank? %>
+
+<% if warnings.any? %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Empfehlungen</h3>
+    <div class="admin-quality">
+      <% warnings.each do |warning| %>
+        <div class="admin-quality__item admin-quality__item--warning">
+          <span>⚠️ <%= warning %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

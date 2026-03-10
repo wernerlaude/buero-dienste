@@ -1,6 +1,9 @@
 class OffersController < ApplicationController
   def show
-    @offer = Offer.find_by(slug: params[:id])
+    if params[:id] =~ /\A\d+-(.+)/
+      redirect_to "/angebot/#{$1}", status: :moved_permanently and return
+    end
+    @offer = Offer.find_by!(slug: params[:id])
     @users = grouped_offers(@offer)
     @count_offers = @offer.users.size
   end

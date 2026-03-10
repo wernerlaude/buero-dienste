@@ -1,0 +1,27 @@
+<div class="admin-breadcrumbs">
+  <%= link_to "Admin", admin_root_path %> ›
+  <%= link_to "Blog-Posts", admin_blog_posts_path %> ›
+  <span>Erstellen</span>
+</div>
+
+<div class="admin-header">
+  <h1>Blog-Post erstellen</h1>
+</div>
+
+<%= render "form", blog_post: @blog_post %>
+
+<%# Tipps %>
+<div class="content-box content-box--compact">
+  <h3 class="content-box__section-title">Tipps</h3>
+  <div class="admin-quality">
+    <div class="admin-quality__item admin-quality__item--info">
+      <span>📝 Fülle alle wichtigen Felder aus: Titel, Teaser, Inhalt, Meta-Titel und Meta-Beschreibung.</span>
+    </div>
+    <div class="admin-quality__item admin-quality__item--info">
+      <span>📊 Artikel mit mindestens 300 Wörtern haben bessere SEO-Performance.</span>
+    </div>
+    <div class="admin-quality__item admin-quality__item--info">
+      <span>🎯 Meta-Titel max. 60 Zeichen, Meta-Beschreibung max. 160 Zeichen.</span>
+    </div>
+  </div>
+</div>

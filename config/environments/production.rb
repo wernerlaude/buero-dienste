@@ -88,4 +88,10 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: "key-35d1d1439905f04fea1b637d0f391d41",
+    domain: "sortier.buero-sortierdienst.de",
+    api_host: "api.eu.mailgun.net"
+  }
 end

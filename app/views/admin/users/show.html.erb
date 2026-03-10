@@ -1,0 +1,181 @@
+<div class="admin-breadcrumbs">
+  <%= link_to "Admin", admin_root_path %> ›
+  <%= link_to "User", admin_users_path %> ›
+  <span><%= @user.fullname %></span>
+</div>
+
+<div class="admin-header">
+  <h1><%= @user.fullname %></h1>
+  <%= link_to "Bearbeiten", edit_admin_user_path(@user), class: "btn btn--primary" %>
+</div>
+
+<%# Stats %>
+<div class="admin-stats">
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @user.online? ? '🟢' : '⏸️' %></div>
+    <div class="admin-stat__label"><%= @user.online? ? 'Online' : 'Offline' %></div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= number_with_delimiter(@user.count) %></div>
+    <div class="admin-stat__label">Aufrufe</div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @user.offers.count %></div>
+    <div class="admin-stat__label">Angebote</div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @user.blog_posts.count %></div>
+    <div class="admin-stat__label">Blog-Posts</div>
+  </div>
+</div>
+
+<%# Profil Header %>
+<div class="content-box content-box--compact">
+  <div class="profile-split">
+    <div class="profile-main">
+      <h2><%= @user.fullname %></h2>
+      <% if @user.firmenname.present? %>
+        <p class="profile-firma"><%= @user.firmenname %></p>
+      <% end %>
+      <% if @user.berufsbezeichnung.present? %>
+        <p class="text-muted"><%= @user.berufsbezeichnung %></p>
+      <% end %>
+      <div style="margin-top: var(--space-sm); display: flex; gap: var(--space-xs);">
+        <span class="badge badge--<%= @user.online? ? 'success' : 'muted' %>"><%= @user.online? ? 'Online' : 'Offline' %></span>
+        <span class="badge badge--<%= @user.premium? ? 'accent' : 'muted' %>"><%= @user.premium? ? 'Premium' : 'Standard' %></span>
+      </div>
+    </div>
+    <div class="profile-image">
+      <% if @user.header_image.attached? %>
+        <%= image_tag @user.header_image.variant(:medium), alt: @user.fullname %>
+      <% else %>
+        <div class="profile-avatar--large"><%= @user.initials %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%# Kontakt & Adresse %>
+<div class="content-box content-box--compact content-box--split">
+  <div class="content-box__left">
+    <h3 class="content-box__section-title">Kontakt</h3>
+    <div class="contact-block">
+      <p><%= mail_to @user.email %></p>
+      <% if @user.telefon.present? %><p>Tel: <%= @user.telefon %></p><% end %>
+      <% if @user.mobile.present? %><p>Mobil: <%= @user.mobile %></p><% end %>
+      <% if @user.webpage.present? %><p><%= safe_webpage_link(@user.webpage) %></p><% end %>
+    </div>
+  </div>
+  <div class="content-box__right">
+    <h3 class="content-box__section-title">Adresse</h3>
+    <p><%= @user.strasse %><br><%= @user.ort_plz %><br><%= @user.bundesland&.name %></p>
+    <% if @user.latitude.present? %>
+      <p class="text-muted"><small>📌 <%= number_with_precision(@user.latitude, precision: 6) %>, <%= number_with_precision(@user.longitude, precision: 6) %></small></p>
+    <% end %>
+  </div>
+</div>
+
+<%# Firma %>
+<% if @user.firmenname.present? || @user.gesellschaftsform.present? %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Beruflich</h3>
+    <div class="admin-detail-grid">
+      <% if @user.gesellschaftsform.present? %>
+        <div class="admin-detail"><span class="admin-detail__label">Rechtsform</span><p><%= @user.gesellschaftsform %></p></div>
+      <% end %>
+      <% if @user.qualifikation.present? %>
+        <div class="admin-detail"><span class="admin-detail__label">Qualifikation</span><p><%= @user.qualifikation %></p></div>
+      <% end %>
+      <% if @user.firmenmotto.present? %>
+        <div class="admin-detail"><span class="admin-detail__label">Motto</span><p><em><%= @user.firmenmotto %></em></p></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%# Beschreibung %>
+<% if @user.beschreibung.present? %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Beschreibung</h3>
+    <div class="admin-content-preview"><%= @user.beschreibung %></div>
+  </div>
+<% end %>
+
+<%# Angebote %>
+<% if @user.offers.any? %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Angebote</h3>
+    <div class="intro-box__pills">
+      <% @user.offers.each do |offer| %>
+        <span class="intro-box__pill"><%= offer.ident %></span>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%# Uploads %>
+<% if @user.uploads.attached? %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Uploads</h3>
+    <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+      <% @user.uploads.each do |upload| %>
+        <% if upload.image? %>
+          <div>
+            <%= image_tag upload.variant(:medium), style: "max-width: 200px; border-radius: var(--radius-sm);" %>
+            <br><small class="text-muted"><%= upload.blob.filename %> (<%= number_to_human_size(upload.blob.byte_size) %>)</small>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%# SEO %>
+<% if @user.meta_title.present? || @user.meta_desc.present? %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">SEO</h3>
+    <div class="admin-detail-grid">
+      <% if @user.meta_title.present? %>
+        <div class="admin-detail"><span class="admin-detail__label">Meta-Titel</span><p><%= @user.meta_title %></p></div>
+      <% end %>
+      <% if @user.meta_desc.present? %>
+        <div class="admin-detail"><span class="admin-detail__label">Meta-Beschreibung</span><p><%= @user.meta_desc %></p></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%# Termine %>
+<% if @user.vertragsbegin.present? || @user.booked_at.present? %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Termine & Verträge</h3>
+    <div class="admin-detail-grid">
+      <% if @user.vertragsbegin.present? %>
+        <div class="admin-detail"><span class="admin-detail__label">Vertragsbeginn</span><p><%= l(@user.vertragsbegin, format: :long) %></p></div>
+      <% end %>
+      <% if @user.booked_at.present? %>
+        <div class="admin-detail"><span class="admin-detail__label">Gebucht am</span><p><%= l(@user.booked_at, format: :long) %></p></div>
+        <div class="admin-detail"><span class="admin-detail__label">Läuft ab am</span><p><%= l(@user.expiration_date, format: :long) %></p></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%# System %>
+<div class="content-box content-box--compact">
+  <h3 class="content-box__section-title">System</h3>
+  <div class="admin-detail-grid">
+    <div class="admin-detail"><span class="admin-detail__label">ID</span><p><%= @user.id %></p></div>
+    <div class="admin-detail"><span class="admin-detail__label">Erstellt</span><p><%= l(@user.created_at, format: :long) %></p></div>
+    <div class="admin-detail"><span class="admin-detail__label">Bearbeitet</span><p><%= l(@user.updated_at, format: :long) %></p></div>
+    <div class="admin-detail"><span class="admin-detail__label">URL</span><p><%= @user.to_param %></p></div>
+  </div>
+</div>
+
+<%# Aktionen %>
+<div class="admin-actions">
+  <%= link_to "← Zurück", admin_users_path, class: "btn btn--ghost" %>
+  <%= link_to "Bearbeiten", edit_admin_user_path(@user), class: "btn btn--primary" %>
+  <%= button_to "Löschen", admin_user_path(@user), method: :delete, class: "btn btn--danger",
+      form: { data: { turbo_confirm: "User '#{@user.fullname}' permanent löschen?" } } %>
+</div>

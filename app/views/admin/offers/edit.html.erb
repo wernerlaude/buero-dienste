@@ -1,0 +1,32 @@
+<div class="admin-breadcrumbs">
+  <%= link_to "Admin", admin_root_path %> ›
+  <%= link_to "Angebote", admin_offers_path %> ›
+  <span>Bearbeiten</span>
+</div>
+
+<div class="admin-header">
+  <h1>Angebot bearbeiten: <%= @offer.card_title %></h1>
+  <%= link_to "Anzeigen", admin_offer_path(@offer), class: "btn btn--ghost" %>
+</div>
+
+<%# Quick Stats %>
+<div class="admin-stats">
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @offer.online? ? '✅' : '⏸️' %></div>
+    <div class="admin-stat__label"><%= @offer.online? ? 'Online' : 'Offline' %></div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= number_with_delimiter(@offer.count || 0) %></div>
+    <div class="admin-stat__label">Aufrufe</div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @offer.users.count %></div>
+    <div class="admin-stat__label">Anbieter</div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @offer.position || 0 %></div>
+    <div class="admin-stat__label">Position</div>
+  </div>
+</div>
+
+<%= render "form" %>

@@ -1,0 +1,109 @@
+<%= form_with model: @offer,
+              url: @offer.persisted? ? admin_offer_path(@offer) : admin_offers_path,
+              method: @offer.persisted? ? :patch : :post,
+              local: true,
+              data: { controller: "offer-edit" } do |f| %>
+
+  <%# Status & Position %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Status & Anordnung</h3>
+    <div class="form-group--row">
+      <div class="form-group">
+        <%= f.label :online, "Status" %>
+        <%= f.select :online,
+            options_for_select([['Online', true], ['Offline', false]], @offer.persisted? ? @offer.online : true),
+            {}, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :position, "Position" %>
+        <%= f.number_field :position, min: 1, class: "form-control",
+            placeholder: @offer.persisted? ? @offer.position : (Offer.maximum(:position) || 0) + 1 %>
+        <p class="form-hint">Niedrigere Zahlen = weiter oben.</p>
+      </div>
+    </div>
+  </div>
+
+  <%# Grundinformationen %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Grundinformationen</h3>
+    <div class="form-group">
+      <%= f.label :card_title, "Angebots-Titel *" %>
+      <%= f.text_field :card_title, required: true, class: "form-control",
+          placeholder: "z.B. Professionelle Buchhaltung",
+          data: { "offer-edit-target": "titleField", action: "blur->offer-edit#generateSlug" } %>
+    </div>
+    <div class="form-group--row">
+      <div class="form-group">
+        <%= f.label :ident, "Identifikator" %>
+        <%= f.text_field :ident, class: "form-control", placeholder: "buchhaltung" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :slug, "URL-Slug" %>
+        <%= f.text_field :slug, class: "form-control", placeholder: "wird automatisch generiert",
+            data: { "offer-edit-target": "slugField" } %>
+      </div>
+    </div>
+  </div>
+
+  <%# Kategorie %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Kategorisierung</h3>
+    <div class="form-group--row">
+      <div class="form-group">
+        <%= f.label :category, "Kategorie *" %>
+        <%= f.select :category,
+            options_for_select(Offer::CATEGORIES.map { |id, name| [name, id] }, @offer.category),
+            { prompt: 'Kategorie wählen' }, { required: true, class: "form-control" } %>
+      </div>
+      <div class="form-group">
+        <%= f.label :search_priority, "Such-Priorität" %>
+        <%= f.number_field :search_priority, min: 0, max: 100, class: "form-control",
+            placeholder: "0-100" %>
+        <p class="form-hint">Höher = weiter oben in Suchergebnissen.</p>
+      </div>
+    </div>
+  </div>
+
+  <%# Beschreibungen %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Beschreibungen</h3>
+    <div class="form-group">
+      <%= f.label :short_description, "Kurzbeschreibung" %>
+      <%= f.text_area :short_description, rows: 4, class: "form-control",
+          placeholder: "Kurze Beschreibung für Listen (100-200 Zeichen)" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description, "Detaillierte Beschreibung" %>
+      <%= f.text_area :description, rows: 20, class: "form-control",
+          placeholder: "Ausführliche Beschreibung des Angebots..." %>
+    </div>
+  </div>
+
+  <%# SEO %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">SEO & Keywords</h3>
+    <div class="form-group">
+      <%= f.label :keywords, "Keywords (komma-getrennt)" %>
+      <%= f.text_area :keywords, rows: 3, class: "form-control",
+          placeholder: "buchhaltung, steuerberatung, finanzen" %>
+      <p class="form-hint">3-10 Keywords optimal für die Suche.</p>
+    </div>
+    <div class="form-group">
+      <%= f.label :meta_desc, "Meta-Beschreibung" %>
+      <%= f.text_area :meta_desc, rows: 3, class: "form-control",
+          placeholder: "SEO-Beschreibung (max. 160 Zeichen)" %>
+    </div>
+  </div>
+
+  <%# Aktionen %>
+  <div class="admin-actions">
+    <%= f.submit @offer.persisted? ? "Änderungen speichern" : "Angebot erstellen", class: "btn btn--primary btn--lg" %>
+    <%= link_to "Zurück", admin_offers_path, class: "btn btn--ghost" %>
+    <% if @offer.persisted? %>
+      <%= link_to "Anzeigen", admin_offer_path(@offer), class: "btn btn--ghost" %>
+      <%= button_to "Löschen", admin_offer_path(@offer), method: :delete, class: "btn btn--danger",
+          form: { data: { turbo_confirm: "Angebot '#{@offer.card_title}' permanent löschen?" } } %>
+    <% end %>
+  </div>
+
+<% end %>

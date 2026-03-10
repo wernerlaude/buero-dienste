@@ -1,0 +1,87 @@
+<div class="admin-breadcrumbs">
+  <%= link_to "Admin", admin_root_path %> › <span>Angebote</span>
+</div>
+
+<div class="admin-header">
+  <h1>Angebote Verwaltung</h1>
+  <%= link_to "Neues Angebot", new_admin_offer_path, class: "btn btn--primary" %>
+</div>
+
+<%# Stats %>
+<div class="admin-stats">
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= number_with_delimiter(@stats[:total_views]) %></div>
+    <div class="admin-stat__label">Aufrufe gesamt</div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @stats[:total] %></div>
+    <div class="admin-stat__label">Angebote</div>
+  </div>
+</div>
+
+<%# Top & Partner %>
+<div class="content-box content-box--compact content-box--split">
+  <div class="content-box__left">
+    <h3 class="content-box__section-title">Top Angebote</h3>
+    <% @top_offers.each_with_index do |offer, i| %>
+      <p><strong><%= i + 1 %>.</strong> <%= offer.ident %> (<%= number_with_delimiter(offer.count) %>)</p>
+    <% end %>
+  </div>
+  <div class="content-box__right">
+    <h3 class="content-box__section-title">Partner pro Angebot</h3>
+    <% @user_stats.each do |ident, count| %>
+      <p><strong><%= ident %></strong>: <%= count %></p>
+    <% end %>
+  </div>
+</div>
+
+<%# Tabelle %>
+<% if @offers.any? %>
+  <div class="content-box content-box--compact">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Pos.</th>
+          <th>Status</th>
+          <th>Angebot & Kategorie</th>
+          <th>Bearbeitet</th>
+          <th>Aktionen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @offers.each do |offer| %>
+          <tr class="<%= 'admin-table__row--dimmed' unless offer.online? %>">
+            <td>
+              <%= offer.position || 0 %>
+              <div class="admin-table__actions" style="margin-top: 2px;">
+                <%= button_to "↑", move_up_admin_offer_path(offer), method: :patch %>
+                <%= button_to "↓", move_down_admin_offer_path(offer), method: :patch %>
+              </div>
+            </td>
+            <td>
+              <span class="badge badge--<%= offer.online? ? 'success' : 'muted' %>"><%= offer.online? ? 'Online' : 'Offline' %></span>
+            </td>
+            <td>
+              <%= link_to offer.card_title, admin_offer_path(offer) %>
+              <br><small class="text-muted"><%= offer.category_name %> · <%= offer.ident %></small>
+            </td>
+            <td><small><%= time_ago_in_words(offer.updated_at) %></small></td>
+            <td>
+              <div class="admin-table__actions">
+                <%= link_to "👁️", admin_offer_path(offer) %>
+                <%= link_to "✏️", edit_admin_offer_path(offer) %>
+                <%= button_to "🗑️", admin_offer_path(offer), method: :delete,
+                    form: { data: { turbo_confirm: "Angebot '#{offer.card_title}' löschen?" } } %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="content-box content-box--compact" style="text-align: center; padding: 3rem;">
+    <p>Keine Angebote vorhanden.</p>
+    <%= link_to "Erstes Angebot erstellen", new_admin_offer_path, class: "btn btn--primary" %>
+  </div>
+<% end %>
