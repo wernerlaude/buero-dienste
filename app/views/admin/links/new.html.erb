@@ -1,0 +1,11 @@
+<div class="admin-breadcrumbs">
+  <%= link_to "Admin", admin_root_path %> ›
+  <%= link_to "Links", admin_links_path %> ›
+  <span>Erstellen</span>
+</div>
+
+<div class="admin-header">
+  <h1>Link erstellen</h1>
+</div>
+
+<%= render "form", link: @link %>

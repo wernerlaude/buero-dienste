@@ -27,13 +27,16 @@ Rails.application.routes.draw do
   resources :offers, only: %i[show], path: "angebot"
   resources :users, only: %i[show], path: "ihr-partner"
 
-  resources :users, only: [:new, :create], path: "visitenkarte-buchen", as: :users
+  resources :users, only: [ :new, :create ], path: "visitenkarte-buchen", as: :users
   get "users/success" => "users#success", as: :success
   resources :blog_posts, only: %i[index show], path: "office-blogs"
 
   namespace :admin do
     root "dashboard#index"
     get "dashboard", to: "dashboard#index"
+
+    resources :links, except: [ :show ]
+    resources :tags, except: [ :show ]
 
     resources :users do
       member do
@@ -51,8 +54,6 @@ Rails.application.routes.draw do
         patch :move_down
       end
     end
-
-
   end
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

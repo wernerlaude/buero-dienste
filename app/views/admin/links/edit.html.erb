@@ -1,0 +1,27 @@
+<div class="admin-breadcrumbs">
+  <%= link_to "Admin", admin_root_path %> ›
+  <%= link_to "Links", admin_links_path %> ›
+  <span>Bearbeiten</span>
+</div>
+
+<div class="admin-header">
+  <h1>Link bearbeiten: <%= @link.bezeichner %></h1>
+</div>
+
+<%# Quick Stats %>
+<div class="admin-stats">
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @link.online? ? '✅' : '⏸️' %></div>
+    <div class="admin-stat__label"><%= @link.online? ? 'Online' : 'Offline' %></div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @link.position || 0 %></div>
+    <div class="admin-stat__label">Position</div>
+  </div>
+  <div class="admin-stat">
+    <div class="admin-stat__value"><%= @link.has_header_image? ? '🖼️' : '—' %></div>
+    <div class="admin-stat__label">Bild</div>
+  </div>
+</div>
+
+<%= render "form", link: @link %>

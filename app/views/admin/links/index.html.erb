@@ -1,0 +1,56 @@
+<div class="admin-breadcrumbs">
+  <%= link_to "Admin", admin_root_path %> › <span>Links</span>
+</div>
+
+<div class="admin-header">
+  <h1>Links Verwaltung (<%= @links.count %>)</h1>
+  <%= link_to "Neuer Link", new_admin_link_path, class: "btn btn--primary" %>
+</div>
+
+<% if @links.any? %>
+  <div class="content-box content-box--compact">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Pos.</th>
+          <th>Status</th>
+          <th>Bezeichner</th>
+          <th>URL</th>
+          <th>Bild</th>
+          <th>Aktionen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @links.each do |link| %>
+          <tr class="<%= 'admin-table__row--dimmed' unless link.online? %>">
+            <td><%= link.position || '-' %></td>
+            <td>
+              <span class="badge badge--<%= link.online? ? 'success' : 'muted' %>"><%= link.online? ? 'Online' : 'Offline' %></span>
+            </td>
+            <td><strong><%= link.bezeichner %></strong></td>
+            <td>
+              <% if link.target_url.present? %>
+                <%= link_to truncate(link.target_url, length: 40), link.target_url, target: "_blank", rel: "noopener" %>
+              <% else %>
+                <span class="text-muted">-</span>
+              <% end %>
+            </td>
+            <td><%= link.has_header_image? ? '🖼️' : '-' %></td>
+            <td>
+              <div class="admin-table__actions">
+                <%= link_to "✏️", edit_admin_link_path(link), title: "Bearbeiten" %>
+                <%= button_to "🗑️", admin_link_path(link), method: :delete,
+                    form: { data: { turbo_confirm: "Link '#{link.bezeichner}' löschen?" } } %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="content-box content-box--compact" style="text-align: center; padding: 3rem;">
+    <p>Keine Links vorhanden.</p>
+    <%= link_to "Ersten Link erstellen", new_admin_link_path, class: "btn btn--primary" %>
+  </div>
+<% end %>

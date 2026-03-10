@@ -1,0 +1,41 @@
+<%= form_with model: [:admin, tag], local: true,
+              data: {
+                controller: "tag-edit",
+                action: "submit->tag-edit#validateForm"
+              } do |f| %>
+
+  <div class="form-section">
+    <h3 class="content-box__section-title ">🏷️ Tag-Informationen</h3>
+
+    <div class="form-group">
+      <%= f.label :name, "Tag-Name" %>
+      <%= f.text_field :name,
+                       class: "form-control",
+                       placeholder: "Name des Tags...",
+                       data: { "tag-edit-target": "nameField" } %>
+      <div class="form-hint">Der Name des Tags (eindeutig und aussagekräftig).</div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :verweis, "Verweis" %>
+      <%= f.text_field :verweis,
+                       class: "form-control",
+                       placeholder: "URL, Pfad oder Referenz...",
+                       data: {
+                         "tag-edit-target": "verweisField",
+                         action: "input->tag-edit#updateVerweisCount"
+                       } %>
+      <div class="form-hint">
+        Optionaler Verweis zu einer URL, Seite oder Ressource. &mdash;
+        <span data-tag-edit-target="verweisCount">0</span> Zeichen
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit tag.persisted? ? "💾 Änderungen speichern" : "➕ Tag erstellen",
+                 class: "btn btn-primary" %>
+    <%= link_to "↩️ Zurück zur Übersicht", admin_tags_path, class: "btn btn-secondary" %>
+  </div>
+
+<% end %>

@@ -6,8 +6,8 @@ SitemapGenerator::Sitemap.create do
   add root_path, changefreq: "daily", priority: 1.0
   add datenschutz_path, changefreq: "yearly"
   add impressum_path, changefreq: "yearly"
-  #add werbung_path, changefreq: "weekly"                # /werbung-schalten
-  #add ihre_visitenkarte_path, changefreq: "monthly"     # /ihre-visitenkarte
+  # add werbung_path, changefreq: "weekly"                # /werbung-schalten
+  # add ihre_visitenkarte_path, changefreq: "monthly"     # /ihre-visitenkarte
   add hilfreiche_links_path, changefreq: "monthly"      # /hilfreiche-links
   add faq_path, changefreq: "weekly"                    # /fragen-und-atworten
 

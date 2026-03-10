@@ -1,0 +1,66 @@
+<%= form_with model: [:admin, link], local: true,
+              data: { controller: "link-edit", action: "submit->link-edit#validateForm" } do |f| %>
+
+  <%# Status & Position %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Status & Position</h3>
+    <div class="form-group--row">
+      <div class="form-group">
+        <%= f.label :online, "Status" %>
+        <%= f.select :online,
+            options_for_select([['Offline', false], ['Online', true]], link.online),
+            {}, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :position %>
+        <%= f.number_field :position, min: 0, placeholder: "z.B. 10", class: "form-control" %>
+        <p class="form-hint">Niedrigere Zahlen = weiter oben.</p>
+      </div>
+    </div>
+  </div>
+
+  <%# Medien %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Header-Bild</h3>
+    <div class="form-group">
+      <% if link.has_header_image? %>
+        <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-sm);">
+          <%= image_tag link.header_image, style: "max-width: 200px; border-radius: var(--radius-sm);" %>
+          <div>
+            <small><%= link.header_image.blob.filename %> (<%= number_to_human_size(link.header_image.blob.byte_size) %>)</small>
+          </div>
+        </div>
+      <% end %>
+      <%= f.file_field :header_image, accept: "image/*", class: "form-control" %>
+      <p class="form-hint"><%= link.has_header_image? ? 'Neues Bild wählen um das aktuelle zu ersetzen.' : 'Optionales Header-Bild (JPG, PNG, GIF – max. 5MB).' %></p>
+    </div>
+  </div>
+
+  <%# Link-Informationen %>
+  <div class="content-box content-box--compact">
+    <h3 class="content-box__section-title">Link-Informationen</h3>
+    <div class="form-group">
+      <%= f.label :bezeichner, "Bezeichner" %>
+      <%= f.text_field :bezeichner, placeholder: "Name/Titel des Links", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :target_url, "Ziel-URL" %>
+      <%= f.url_field :target_url, placeholder: "https://example.com", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :beschreibung, "Beschreibung" %>
+      <%= f.text_area :beschreibung, rows: 4, placeholder: "Optionale Beschreibung...", class: "form-control" %>
+    </div>
+  </div>
+
+  <%# Aktionen %>
+  <div class="admin-actions">
+    <%= f.submit link.persisted? ? "Änderungen speichern" : "Link erstellen", class: "btn btn--primary btn--lg" %>
+    <%= link_to "Zurück", admin_links_path, class: "btn btn--ghost" %>
+    <% if link.persisted? %>
+      <%= button_to "Löschen", admin_link_path(link), method: :delete, class: "btn btn--danger",
+          form: { data: { turbo_confirm: "Link '#{link.bezeichner}' löschen?" } } %>
+    <% end %>
+  </div>
+
+<% end %>

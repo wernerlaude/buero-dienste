@@ -1,0 +1,63 @@
+<div class="content-box content-box--text">
+
+  <div class="breadcrumbs">
+    <%= link_to "🏠 Admin", admin_root_path %> &rsaquo;
+    <%= link_to "🏷️ Tags", admin_tags_path %> &rsaquo;
+    <span>Bearbeiten</span>
+  </div>
+
+  <h2>✏️ Tag bearbeiten</h2>
+  <p>Bearbeite die Informationen für diesen Tag.</p>
+
+  <table class="blog-table">
+    <tbody>
+      <tr>
+        <td><strong>Name</strong></td>
+        <td>🏷️ <%= @tag.name %></td>
+      </tr>
+      <tr>
+        <td><strong>Verweis</strong></td>
+        <td>
+          <% if @tag.verweis.present? %>
+            <%= truncate(@tag.verweis, length: 60) %>
+          <% else %>
+            <span style="color: var(--color-text-muted);">Nicht gesetzt</span>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Erstellt</strong></td>
+        <td><%= l(@tag.created_at, format: :long) %></td>
+      </tr>
+      <tr>
+        <td><strong>Zuletzt bearbeitet</strong></td>
+        <td><%= l(@tag.updated_at, format: :long) %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <%= render 'form', tag: @tag %>
+
+</div>
+
+<% if @tag.name.present? %>
+  <div class="content-box content-box--simple">
+    <h4>💡 Empfehlungen zur Tag-Qualität</h4>
+
+    <% if @tag.name.length < 2 %>
+      <p>⚠️ <strong>Name zu kurz</strong> – Tag-Namen sollten mindestens 2 Zeichen lang sein.</p>
+    <% end %>
+
+    <% if @tag.name.length > 50 %>
+      <p>📏 <strong>Langer Name</strong> – Sehr lange Namen können die Darstellung beeinträchtigen.</p>
+    <% end %>
+
+    <% unless @tag.verweis.present? %>
+      <p>🔗 <strong>Verweis hinzufügen</strong> – Ein Verweis kann hilfreich für die Zuordnung oder Navigation sein.</p>
+    <% end %>
+
+    <% if @tag.verweis.present? && @tag.verweis.length > 200 %>
+      <p>📏 <strong>Langer Verweis</strong> – Sehr lange Verweise können unübersichtlich werden.</p>
+    <% end %>
+  </div>
+<% end %>

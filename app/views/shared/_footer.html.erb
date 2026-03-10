@@ -19,7 +19,7 @@
     <div class="footer__section">
       <h4 class="footer__heading">Informationen</h4>
       <%#= link_to "Über uns", root_path, class: "footer__link" %>
-      <%= link_to "Werbung schalten", werbung_path, class: "footer__link" %>
+      <%= link_to "Werbung schalten", werbung_path, class: "footer__link" %>ds
       <%= link_to "Office Blogs", blog_posts_path, class: "footer__link" %>
       <%= link_to "Visitenkarte anlegen", new_user_path, class: "footer__link" %>
     </div>
@@ -34,6 +34,6 @@
   </div>
 
   <div class="footer__bottom">
-    <div class="footer__copy">© <%= Date.current.year %> buero-dienstleistungen.com · WebDesign WebPages</div>
+    <div class="footer__copy">© <%= Date.current.year %> buero-dienstleistungen.com · <%=link_to "WebDesign WebPages", "https://www.webdesign-webpages.de", target: "_blank" %></div>
   </div>
 </footer>

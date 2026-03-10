@@ -59,6 +59,16 @@
             <span>Blog Posts</span>
           <% end %>
 
+          <%= link_to admin_links_path, class: "admin-nav__item #{'admin-nav__item--active' if current_page?(admin_links_path)}" do %>
+            <span class="admin-nav__icon">🔗</span>
+            <span>Links</span>
+          <% end %>
+
+          <%= link_to admin_tags_path, class: "admin-nav__item #{'admin-nav__item--active' if current_page?(admin_tags_path)}" do %>
+            <span class="admin-nav__icon">🏷️</span>
+            <span>Tags</span>
+          <% end %>
+
         </nav>
       </div>
     </div>

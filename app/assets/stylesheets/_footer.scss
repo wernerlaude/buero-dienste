@@ -45,6 +45,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    a{
+      color: var(--color-accent);
+    }
   }
 
   &__copy {

@@ -1,0 +1,66 @@
+<div class="content-box content-box--text">
+
+  <div class="breadcrumbs">
+    <%= link_to "🏠 Admin", admin_root_path %> &rsaquo;
+    <span>🏷️ Tags</span>
+  </div>
+
+  <h2>🏷️ Tags Verwaltung</h2>
+  <p>Verwalte alle Tags und deren Verweise.</p>
+
+  <div class="form-actions">
+    <%= link_to "➕ Neuer Tag", new_admin_tag_path, class: "btn btn-primary" %>
+  </div>
+
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Verweis</th>
+        <th>Erstellt</th>
+        <th>Aktionen</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @tags.any? %>
+        <% @tags.each do |tag| %>
+          <tr>
+            <td>🏷️ <%= tag.name %></td>
+            <td>
+              <% if tag.verweis.present? %>
+                <%= truncate(tag.verweis, length: 50) %>
+              <% else %>
+                <span style="color: var(--color-text-muted);">—</span>
+              <% end %>
+            </td>
+            <td><%= l(tag.created_at, format: :short) %></td>
+            <td>
+              <div class="actions">
+                <%= link_to "✏️", edit_admin_tag_path(tag),
+                            class: "btn btn-sm btn-secondary",
+                            title: "Bearbeiten" %>
+                <%= button_to "🗑️", admin_tag_path(tag),
+                              method: :delete,
+                              class: "btn btn-sm btn-danger",
+                              title: "Löschen",
+                              form: {
+                                data: {
+                                  turbo_confirm: "Bist du sicher? Der Tag '#{tag.name}' wird permanent gelöscht."
+                                }
+                              } %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="4" style="text-align: center; padding: var(--space-2xl); color: var(--color-text-muted);">
+            <p>🏷️ Noch keine Tags vorhanden.</p>
+            <%= link_to "➕ Ersten Tag erstellen", new_admin_tag_path, class: "btn btn-primary" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

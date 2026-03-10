@@ -1,0 +1,25 @@
+<div class="content-box content-box--text">
+
+  <div class="breadcrumbs">
+    <%= link_to "🏠 Admin", admin_root_path %> &rsaquo;
+    <%= link_to "🏷️ Tags", admin_tags_path %> &rsaquo;
+    <span>Erstellen</span>
+  </div>
+
+  <h2>➕ Tag erstellen</h2>
+  <p>Erstelle einen neuen Tag für die Kategorisierung.</p>
+
+  <%= render 'form', tag: @tag %>
+
+</div>
+
+<div class="content-box content-box--simple">
+  <h4>💡 Tipps für gute Tags</h4>
+
+  <div class="intro-box__pills">
+    <span class="intro-box__pill">🎯 Aussagekräftige Namen</span>
+    <span class="intro-box__pill">🔗 Optionale Verweise</span>
+    <span class="intro-box__pill">📝 Konsistente Benennung</span>
+    <span class="intro-box__pill">🏷️ Eindeutigkeit</span>
+  </div>
+</div>

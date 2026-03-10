@@ -9,5 +9,4 @@ class NoticeMailer < ApplicationMailer
     @url = "https://www.buero-dienstleistungen.com"
     mail(to: @user.email, subject: "Willommen bei buero-dienstleistungen.com")
   end
-
 end

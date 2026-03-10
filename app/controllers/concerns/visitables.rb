@@ -15,6 +15,8 @@ module Visitables
     @visits_all ||= User.online.pluck(:count).sum
     @visits_min ||= User.minimum(:count)
     @visits_max ||= User.maximum(:count)
+    @visits_schnitt ||= @homepage_days > 0 ? (@visits_all.to_f / @homepage_days).round(2) : 0
+    @visits_heute ||= Rails.cache.read("visits_#{Date.current}") || 0
   end
 
   def get_blogs_read

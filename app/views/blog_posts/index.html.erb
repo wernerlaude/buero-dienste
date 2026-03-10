@@ -78,9 +78,7 @@
 
 
 <%= content_for :sidebar do %>
-  <div class="sidebar-card">
-  <%= render "shared/sidebar_table", blog_posts: @blog_posts, header: "Blogs Post" %>
-  </div>
+  <%= render "shared/sidebar_table", blog_posts: @blog_posts, header: "Aktuelle Blogs" %>
 <% end %>
 
 <% content_for :meta_title do %>

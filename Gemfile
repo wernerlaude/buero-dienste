@@ -30,7 +30,7 @@ end
 
 group :development do
   gem "web-console"
-  gem 'letter_opener_web'
+  gem "letter_opener_web"
 end
 
 gem "geocoder"

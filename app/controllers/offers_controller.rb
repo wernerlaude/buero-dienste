@@ -10,7 +10,7 @@ class OffersController < ApplicationController
 
   private
   def grouped_offers(offer)
-    Rails.cache.fetch(["users_offers", offer.id], expires_in: 12.hours) do
+    Rails.cache.fetch([ "users_offers", offer.id ], expires_in: 12.hours) do
       users = offer.users.with_attached_header_image
       {
         premium: users.premium.plz.online.to_a,

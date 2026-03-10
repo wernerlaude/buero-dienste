@@ -94,7 +94,7 @@ class Admin::OffersController < AdminController
   def offer_params
     params.require(:offer).permit(
       :card_title, :ident, :slug, :keywords, :online, :position,
-      :category, :search_priority, :description, :short_description
+      :category, :search_priority, :description, :short_desc, :header_title
     )
   end
 end

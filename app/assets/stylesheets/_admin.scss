@@ -19,10 +19,13 @@
 
 // Admin Page Layout
 .page--admin {
+  // Sidebar auf volle Höhe des Grids strecken (kein align-self: flex-start)
   .page__sidebar--admin {
-    position: sticky;
-    top: calc(var(--navbar-height) + var(--space-md));
-    align-self: flex-start;
+    // Sticky-Verhalten über den Inhalt, nicht die Sidebar selbst
+    > * {
+      position: sticky;
+      top: calc(var(--navbar-height) + var(--space-md));
+    }
   }
 
   .content-box--compact {

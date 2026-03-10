@@ -2,7 +2,7 @@ class User < ApplicationRecord
   include Visitable
 
   before_create :generate_otp_secret
-  #after_validation :geocode, on: %i[create update]
+  # after_validation :geocode, on: %i[create update]
   geocoded_by :fulladdress
 
   after_save :clear_related_caches
@@ -100,7 +100,7 @@ class User < ApplicationRecord
     Offer.clear_offers_cache
     # Auch die grouped_offers Caches leeren
     offers.each do |offer|
-      Rails.cache.delete(["users_offers", offer.id])
+      Rails.cache.delete([ "users_offers", offer.id ])
     end
   end
 
