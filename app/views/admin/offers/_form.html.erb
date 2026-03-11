@@ -2,21 +2,21 @@
               url: @offer.persisted? ? admin_offer_path(@offer) : admin_offers_path,
               method: @offer.persisted? ? :patch : :post,
               local: true,
-              data: { controller: "offer-edit" } do |f| %>
+              data: { controller: "offer-edit" } do |form| %>
 
   <%# Status & Position %>
   <div class="content-box content-box--compact">
     <h3 class="content-box__section-title">Status & Anordnung</h3>
     <div class="form-group--row">
       <div class="form-group">
-        <%= f.label :online, "Status" %>
-        <%= f.select :online,
+        <%= form.label :online, "Status" %>
+        <%= form.select :online,
                      options_for_select([['Online', true], ['Offline', false]], @offer.persisted? ? @offer.online : true),
                      {}, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :position, "Position" %>
-        <%= f.number_field :position, min: 1, class: "form-control",
+        <%= form.label :position, "Position" %>
+        <%= form.number_field :position, min: 1, class: "form-control",
                            placeholder: @offer.persisted? ? @offer.position : (Offer.maximum(:position) || 0) + 1 %>
         <p class="form-hint">Niedrigere Zahlen = weiter oben.</p>
       </div>
@@ -27,25 +27,25 @@
   <div class="content-box content-box--compact">
     <h3 class="content-box__section-title">Grundinformationen</h3>
     <div class="form-group">
-      <%= f.label :card_title, "Angebots-Titel *" %>
-      <%= f.text_field :card_title, required: true, class: "form-control",
+      <%= form.label :card_title, "Angebots-Titel *" %>
+      <%= form.text_field :card_title, required: true, class: "form-control",
                        placeholder: "z.B. Professionelle Buchhaltung",
                        data: { "offer-edit-target": "titleField", action: "blur->offer-edit#generateSlug" } %>
     </div>
     <div class="form-group">
-      <%= f.label :header_title, "Header-Titel" %>
-      <%= f.text_field :header_title, class: "form-control",
+      <%= form.label :header_title, "Header-Titel" %>
+      <%= form.text_field :header_title, class: "form-control",
                        placeholder: "Titel für die Detailseite (leer = Angebots-Titel)" %>
       <p class="form-hint">Wird auf der Angebots-Detailseite als Überschrift angezeigt.</p>
     </div>
     <div class="form-group--row">
       <div class="form-group">
-        <%= f.label :ident, "Identifikator" %>
-        <%= f.text_field :ident, class: "form-control", placeholder: "buchhaltung" %>
+        <%= form.label :ident, "Identifikator" %>
+        <%= form.text_field :ident, class: "form-control", placeholder: "buchhaltung" %>
       </div>
       <div class="form-group">
-        <%= f.label :slug, "URL-Slug" %>
-        <%= f.text_field :slug, class: "form-control", placeholder: "wird automatisch generiert",
+        <%= form.label :slug, "URL-Slug" %>
+        <%= form.text_field :slug, class: "form-control", placeholder: "wird automatisch generiert",
                          data: { "offer-edit-target": "slugField" } %>
       </div>
     </div>
@@ -56,14 +56,14 @@
     <h3 class="content-box__section-title">Kategorisierung</h3>
     <div class="form-group--row">
       <div class="form-group">
-        <%= f.label :category, "Kategorie *" %>
-        <%= f.select :category,
+        <%= form.label :category, "Kategorie *" %>
+        <%= form.select :category,
                      options_for_select(Offer::CATEGORIES.map { |id, name| [name, id] }, @offer.category),
                      { prompt: 'Kategorie wählen' }, { required: true, class: "form-control" } %>
       </div>
       <div class="form-group">
-        <%= f.label :search_priority, "Such-Priorität" %>
-        <%= f.number_field :search_priority, min: 0, max: 100, class: "form-control",
+        <%= form.label :search_priority, "Such-Priorität" %>
+        <%= form.number_field :search_priority, min: 0, max: 100, class: "form-control",
                            placeholder: "0-100" %>
         <p class="form-hint">Höher = weiter oben in Suchergebnissen.</p>
       </div>
@@ -74,36 +74,34 @@
   <div class="content-box content-box--compact">
     <h3 class="content-box__section-title">Beschreibungen</h3>
     <div class="form-group">
-      <%= f.label :short_desc, "Kurzbeschreibung" %>
-      <%= f.text_area :short_desc, rows: 4, class: "form-control",
+      <%= form.label :short_desc, "Kurzbeschreibung" %>
+      <%= form.text_area :short_desc, rows: 4, class: "form-control",
                       placeholder: "Kurze Beschreibung für Listen (100-200 Zeichen)" %>
     </div>
     <div class="form-group">
-      <%= f.label :description, "Detaillierte Beschreibung" %>
-      <%= f.text_area :description, rows: 20, class: "form-control",
+      <%= form.label :description, "Detaillierte Beschreibung" %>
+      <%= form.text_area :description, rows: 20, class: "form-control",
                       placeholder: "Ausführliche Beschreibung des Angebots..." %>
     </div>
   </div>
 
   <%# SEO %>
   <div class="content-box content-box--compact">
-    <h3 class="content-box__section-title">SEO & Keywords</h3>
+    <h3 class="content-box__section-title">SEO</h3>
     <div class="form-group">
-      <%= f.label :keywords, "Keywords (komma-getrennt)" %>
-      <%= f.text_area :keywords, rows: 3, class: "form-control",
-                      placeholder: "buchhaltung, steuerberatung, finanzen" %>
-      <p class="form-hint">3-10 Keywords optimal für die Suche.</p>
+      <%= form.label :header_title, "Header-Title" %>
+      <%= form.text_field :header_title, class: "form-control"%>
     </div>
     <div class="form-group">
-      <%= f.label :meta_desc, "Meta-Beschreibung" %>
-      <%= f.text_area :meta_desc, rows: 3, class: "form-control",
+      <%= form.label :meta_desc, "Meta-Beschreibung" %>
+      <%= form.text_area :meta_desc, rows: 3, class: "form-control",
                       placeholder: "SEO-Beschreibung (max. 160 Zeichen)" %>
     </div>
   </div>
 
   <%# Aktionen %>
   <div class="admin-actions">
-    <%= f.submit @offer.persisted? ? "Änderungen speichern" : "Angebot erstellen", class: "btn btn--primary btn--lg" %>
+    <%= form.submit @offer.persisted? ? "Änderungen speichern" : "Angebot erstellen", class: "btn btn--primary btn--lg" %>
     <%= link_to "Zurück", admin_offers_path, class: "btn btn--ghost" %>
     <% if @offer.persisted? %>
       <%= link_to "Anzeigen", admin_offer_path(@offer), class: "btn btn--ghost" %>

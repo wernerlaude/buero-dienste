@@ -21,16 +21,6 @@
     <div class="admin-stat__label">Aufrufe</div>
   </div>
   <div class="admin-stat">
-    <div class="admin-stat__value"><%= @blog_post.ratings_count || 0 %></div>
-    <div class="admin-stat__label">Bewertungen</div>
-  </div>
-  <% if @blog_post.ratings_count.to_i > 0 %>
-    <div class="admin-stat admin-stat--accent">
-      <div class="admin-stat__value">⭐ <%= @blog_post.average_rating %></div>
-      <div class="admin-stat__label">Durchschnitt</div>
-    </div>
-  <% end %>
-  <div class="admin-stat">
     <div class="admin-stat__value"><%= @blog_post.content.present? ? @blog_post.content.split.count : 0 %></div>
     <div class="admin-stat__label">Wörter</div>
   </div>
@@ -86,7 +76,7 @@
     <div class="admin-detail">
       <span class="admin-detail__label">Hauptinhalt (<%= @blog_post.content.split.count %> Wörter)</span>
       <div class="admin-content-preview">
-        <%= format_me(@blog_post.content) %>
+        <%= format_text(@blog_post.content) %>
       </div>
     </div>
   <% end %>

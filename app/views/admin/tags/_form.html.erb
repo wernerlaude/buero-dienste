@@ -2,14 +2,14 @@
               data: {
                 controller: "tag-edit",
                 action: "submit->tag-edit#validateForm"
-              } do |f| %>
+              } do |form| %>
 
   <div class="form-section">
     <h3 class="content-box__section-title ">🏷️ Tag-Informationen</h3>
 
     <div class="form-group">
-      <%= f.label :name, "Tag-Name" %>
-      <%= f.text_field :name,
+      <%= form.label :name, "Tag-Name" %>
+      <%= form.text_field :name,
                        class: "form-control",
                        placeholder: "Name des Tags...",
                        data: { "tag-edit-target": "nameField" } %>
@@ -17,8 +17,8 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :verweis, "Verweis" %>
-      <%= f.text_field :verweis,
+      <%= form.label :verweis, "Verweis" %>
+      <%= form.text_field :verweis,
                        class: "form-control",
                        placeholder: "URL, Pfad oder Referenz...",
                        data: {
@@ -33,7 +33,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.submit tag.persisted? ? "💾 Änderungen speichern" : "➕ Tag erstellen",
+    <%= form.submit tag.persisted? ? "💾 Änderungen speichern" : "➕ Tag erstellen",
                  class: "btn btn-primary" %>
     <%= link_to "↩️ Zurück zur Übersicht", admin_tags_path, class: "btn btn-secondary" %>
   </div>

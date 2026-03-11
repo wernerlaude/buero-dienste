@@ -2,19 +2,19 @@
               data: {
                 controller: "blog-post-edit",
                 action: "submit->blog-post-edit#validateForm"
-              } do |f| %>
+              } do |form| %>
 
   <%# Status %>
   <div class="content-box content-box--compact">
     <h3 class="content-box__section-title">Status & Sichtbarkeit</h3>
     <div class="form-group">
-      <%= f.label :online, "Veröffentlichungsstatus" %>
-      <%= f.select :online,
-                   options_for_select([
-                                        ['Entwurf (Offline)', false],
-                                        ['Veröffentlicht (Online)', true]
-                                      ], blog_post.online),
-                   {}, class: "form-control" %>
+      <%= form.label :online, "Veröffentlichungsstatus" %>
+      <%= form.select :online,
+                      options_for_select([
+                                           ['Entwurf (Offline)', false],
+                                           ['Veröffentlicht (Online)', true]
+                                         ], blog_post.online),
+                      {}, class: "form-control" %>
       <p class="form-hint">Bestimmt, ob der Artikel öffentlich sichtbar ist.</p>
     </div>
   </div>
@@ -23,8 +23,8 @@
   <div class="content-box content-box--compact">
     <h3 class="content-box__section-title">Verfasser</h3>
     <div class="form-group">
-      <%= f.label :user_id, "Autor" %>
-      <%= f.select :user_id, User.all.map { |c| [c.fullname, c.id] }, {}, class: "form-control" %>
+      <%= form.label :user_id, "Autor" %>
+      <%= form.select :user_id, User.all.map { |c| [c.fullname, c.id] }, {}, class: "form-control" %>
     </div>
   </div>
 
@@ -32,18 +32,18 @@
   <div class="content-box content-box--compact">
     <h3 class="content-box__section-title">Titel & Überschriften</h3>
     <div class="form-group">
-      <%= f.label :title, "Haupttitel" %>
-      <%= f.text_field :title, placeholder: "Der Haupttitel des Blog-Artikels...", class: "form-control",
-                       data: { "blog-post-edit-target": "titleField", action: "blur->blog-post-edit#updateMetaTitle" } %>
+      <%= form.label :title, "Haupttitel" %>
+      <%= form.text_field :title, placeholder: "Der Haupttitel des Blog-Artikels...", class: "form-control",
+                          data: { "blog-post-edit-target": "titleField", action: "blur->blog-post-edit#updateMetaTitle" } %>
       <p class="form-hint">Der Haupttitel, der im Artikel angezeigt wird.</p>
     </div>
     <div class="form-group">
-      <%= f.label :subtitle, "Untertitel" %>
-      <%= f.text_field :subtitle, placeholder: "Zusätzlicher Untertitel (optional)...", class: "form-control" %>
+      <%= form.label :subtitle, "Untertitel" %>
+      <%= form.text_field :subtitle, placeholder: "Zusätzlicher Untertitel (optional)...", class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :list_title, "Listen-Titel" %>
-      <%= f.text_field :list_title, placeholder: "Titel für Übersichten (optional)...", class: "form-control" %>
+      <%= form.label :list_title, "Listen-Titel" %>
+      <%= form.text_field :list_title, placeholder: "Titel für Übersichten (optional)...", class: "form-control" %>
       <p class="form-hint">Alternativer Titel für Listen und Übersichten.</p>
     </div>
   </div>
@@ -52,27 +52,28 @@
   <div class="content-box content-box--compact">
     <h3 class="content-box__section-title">Inhalte</h3>
     <div class="form-group">
-      <%= f.label :teaser, "Teaser / Kurzbeschreibung" %>
-      <%= f.text_area :teaser, rows: 3, placeholder: "Kurze Zusammenfassung...", class: "form-control",
-                      data: { "blog-post-edit-target": "teaserField", action: "input->blog-post-edit#updateTeaserCount" } %>
+      <%= form.label :teaser, "Teaser / Kurzbeschreibung" %>
+      <%= form.text_area :teaser, rows: 3, placeholder: "Kurze Zusammenfassung...", class: "form-control",
+                         data: { "blog-post-edit-target": "teaserField", action: "input->blog-post-edit#updateTeaserCount" } %>
       <p class="form-hint">
         Kurzbeschreibung für Vorschauen.
         <span data-blog-post-edit-target="teaserCount">0</span> Zeichen
       </p>
     </div>
     <div class="form-group">
-      <%= f.label :content, "Hauptinhalt" %>
-      <%= f.text_area :content, rows: 30, placeholder: "Der vollständige Inhalt...", class: "form-control",
-                      data: { "blog-post-edit-target": "contentField", action: "input->blog-post-edit#updateContentWordCount" } %>
+      <%= form.label :content, "Hauptinhalt" %>
+      <%= form.text_area :content, rows: 30, placeholder: "Der vollständige Inhalt...", class: "form-control",
+                         data: { "blog-post-edit-target": "contentField", action: "input->blog-post-edit#updateContentWordCount" } %>
       <p class="form-hint">
+        <span data-blog-post-edit-target="contentCharCount">0</span> Zeichen ·
         <span data-blog-post-edit-target="contentWordCount">0</span> Wörter ·
         ~<span data-blog-post-edit-target="readingTime">0</span> Min. Lesezeit
       </p>
     </div>
     <div class="form-group">
-      <%= f.label :lesezeit, "Lesezeit (Minuten)" %>
-      <%= f.number_field :lesezeit, readonly: true, class: "form-control",
-                         data: { "blog-post-edit-target": "readingTimeField" } %>
+      <%= form.label :lesezeit, "Lesezeit (Minuten)" %>
+      <%= form.number_field :lesezeit, readonly: true, class: "form-control",
+                            data: { "blog-post-edit-target": "readingTimeField" } %>
     </div>
   </div>
 
@@ -80,14 +81,14 @@
   <div class="content-box content-box--compact">
     <h3 class="content-box__section-title">SEO & Meta-Daten</h3>
     <div class="form-group">
-      <%= f.label :meta_title, "Meta-Titel" %>
-      <%= f.text_field :meta_title, placeholder: "SEO-optimierter Titel...", class: "form-control" %>
+      <%= form.label :meta_title, "Meta-Titel" %>
+      <%= form.text_field :meta_title, placeholder: "SEO-optimierter Titel...", class: "form-control" %>
       <p class="form-hint">Titel für Suchmaschinen (max. 60 Zeichen).</p>
     </div>
     <div class="form-group">
-      <%= f.label :meta_desc, "Meta-Beschreibung" %>
-      <%= f.text_area :meta_desc, rows: 3, placeholder: "SEO-Beschreibung...", class: "form-control",
-                      data: { "blog-post-edit-target": "metaField", action: "input->blog-post-edit#updateMetaCount" } %>
+      <%= form.label :meta_desc, "Meta-Beschreibung" %>
+      <%= form.text_area :meta_desc, rows: 3, placeholder: "SEO-Beschreibung...", class: "form-control",
+                         data: { "blog-post-edit-target": "metaField", action: "input->blog-post-edit#updateMetaCount" } %>
       <p class="form-hint">
         Beschreibung für Suchergebnisse (max. 160 Zeichen).
         <span data-blog-post-edit-target="metaCount">0</span> Zeichen
@@ -100,19 +101,19 @@
     <h3 class="content-box__section-title">Medien & Verweise</h3>
     <div class="form-group--row">
       <div class="form-group">
-        <%= f.label :bildnachweis, "Bildnachweis" %>
-        <%= f.text_field :bildnachweis, placeholder: "Quelle/Copyright...", class: "form-control" %>
+        <%= form.label :bildnachweis, "Bildnachweis" %>
+        <%= form.text_field :bildnachweis, placeholder: "Quelle/Copyright...", class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :verweis, "Link/Verweis" %>
-        <%= f.url_field :verweis, placeholder: "https://example.com", class: "form-control" %>
+        <%= form.label :verweis, "Link/Verweis" %>
+        <%= form.url_field :verweis, placeholder: "https://example.com", class: "form-control" %>
       </div>
     </div>
   </div>
 
   <%# Aktionen %>
   <div class="admin-actions">
-    <%= f.submit blog_post.persisted? ? "Änderungen speichern" : "Blog-Post erstellen", class: "btn btn--primary btn--lg" %>
+    <%= form.submit blog_post.persisted? ? "Änderungen speichern" : "Blog-Post erstellen", class: "btn btn--primary btn--lg" %>
 
     <% if blog_post.persisted? %>
       <%= link_to "Anzeigen", admin_blog_post_path(blog_post), class: "btn btn--ghost" %>
