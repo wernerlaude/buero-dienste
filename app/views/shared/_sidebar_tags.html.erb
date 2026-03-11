@@ -6,8 +6,9 @@
     <% tags.each do |tag| %>
       <div class="premium-entry premium-entry--compact">
         <div class="premium-entry__info">
-          <div class="premium-entry__name"><%= tag.name %></div>
-          <%= link_to "Nachschaun →", tag.verweis, class: "premium-entry__link" %>
+          <div class="premium-entry__name">
+          <%= link_to tag.name, tag.verweis, class: "premium-entry__link" %>  →
+          </div>
         </div>
       </div>
     <% end %>

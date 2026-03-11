@@ -12,8 +12,8 @@
       <div class="hero__stat-label">Dienstleister</div>
     </div>
     <div>
-      <div class="hero__stat-value"><%#= number_with_delimiter(@total_visits || 0) %></div>
-      <div class="hero__stat-label">Besuchte Angebote</div>
+      <div class="hero__stat-value">Ø 850 Seiten</div>
+      <div class="hero__stat-label">Angesehen / Tag</div>
     </div>
     <div>
       <div class="hero__stat-value"><%= Offer.count %></div>
@@ -22,15 +22,20 @@
   </div>
 <% end %>
 <% content_for :hero_picture do %>
-  <%= image_tag "hero/buero-frau.webp", alt: "Werbung buchen" %>
+  <%= image_tag "hero/werbung.webp", alt: "Werbung buchen" %>
 <% end %>
 
 
 
 <%# Intro %>
 <div class="intro-box">
-
-  <p class="intro-box__text">Inhalte kommen bald
+  <h3>Für sich werben:</h3>
+  <h4>Sie können bei mir gegen eine Gebühr Werbung schalten, eine Anzeige oder/und einen Artikel mit Backlinks
+    buchen.</h4>
+  <p>Wir besprechen gemeinsam den Umfang und Aufwand.
+    Ihre Anzeige sollte in etwa in das 'Bürodienstleistungen'-Umfeld passen und die mein Portal besuchende Zielgruppe
+    ansprechen.</p>
+  <p>Bitte wenden Sie sich per mail an:<br/> <%= mail_to "support@buero-dienstleistungen.com" %></p>
 </div>
 
 <div class="content-box content-box--text">
@@ -39,13 +44,13 @@
 </div>
 
 <% content_for :meta_title do %>
-  Werben Sie für sich und Ihr Unternehmen
+Werben Sie für sich und Ihr Unternehmen
 <% end %>
 
 <% content_for :meta_desc do %>
-  Visitenkarten, Werbung, Inserate und Backlinks schalten auf www.buero-dienstleistungen.com
+Visitenkarten, Werbung, Inserate und Backlinks schalten auf www.buero-dienstleistungen.com
 <% end %>
 
 <% content_for :cano do %>
-  https://www.buero-dienstleistungen.com/werbung
+https://www.buero-dienstleistungen.com/werbung
 <% end %>

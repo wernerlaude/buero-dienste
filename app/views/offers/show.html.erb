@@ -9,7 +9,9 @@
       <div class="hero__stat-label">Dienstleister</div>
     </div>
   </div>
+
 <% end %>
+
 <% content_for :hero_picture do %>
   <%= image_tag("hero/#{@offer.image}", alt: @offer.title) %>
 <% end %>
@@ -87,6 +89,11 @@
   </div>
 <% end %>
 
+<div class="content-box content-box--text">
+  <div class="prose">
+    <%= format_text(@offer.description) %>
+  </div>
+</div>
 
 <%= content_for :sidebar do %>
   <div class="sidebar-card">
@@ -123,13 +130,13 @@
 
 
 <% content_for :meta_title do %>
-<%= @offer.header_title %>
+  <%= @offer.header_title %>
 <% end %>
 
 <% content_for :meta_desc do %>
-<%= @offer.meta_desc %>
+  <%= @offer.meta_desc %>
 <% end %>
 
 <% content_for :cano do %>
-https://www.buero-dienstleistungen.com/angebot/<%= @offer.slug.parameterize %>
+  https://www.buero-dienstleistungen.com/angebot/<%= @offer.slug.parameterize %>
 <% end %>
