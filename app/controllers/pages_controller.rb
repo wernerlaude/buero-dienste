@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   def index
     @offers = Offer.cached_offers
     @blog_posts = BlogPost.cached_blogs
+    @latest_blog_post ||= BlogPost.pluck(:id).last
     @bundeslands =Bundesland.cached_bundeslands
     @new_partner ||= User.where(online: true).last
     @tags = Tag.cached_tags

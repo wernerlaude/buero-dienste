@@ -129,3 +129,9 @@
     margin-top: var(--space-sm);
   }
 }
+
+.premium-entry--active {
+  background: var(--color-primary-light);
+  border-left: 3px solid var(--color-accent);
+  padding-left: var(--space-sm);
+}

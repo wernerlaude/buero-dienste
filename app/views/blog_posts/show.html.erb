@@ -3,11 +3,11 @@
   <span class="hero__eyebrow">✦ Über <%= User.online.count %> erfahrene Dienstleister</span>
   <h1 class="hero__title">Blog Post: <%= @blog_post.list_title %></h1>
   <p class="hero__subtitle">Worum geht es?</p>
-  <p><%= @blog_post.teaser %></p>
+  <p><%=  format_text(@blog_post.teaser) %></p>
 
 <% end %>
 <% content_for :hero_picture do %>
-  <%= image_tag "hero/blog_posts.webp", alt: "Büro Blog Posts" %>
+  <%= image_tag "hero/blogs.webp", alt: "Büro Blog Posts" %>
 <% end %>
 
 

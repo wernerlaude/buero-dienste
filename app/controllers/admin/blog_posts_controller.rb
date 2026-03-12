@@ -3,7 +3,7 @@ class Admin::BlogPostsController < AdminController
 
   def index
     begin
-      @blog_posts = BlogPost.includes(:user)
+      @blog_posts = BlogPost.sortiert.includes(:user)
 
       # Stats für Dashboard
       @stats = {
