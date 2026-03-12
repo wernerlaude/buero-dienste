@@ -84,7 +84,7 @@
 
 .profile-image {
   flex: 0 0 320px;
-  max-height: 300px;
+  align-self: stretch;
   overflow: hidden;
   margin: calc(var(--space-lg) * -1);
   margin-left: 0;
