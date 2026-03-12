@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get "datenschutz" => "pages#datenschutz"
   get "impressum" => "pages#impressum"
 
+  # routes.rb
+  # routes.rb
+  get "tabs/:tab", to: "pages#tab", as: :page_tab
   get "users/search", to: "users#search", as: :search_users
 
   resources :bundeslands, only: :show, path: "buerodienstleister-in-ihrem-bundesland"

@@ -11,6 +11,16 @@ class PagesController < ApplicationController
     get_besucheranzahl
   end
 
+  def tab
+    case params[:tab]
+    when "bundesland"
+      @bundeslands = Bundesland.cached_bundeslands
+      render partial: "pages/bundesland", locals: { bundeslands: @bundeslands }, layout: false
+    when "plz"
+      render partial: "pages/plz_suche", layout: false
+    end
+  end
+
   def werbung; end
   def impressum; end
   def datenschutz; end

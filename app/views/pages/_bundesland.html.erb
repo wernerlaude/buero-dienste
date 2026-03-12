@@ -1,8 +1,7 @@
-<div data-toggle-tabs-target="panel" data-panel-id="bundesland" hidden>
+<turbo-frame id="tab-bundesland">
   <h3 class="category-label">Nach Bundesland</h3>
-
   <div class="accordion">
-    <% @bundeslands.each do |bundesland| %>
+    <% bundeslands.each do |bundesland| %>
       <% if bundesland.users.any? %>
         <details class="accordion__item">
           <summary class="accordion__header">
@@ -35,3 +34,4 @@
     <% end %>
   </div>
 </div>
+</turbo-frame>

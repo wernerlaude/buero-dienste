@@ -85,9 +85,24 @@
     </div>
   </div>
 
-  <%= render "pages/category_cards" %>
-  <%= render "pages/bundesland", bundeslands: @bundeslands %>
-  <%= render "pages/plz_suche" %>
+  <%# Fachbereiche – sofort geladen %>
+  <div data-toggle-tabs-target="panel" data-panel-id="fachbereiche">
+    <%= render "pages/category_cards" %>
+  </div>
+
+  <%# Bundesland – lazy per Turbo Frame %>
+  <turbo-frame id="tab-bundesland" data-toggle-tabs-target="panel" data-panel-id="bundesland"
+               src="<%= page_tab_path(:bundesland) %>"
+               loading="lazy"
+               class="is-hidden">
+  </turbo-frame>
+
+  <%# PLZ-Suche – lazy per Turbo Frame %>
+  <turbo-frame id="tab-plz" data-toggle-tabs-target="panel" data-panel-id="plz"
+               src="<%= page_tab_path(:plz) %>"
+               loading="lazy"
+               class="is-hidden">
+  </turbo-frame>
 
 </div>
 

@@ -1,4 +1,4 @@
-<div data-toggle-tabs-target="panel" data-panel-id="plz" hidden>
+<turbo-frame id="tab-plz">
   <div class="search-box">
     <p class="search-box__intro">Geben Sie Ihre Postleitzahl ein und starten die Suche.</p>
     <%= form_with url: search_users_path, method: :get, data: { turbo_frame: "search_results" }, class: "search-box__form" do |f| %>
@@ -15,7 +15,6 @@
       </div>
     <% end %>
   </div>
-
   <turbo-frame id="search_results">
   </turbo-frame>
-</div>
+</turbo-frame>

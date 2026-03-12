@@ -1,7 +1,7 @@
 <% content_for :main_class, "prose" %>
 <% content_for :hero_content do %>
   <span class="hero__eyebrow">✦ Über <%= User.online.count %> erfahrene Dienstleister</span>
-  <h1 class="hero__title">Blog Post: <%= @blog_post.list_title %></h1>
+  <h1 class="hero__title"><%= @blog_post.list_title %></h1>
   <p class="hero__subtitle">Worum geht es?</p>
   <p><%=  format_text(@blog_post.teaser) %></p>
 

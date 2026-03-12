@@ -6,7 +6,7 @@
       <div class="premium-entry premium-entry--compact <%= 'premium-entry--active' if @latest_blog_post == post.id %>">
         <div class="premium-entry__info">
           <div class="premium-entry__name"><%= post.list_title %></div>
-          <%= link_to "Weiterlesen →", blog_post_path(post), class: "premium-entry__link" %>
+          <%= link_to "Lesen →", blog_post_path(post), class: "premium-entry__link" %>
         </div>
       </div>
     <% end %>
