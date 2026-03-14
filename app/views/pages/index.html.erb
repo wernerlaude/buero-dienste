@@ -193,19 +193,9 @@
     <%# end %>
   </div>
 
-  <%= render "shared/cta_card", image: "sidebar/cta.webp", visits_min: @visits_min, visits_max: @visits_max %>
+  <%= render "shared/cta_card", visits_min: @visits_min, visits_max: @visits_max %>
   <%= render "shared/new_partner", user: @new_partner %>
-
-
-  <article class="partner-card">
-    <div class="partner-card__body">
-      <h4 class="partner-card__name">Werbung schalten</h4>
-      <p class="partner-card__company">Erreichen Sie Ihre Zielgruppe auf unserem Portal.</p>
-    </div>
-    <div class="partner-card__action">
-      <%= link_to "» Mehr erfahren «", werbung_path, class: "btn btn--accent" %>
-    </div>
-  </article>
+  <%= render "shared/flow_card", image: "sidebar/cta.webp" %>
 
   <%= render "shared/sidebar_table", blog_posts: @blog_posts, header: "Office Blogs" %>
   <%= render "shared/sidebar_tags", tags: @tags, header: "Tags" %>

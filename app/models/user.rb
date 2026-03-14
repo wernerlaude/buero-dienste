@@ -62,7 +62,7 @@ class User < ApplicationRecord
   end
 
   def for_cano
-    [vorname, nachname, firmenname.presence || ort].join("-")
+    [ vorname, nachname, firmenname.presence || ort ].join("-")
   end
 
   def fullname
