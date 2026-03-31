@@ -180,7 +180,7 @@ GEM
       net-imap
       net-pop
       net-smtp
-    mailgun-ruby (1.4.2)
+    mailgun-ruby (1.4.3)
       faraday (~> 2.1)
       faraday-multipart (< 2)
       mini_mime
@@ -518,7 +518,7 @@ CHECKSUMS
   loofah (2.25.1) sha256=d436c73dbd0c1147b16c4a41db097942d217303e1f7728704b37e4df9f6d2e04
   lucide-rails (0.7.4) sha256=74d99cc79a9c5f2e8b0fa772756bc9190acad16dc58b21f25d4c3009c57e4393
   mail (2.9.0) sha256=6fa6673ecd71c60c2d996260f9ee3dd387d4673b8169b502134659ece6d34941
-  mailgun-ruby (1.4.2) sha256=48abc4a75d4290d6d7cbdce923f5c2006a01f51f8d1b08a255737ef0baaf4fbc
+  mailgun-ruby (1.4.3) sha256=beb2481c9a591c2f9fb460d673c5c839be60eccf2c19094463e237dee109c3cc
   marcel (1.1.0) sha256=fdcfcfa33cc52e93c4308d40e4090a5d4ea279e160a7f6af988260fa970e0bee
   mini_magick (5.3.1) sha256=29395dfd76badcabb6403ee5aff6f681e867074f8f28ce08d78661e9e4a351c4
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
