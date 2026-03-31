@@ -1,9 +1,9 @@
 default: &default
-  adapter: mysql2
   encoding: utf8mb4
+  collation: utf8mb4_general_ci
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch("DB_USERNAME", "root") %>
-  password: <%= ENV.fetch("DB_PASSWORD", "Taxi4343") %>
+  username: <%= Rails.application.credentials.dig(:database, :username) || 'root' %>
+  password: <%= Rails.application.credentials.dig(:database, :password) || '' %>
   socket: /tmp/mysql.sock
 
 sqlite: &sqlite
@@ -14,25 +14,24 @@ sqlite: &sqlite
 development:
   primary:
     <<: *default
-    database: buero_dev
+    adapter: mysql2
+    database: buero_dienstleistungen_development
     socket: /tmp/mysql.sock
 
 production:
   primary:
     adapter: mysql2
-    encoding: utf8mb4
-    collation: utf8mb4_general_ci
     database: buero_production
-    username: "buero"
-    password: "Taxi4343;"
+    username: <%= Rails.application.credentials.dig(:database, :username) || 'root' %>
+    password: <%= Rails.application.credentials.dig(:database, :password) || '' %>
     socket: /var/run/mysqld/mysqld.sock
   cache:
     adapter: mysql2
     encoding: utf8mb4
     collation: utf8mb4_general_ci
     database: buero_production_cache
-    username: "buero"
-    password: "Taxi4343;"
+    username: <%= Rails.application.credentials.dig(:database, :username) || 'root' %>
+    password: <%= Rails.application.credentials.dig(:database, :password) || '' %>
     socket: /var/run/mysqld/mysqld.sock
     migrations_paths: db/cache_migrate
   queue:

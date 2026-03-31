@@ -18,8 +18,4 @@ module Visitables
   def mark_latest
     @latest_blog_post ||= BlogPost.pluck(:id).last
   end
-
-
-
-
 end

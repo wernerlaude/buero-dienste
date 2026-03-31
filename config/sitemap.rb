@@ -1,33 +1,28 @@
-# Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://www.buero-dienstleistungen.com/"
+require "rubygems"
+require "sitemap_generator"
+
+SitemapGenerator::Sitemap.default_host = "https://www.buero-dienstleistungen.com"
 
 SitemapGenerator::Sitemap.create do
-  # 👉 Statische Seiten
-  add root_path, changefreq: "daily", priority: 1.0
-  add datenschutz_path, changefreq: "yearly"
-  add impressum_path, changefreq: "yearly"
-  # add werbung_path, changefreq: "weekly"                # /werbung-schalten
-  # add ihre_visitenkarte_path, changefreq: "monthly"     # /ihre-visitenkarte
-  add hilfreiche_links_path, changefreq: "monthly"      # /hilfreiche-links
-  add faq_path, changefreq: "weekly"                    # /fragen-und-atworten
+  # Statische Seiten
+  add "/", changefreq: "daily", priority: 1.0
+  add "/datenschutz", changefreq: "yearly"
+  add "/impressum", changefreq: "yearly"
+  add "/werbung-schalten", changefreq: "weekly"
+  add "/hilfreiche-links", changefreq: "monthly"
 
-  # 👉 Blogs (office-blog_posts)
-  BlogPost.find_each do |blog_post|
-    add blog_post_path(blog_post), lastmod: blog_post.updated_at, changefreq: "weekly"
+  # Blogs
+  BlogPost.online.find_each do |blog_post|
+    add "/office-blogs/#{blog_post.to_param}", lastmod: blog_post.updated_at, changefreq: "weekly"
   end
 
-  # 👉 Bundesländer (bueroservice-in-ihrem-bundeslands)
-  Bundesland.find_each do |bundesland|
-    add bundesland_path(bundesland), lastmod: bundesland.updated_at, changefreq: "weekly"
+  # Angebote
+  Offer.online.find_each do |offer|
+    add "/angebot/#{offer.slug}", lastmod: offer.updated_at, changefreq: "weekly"
   end
 
-  # 👉 Angebote (angebot)
-  Offer.find_each do |offer|
-    add offer_path(offer), lastmod: offer.updated_at, changefreq: "weekly"
-  end
-
-  # 👉 Nutzer (ihr-partner) – nur show!
-  User.find_each do |user|
-    add user_path(user), lastmod: user.updated_at, changefreq: "weekly"
+  # User
+  User.online.find_each do |user|
+    add "/ihr-partner/#{user.to_param}", lastmod: user.updated_at, changefreq: "weekly"
   end
 end

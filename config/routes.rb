@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
   root "pages#index"
 
+  get "/angebot/buero-ordnungssysteme", to: redirect("/angebot/buero-sortierdienst", status: 301)
+  get "/angebot/virtuelles-buero-und-virtuelle-assistenz", to: redirect("/angebot/virtuelle-assistenz", status: 301)
+
   get "/angebot/ordnungssysteme-im-buero", to: redirect("/angebot/bueroservice", status: 301)
   get "/aufbewahrungsfristen" => redirect("/office-blogs/7-aufbewahrungsfristen-private-dokumente-rechnungen", status: 301)
   get "/angebot/12-schreibservice" => redirect("/angebot/12-sekretariatsservice-schreibservice", status: 301)
 
   get "/angebot/12-schreibservice", to: redirect("/angebot/12-sekretariatsservice-schreibservice", status: 301)
   get "/buerodienstleister-in-ihrem-bundesland/*path", to: redirect("/", status: 301)
+
 
   # DANN die Show-Route (nur einmal!)
   get "angebot/:id", to: "offers#show"

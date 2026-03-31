@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem "rails", "~> 8.1.2"
 gem "propshaft"
-gem "mysql2", "~> 0.5"
+gem "mysql2", "~> 0.5.4"
 gem "sqlite3", ">= 2.1"
 gem "puma", ">= 5.0"
 gem "importmap-rails"

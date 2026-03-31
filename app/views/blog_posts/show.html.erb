@@ -58,5 +58,5 @@ OfficeBlog - <%= @blog_post.meta_desc %>
 <% end %>
 
 <% content_for :cano do %>
-https://www.buero-dienstleistungen.com/office-blogs/<%= @blog_post.id %>-<%= @blog_post.meta_title.parameterize %>
+https://www.buero-dienstleistungen.com/office-blogs/<%= @blog_post.id %>-<%= @blog_post.meta_title.parameterize(locale: :de) %>
 <% end %>
