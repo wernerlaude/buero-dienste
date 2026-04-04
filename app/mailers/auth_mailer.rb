@@ -3,13 +3,6 @@ class AuthMailer < ApplicationMailer
     @user = user
     @auth_code = auth_code
 
-    mail(to: @user.email, subject: "#{@auth_code} ist Ihr Verification Code")
-  end
-
-  def visitor_code(visitor, auth_code)
-    @visitor = visitor
-    @auth_code = auth_code
-
-    mail(to: @visitor.email, subject: "#{@auth_code} ist Ihr Verification Code")
+    mail(to: @user.email, subject: "#{@auth_code} is your verification code")
   end
 end

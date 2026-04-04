@@ -85,7 +85,7 @@ class Admin::BlogPostsController < AdminController
   def blog_post_params
     params.require(:blog_post).permit(
       :title, :list_title, :subtitle, :teaser, :content,
-      :meta_title, :meta_desc, :online, :bildnachweis, :verweis, :user_id, :online, :lesezeit
+      :meta_title, :meta_desc, :online, :bildnachweis, :verweis, :user_id, :online, :lesezeit, :target_url
     )
   end
 end

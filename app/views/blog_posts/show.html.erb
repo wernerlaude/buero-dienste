@@ -40,7 +40,9 @@
           <% end %>
         </p>
       <% end %>
-      <p class="sidebar-card__subtitle blue"><b>Lesezeit:</b> <%= @blog_post.lesezeit %> min<br/><b>Aufrufe:</b> <%= @blog_post.count %></p>
+      <p class="sidebar-card__subtitle blue"><b>Lesezeit:</b> <%= @blog_post.lesezeit %> min<br/>
+        <b>Link:</b> <%=link_to @blog_post.target_url, @blog_post.target_url, target: "_blank" %><br/>
+        <b>Aufrufe:</b> <%= @blog_post.count %></p>
     </div>
   </div>
 

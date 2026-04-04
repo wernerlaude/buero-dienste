@@ -129,6 +129,26 @@
     }
   }
 
+  &__login-hint {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 0.375rem 0.875rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    margin-left: var(--space-xs);
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+  }
+
   &__status {
     font-size: 0.875rem;
     font-weight: 500;
@@ -165,10 +185,10 @@
     width: 200%;
     height: 200%;
     background: linear-gradient(
-                    120deg,
-                    transparent 30%,
-                    rgba(255, 255, 255, 0.2) 50%,
-                    transparent 70%
+            120deg,
+            transparent 30%,
+            rgba(255, 255, 255, 0.2) 50%,
+            transparent 70%
     );
     animation: logo-shine 4s ease-in-out infinite;
   }

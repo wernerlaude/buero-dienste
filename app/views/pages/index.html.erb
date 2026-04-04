@@ -177,20 +177,8 @@
   <div class="sidebar-card">
     <h3 class="sidebar-card__header">Premium Login</h3>
     <div class="sidebar-card__body">
-      <%#= turbo_frame_tag :login_frame do %>
-      <%#= form_with(url: premium_auth_path, data: { turbo_frame: "login_frame" }) do |form| %>
-      <div class="form-group">
-        <%#= form.email_field :email, placeholder: "Ihre E-Mail Adresse",
-                                 required: true, class: "sidebar-login__input" %>
-      </div>
-      <%#= form.submit "Code senden", class: "btn btn--primary btn--full" %>
-      <p class="sidebar-login__hintttt">
-        Dieser Bereich wird gerade überarbeitet. In dringenden Fällen direkt anmailen: support@buero-dienstleistungen.com
-      </p>
-      <%# end %>
-      <%# end %>
+      <%= render "shared/premium_login" %>
     </div>
-    <%# end %>
   </div>
 
   <%= render "shared/cta_card", visits_min: @visits_min, visits_max: @visits_max %>

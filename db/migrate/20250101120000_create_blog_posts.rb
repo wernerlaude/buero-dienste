@@ -15,6 +15,7 @@ class CreateBlogPosts < ActiveRecord::Migration[8.0]
       t.string :verweis
       t.integer :count
       t.integer :ratings_count
+      t.integer :target_url
 
       t.timestamps
     end

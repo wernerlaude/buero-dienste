@@ -23,10 +23,13 @@
     </div>
 
     <div class="navbar__actions">
-      <%# if logged_in? %>
-        <%#= link_to "Visitenkarte bearbeiten", edit_business_card_path, class: "navbar__link" %>
-        <span class="navbar__status"><%#= current_user.fullname %></span>
-      <%# end %>
+      <% if logged_in? %>
+        <%= link_to "Mein Bereich", premium_root_path, class: "btn btn--outline btn--sm" %>
+        <span class="navbar__status"><%= current_user.email %></span>
+      <% else %>
+        <span class="navbar__login-hint">nicht eingeloggt</span>
+      <% end %>
     </div>
+
   </div>
 </nav>

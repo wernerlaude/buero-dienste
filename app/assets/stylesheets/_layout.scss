@@ -169,3 +169,43 @@ article.prose {
   border-radius: var(--radius-md);
   padding: var(--space-xl);
 }
+
+// ===========================================
+// Sidebar Statistiken (Premium Dashboard)
+// ===========================================
+.sidebar-stat {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
+
+  &__label {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+  }
+}
+.sidebar-login__link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-primary);
+  font-size: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    color: var(--color-primary-dark);
+  }
+}

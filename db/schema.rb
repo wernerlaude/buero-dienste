@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_08_193219) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_04_144420) do
   create_table "access_tokens", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.datetime "expires_at"
     t.string "token"
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
@@ -70,6 +71,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_08_193219) do
     t.boolean "online"
     t.integer "ratings_count"
     t.string "subtitle"
+    t.string "target_url"
     t.text "teaser"
     t.string "title"
     t.datetime "updated_at", precision: nil

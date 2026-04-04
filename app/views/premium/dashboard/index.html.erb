@@ -1,0 +1,55 @@
+<% content_for :hero_content do %>
+  <span class="hero__eyebrow">✦ Premium Bereich</span>
+  <h1 class="hero__title">Willkommen, <%= current_user.fullname %></h1>
+  <p class="hero__subtitle">Hier verwalten Sie Ihr Premium-Profil und sehen Ihre Statistiken.</p>
+<% end %>
+
+<%# Hauptbereich %>
+<turbo-frame id="premium_profile_frame">
+
+  <div class="intro-box">
+    <div class="intro-box__text">
+      <h2>Ihr Profil bearbeiten</h2>
+      <h3>Halten Sie Ihre Daten aktuell</h3>
+      <p>Hier können Sie alle Angaben Ihrer Visitenkarte jederzeit anpassen –
+        Adresse, Kontaktdaten, Beschreibung, Bilder und mehr.</p>
+    </div>
+  </div>
+
+  <%= render "premium/profile/form" %>
+
+</turbo-frame>
+
+
+<%# Sidebar %>
+<% content_for :sidebar do %>
+
+  <%# Statistiken %>
+  <div class="sidebar-card">
+    <h3 class="sidebar-card__header">Ihre Statistiken</h3>
+    <div class="sidebar-card__body">
+      <div class="sidebar-stat">
+        <span class="sidebar-stat__number"><%= current_user.count %></span>
+        <span class="sidebar-stat__label">Profilaufrufe gesamt</span>
+      </div>
+      <div class="sidebar-stat">
+        <span class="sidebar-stat__number"><%= current_user.booked_at.strftime("%d.%m.%Y") %></span>
+        <span class="sidebar-stat__label">Premium seit</span>
+      </div>
+    </div>
+  </div>
+
+  <%# Aktionen %>
+  <div class="sidebar-card">
+    <h3 class="sidebar-card__header">Aktionen</h3>
+    <div class="sidebar-card__body">
+      <%= link_to "» Visitenkarte ansehen «", user_path(current_user),
+                  class: "btn btn--outline btn--full",
+                  target: "_blank" %>
+      <br><br>
+      <%= button_to "Logout", premium_auth_path, method: :delete,
+                    class: "btn btn--ghost btn--full" %>
+    </div>
+  </div>
+
+<% end %>

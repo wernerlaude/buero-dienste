@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dein Anmeldecode</title>
+  <style type="text/css">
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          font-size: 16px;
+          line-height: 1.6;
+          color: #2d3748;
+          background-color: #E1ECF4;
+          -webkit-font-smoothing: antialiased;
+      }
+
+      .email-wrapper {
+          width: 100%;
+          padding: 32px 16px;
+          background-color: #E1ECF4;
+      }
+
+      .email-container {
+          max-width: 600px;
+          margin: 0 auto;
+          background: #ffffff;
+          border-radius: 8px;
+          overflow: hidden;
+          border: 1px solid #cacaca;
+      }
+
+      /* Header */
+      .email-header {
+          background: linear-gradient(135deg, #28538F 0%, #2c5282 100%);
+          padding: 32px 40px;
+          text-align: left;
+      }
+
+      .email-header__logo {
+          display: inline-block;
+          width: 36px;
+          height: 36px;
+          background: rgba(255, 255, 255, 0.15);
+          border-radius: 6px;
+          text-align: center;
+          line-height: 36px;
+          color: #fff;
+          font-weight: 700;
+          font-size: 16px;
+          margin-bottom: 12px;
+      }
+
+      .email-header h1 {
+          color: #ffffff;
+          font-size: 22px;
+          font-weight: 700;
+          margin: 0 0 4px;
+      }
+
+      .email-header p {
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 14px;
+          margin: 0;
+      }
+
+      /* Badge */
+      .email-badge {
+          display: inline-block;
+          background: #fef7eb;
+          color: #d4922a;
+          font-size: 12px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          padding: 4px 12px;
+          border-radius: 100px;
+          margin-bottom: 16px;
+      }
+
+      /* Body */
+      .email-body {
+          padding: 32px 40px;
+      }
+
+      .email-body h2 {
+          font-size: 20px;
+          font-weight: 700;
+          color: #2c5282;
+          margin: 0 0 8px;
+      }
+
+      .email-body p {
+          font-size: 15px;
+          line-height: 1.7;
+          color: #2d3748;
+          margin: 0 0 12px;
+      }
+
+      /* Divider */
+      .email-divider {
+          border: none;
+          height: 2px;
+          background: #e8a838;
+          margin: 24px 0;
+          width: 60px;
+      }
+
+      /* Code Box */
+      .email-code-box {
+          background: #E1ECF4;
+          border: 2px solid #28538F;
+          border-radius: 8px;
+          padding: 32px 20px;
+          margin: 24px 0;
+          text-align: center;
+      }
+
+      .email-code-box__label {
+          font-size: 13px;
+          font-weight: 600;
+          color: #718096;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          margin: 0 0 16px;
+      }
+
+      .email-code-box__code {
+          font-size: 38px;
+          font-weight: 700;
+          color: #28538F;
+          letter-spacing: 0.5em;
+          font-family: 'Courier New', Courier, monospace;
+          margin: 0 0 16px;
+          display: block;
+      }
+
+      .email-code-box__hint {
+          font-size: 13px;
+          color: #718096;
+          margin: 0;
+      }
+
+      /* Warning */
+      .email-warning {
+          background: #fffbeb;
+          border-left: 4px solid #e8a838;
+          border-radius: 0 6px 6px 0;
+          padding: 14px 18px;
+          margin: 20px 0;
+      }
+
+      .email-warning p {
+          font-size: 13px;
+          color: #92400e;
+          margin: 0;
+      }
+
+      /* Signature */
+      .email-signature {
+          margin-top: 24px;
+          padding-top: 16px;
+          border-top: 1px solid #dedee4;
+      }
+
+      .email-signature p {
+          font-size: 14px;
+          color: #718096;
+          margin: 0;
+      }
+
+      .email-signature strong {
+          color: #2d3748;
+      }
+
+      /* Footer */
+      .email-footer {
+          background: #2c5282;
+          padding: 20px 40px;
+          text-align: center;
+      }
+
+      .email-footer p {
+          color: rgba(255, 255, 255, 0.6);
+          font-size: 12px;
+          margin: 0 0 4px;
+      }
+
+      .email-footer a {
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+      }
+
+      /* Responsive */
+      @media only screen and (max-width: 640px) {
+          .email-body,
+          .email-header,
+          .email-footer {
+              padding-left: 20px !important;
+              padding-right: 20px !important;
+          }
+
+          .email-header h1 {
+              font-size: 18px !important;
+          }
+
+          .email-code-box__code {
+              font-size: 48px !important;
+              letter-spacing: 0.4em !important;
+          }
+      }
+  </style>
+</head>
+<body>
+<div class="email-wrapper">
+  <div class="email-container">
+
+    <!-- Header -->
+    <div class="email-header">
+      <div class="email-header__logo">B</div>
+      <h1>buero-dienstleistungen.com</h1>
+      <p>Ihr Portal für Bürodienstleistungen</p>
+    </div>
+
+    <!-- Body -->
+    <div class="email-body">
+      <span class="email-badge">✦ Anmeldung</span>
+
+      <h2>Dein Anmeldecode</h2>
+      <hr class="email-divider">
+
+      <p>Hallo <%= @user.email %>,</p>
+      <p>du hast eine Anmeldung angefordert. Gib den folgenden Code ein, um dich einzuloggen:</p>
+
+      <!-- Code Box -->
+      <div class="email-code-box">
+        <p class="email-code-box__label">Dein Einmalcode</p>
+        <h4 class="email-code-box__code" style="font-size:38px;font-weight:700;color:#28538F;letter-spacing:0.5em;font-family:'Courier New',Courier,monospace;margin:0 0 16px;display:block;"><%= @auth_code %></h4>
+        <p class="email-code-box__hint">⏱ Gültig für 5 Minuten</p>
+      </div>
+
+      <!-- Sicherheitshinweis -->
+      <div class="email-warning">
+        <p>⚠️ Du hast diese Anmeldung nicht angefordert? Dann ignoriere diese E-Mail einfach – dein Konto bleibt sicher.</p>
+      </div>
+
+      <!-- Signatur -->
+      <div class="email-signature">
+        <p>Herzliche Grüße</p>
+        <p><strong>Werner Laude</strong></p>
+        <p>buero-dienstleistungen.com</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="email-footer">
+      <p>© <%= Date.current.year %> buero-dienstleistungen.com · Alle Rechte vorbehalten</p>
+      <p><a href="https://www.buero-dienstleistungen.com">www.buero-dienstleistungen.com</a></p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

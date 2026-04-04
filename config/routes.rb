@@ -63,6 +63,13 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :premium do
+    root to: "dashboard#index"
+    resource :auth, only: [ :show, :create, :destroy ], controller: "auth"
+    resource :auth_verification, only: [ :show, :create ], controller: "auth_verification"
+    resource :profile, only: [ :edit, :update ], controller: "profile"
+  end
+
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   get "up" => "rails/health#show", as: :rails_health_check
