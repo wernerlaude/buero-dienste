@@ -42,5 +42,5 @@ gem "mailgun-ruby"
 gem "sitemap_generator"
 gem "whenever", require: false
 gem "lucide-rails"
-gem "lexxy", "~> 0.1.4.beta"
+gem "lexxy", "~> 0.9.3.beta"
 gem "girocode"
