@@ -1,34 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="63829bf0-7fff-41f9-b2a0-da74b1058464" name="Changes" comment="DB Credientials">
-      <change afterPath="$PROJECT_DIR$/app/controllers/concerns/lookupable.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/premium/auth_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/premium/auth_verification_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/premium/base_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/premium/dashboard_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/premium/profile_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/auth_mailer/auth_code.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/premium/dashboard/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/premium/profile/_form.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/premium/profile/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/shared/_premium_login.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/shared/_premium_verification.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20260404144420_add_expires_at_to_access_tokens.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/agrarbetrieb-digitalisierung.webp" afterDir="false" />
+    <list default="true" id="63829bf0-7fff-41f9-b2a0-da74b1058464" name="Changes" comment="Premium eingebaut">
+      <change afterPath="$PROJECT_DIR$/app/assets/fonts/Inter-VariableFont_opsz,wght.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Buero-Dienste.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Buero-Dienste.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/_layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_layout.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/_navbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_navbar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admin/blog_posts_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/blog_posts_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mailers/auth_mailer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/mailers/auth_mailer.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/access_token.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/access_token.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/blog_posts/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/blog_posts/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/fonts/Inter-VariableFont_opsz,wght.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/fonts/Inter-VariableFont_opsz,wght.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/_base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_base.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/_cards.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_cards.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/_hero.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_hero.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/application.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/blog_posts/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/blog_posts/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/links/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/links/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/offers/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/offers/show.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/pages/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/pages/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/shared/_navbar.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/shared/_navbar.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20250101120000_create_blog_posts.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250101120000_create_blog_posts.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/premium/profile/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/premium/profile/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/shared/_category_card.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/shared/_category_card.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/users/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/importmap.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/importmap.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,9 +79,9 @@
     "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
     "WebServerToolWindowPanel.toolwindow.show.size": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.lang.ruby.rbs.tools.collection.workspace.sync.RbsCollectionUpdateProjectActivity#LAST_UPDATE_TIMESTAMP": "1775304013133",
+    "com.intellij.lang.ruby.rbs.tools.collection.workspace.sync.RbsCollectionUpdateProjectActivity#LAST_UPDATE_TIMESTAMP": "1775571734539",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/wernerlaude/RubyMineProjects/Buero-Dienste/db/migrate",
+    "last_opened_file_path": "/Users/wernerlaude/RubyMineProjects/Buero-Dienste/app/assets/fonts",
     "nodejs.jest.jest_package": "",
     "ruby.structure.view.model.defaults.configured": "true",
     "settings.editor.selected.configurable": "preferences.pluginManager",
@@ -97,11 +90,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/assets/fonts" />
       <recent name="$PROJECT_DIR$/db/migrate" />
       <recent name="$PROJECT_DIR$/app/views" />
       <recent name="$PROJECT_DIR$/app/mailers" />
       <recent name="$PROJECT_DIR$/app/controllers/concerns" />
-      <recent name="$PROJECT_DIR$/public/images" />
     </key>
   </component>
   <component name="RubocopSettings">
@@ -389,7 +382,9 @@
       <workItem from="1774946775466" duration="722000" />
       <workItem from="1775303954209" duration="2395000" />
       <workItem from="1775306384539" duration="706000" />
-      <workItem from="1775314823198" duration="7136000" />
+      <workItem from="1775314823198" duration="7393000" />
+      <workItem from="1775397079211" duration="981000" />
+      <workItem from="1775571675544" duration="3966000" />
     </task>
     <task id="LOCAL-00001" summary="DB Credientials">
       <option name="closed" value="true" />
@@ -399,7 +394,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774946678209</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Premium eingebaut">
+      <option name="closed" value="true" />
+      <created>1775322439958</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1775322439958</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,7 +410,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="DB Credientials" />
-    <option name="LAST_COMMIT_MESSAGE" value="DB Credientials" />
+    <MESSAGE value="Premium eingebaut" />
+    <option name="LAST_COMMIT_MESSAGE" value="Premium eingebaut" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Buero_Dienste@DB_MIgrate.rcov" NAME="DB:MIgrate Coverage Results" MODIFIED="1773569324325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="Buero-Dienste" />

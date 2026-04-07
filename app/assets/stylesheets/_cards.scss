@@ -90,6 +90,13 @@
       height: 2rem;
       stroke: var(--color-primary);
     }
+    // img-Tag für SVG-Dateien
+    img {
+      width: 2rem;      // ← neu
+      height: 2rem;     // ← neu
+      display: block;   // ← neu: kein inline-gap
+      flex-shrink: 0;   // ← neu: nicht zusammendrücken lassen
+    }
   }
 
   &__title {

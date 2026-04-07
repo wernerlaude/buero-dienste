@@ -16,8 +16,7 @@
   <meta property="og:url" content="https://www.buero-dienstleistungen.com/"/>
   <meta property="og:site_name" content="Bürodienstleistungen & Büroservice"/>
   <meta name="page-topic" content="Bürodienstleistungen & Büroservice einfach finden">
-  <meta name="robots" content="index,follow"/>
-  <meta name="robots" content="max-image-preview:large">
+  <meta name="robots" content="index,follow,max-image-preview:large"/>
   <meta name="google-site-verification" content="Is-GJdfnCiSznBbBPdDfQuzaikCIRcBz5lR7SYxbPw4"/>
   <meta name="seobility" content="c4acddfe4057dc59d395212a268d0038">
   <meta name="thumbnail" content="https://www.buero-dienstleistungen.com/images/thumbnail.webp"/>
@@ -25,48 +24,52 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
-  <link rel="icon" href="/icon.png" type="image/png">
+  <%# Icons — je einmal reicht %>
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" href="/icon.png" type="image/png">
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
-
-  <link rel="apple-touch-icon" href="/icon.png">
   <link rel="apple-touch-icon" href="<%= asset_path('apple-icon.png') %>">
 
   <link rel="canonical" href="<%= yield :cano %>"/>
 
+  <%# Font preloaden — vor den Stylesheets %>
+  <%= tag.link rel: "preload",
+               href: asset_path("Inter-VariableFont_opsz,wght.woff2"),
+               as: "font",
+               type: "font/woff2",
+               crossorigin: "anonymous" %>
+
   <%= stylesheet_link_tag :application, "data-turbo-track": "reload" %>
-  <%= stylesheet_link_tag "lexxy" %>
+  <%# Falls lexxy wirklich ein separates Bundle braucht: %>
+  <%= stylesheet_link_tag "lexxy", "data-turbo-track": "reload" %>
+
   <%= javascript_importmap_tags %>
+  <%= yield :page_scripts %>
 
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "url": "https://www.buero-dienstleistungen.com",
-  "name": "Büro Dienstleistungen",
-  "description": "Finden Sie professionelle Büroservices, digitale Assistenz, Dokumentenservices und mehr. Anbieter vergleichen und direkt kontaktieren.",
-  "inLanguage": "de",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Büro Dienstleistungen",
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
     "url": "https://www.buero-dienstleistungen.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://www.buero-dienstleistungen.com/images/thumbnail.webp"
+    "name": "Büro Dienstleistungen",
+    "description": "Finden Sie professionelle Büroservices, digitale Assistenz, Dokumentenservices und mehr.",
+    "inLanguage": "de",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Büro Dienstleistungen",
+      "url": "https://www.buero-dienstleistungen.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.buero-dienstleistungen.com/images/thumbnail.webp"
+      }
+    },
+    "image": ["https://www.buero-dienstleistungen.com/images/buero-dienstleistungen.webp"],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.buero-dienstleistungen.com/suche?q={search_term_string}",
+      "query-input": "required name=search_term_string"
     }
-  },
- "image": [
-    "https://www.buero-dienstleistungen.com/images/buero-dienstleistungen.webp"
-  ],
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://www.buero-dienstleistungen.com/suche?q={search_term_string}",
-    "query-input": "required name=search_term_string"
   }
-}
-</script>
+  </script>
 </head>
 <body>
 

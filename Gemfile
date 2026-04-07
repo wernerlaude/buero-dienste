@@ -43,3 +43,4 @@ gem "sitemap_generator"
 gem "whenever", require: false
 gem "lucide-rails"
 gem "lexxy", "~> 0.1.4.beta"
+gem "girocode"

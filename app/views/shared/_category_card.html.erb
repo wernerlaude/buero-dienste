@@ -2,7 +2,10 @@
   <%= card_badge(offer) %>
 
   <div class="category-card__icon">
-    <%= image_tag(offer.card_image.present? ? "svg/#{offer.card_image}" : "svg/lamp-desk.svg", alt: offer.card_title,
+    <%= image_tag(offer.card_image.present? ? "svg/#{offer.card_image}" : "svg/lamp-desk.svg",
+                  alt: "",
+                  width: 48,
+                  height: 48,
                   class: "service-icon"
         ) %>
   </div>

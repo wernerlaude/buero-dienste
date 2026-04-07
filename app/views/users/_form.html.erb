@@ -298,3 +298,7 @@
     </div>
   <% end %>
 <% end %>
+
+<% content_for :page_scripts do %>
+  <%= javascript_import_module_tag "editor" %>
+<% end %>

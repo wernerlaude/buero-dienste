@@ -132,6 +132,8 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
+      aspect-ratio: 600 / 350; // ← neu: Seitenverhältnis explizit setzen
+      display: block;           // ← neu: verhindert inline-Lücke unter dem Bild
     }
 
     @media (max-width: 1024px) {

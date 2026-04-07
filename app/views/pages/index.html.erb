@@ -27,7 +27,12 @@
   </div>
 <% end %>
 <% content_for :hero_picture do %>
-  <%= image_tag "hero/buero-frau.webp", alt: "Büroservice Bürodienstleister" %>
+  <%= image_tag "hero/buero-frau.webp",
+                alt: "Büroservice Bürodienstleister",
+                width: 600,
+                height: 350,
+                loading: "eager",
+                fetchpriority: "high" %>
 <% end %>
 
 <div class="intro-box">

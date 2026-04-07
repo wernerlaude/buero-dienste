@@ -16,7 +16,12 @@
 <% end %>
 
 <% content_for :hero_picture do %>
-  <%= image_tag "hero/blogs.webp", alt: "Office Blog" %>
+  <%= image_tag "hero/blogs.webp",
+                alt: "Office Blog",
+                width: 600,
+                height: 350,
+                loading: "eager",
+                fetchpriority: "high" %>
 <% end %>
 
 
