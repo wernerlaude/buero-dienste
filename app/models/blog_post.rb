@@ -2,8 +2,7 @@ class BlogPost < ApplicationRecord
   belongs_to :user
   has_many :counters, as: :countable
 
-  after_save :clear_blog_cache
-  after_destroy :clear_blog_cache
+  after_commit :clear_blog_cache
 
   validates_presence_of :title
 

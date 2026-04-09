@@ -274,6 +274,11 @@
   </div>
 
 <% end %>
+
+<% content_for :page_styles do %>
+  <%= stylesheet_link_tag "editor" %>
+<% end %>
+
 <% content_for :page_scripts do %>
   <%= javascript_import_module_tag "editor" %>
 <% end %>

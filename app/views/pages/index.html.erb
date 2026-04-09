@@ -30,7 +30,7 @@
   <%= image_tag "hero/buero-frau.webp",
                 alt: "Büroservice Bürodienstleister",
                 width: 600,
-                height: 350,
+                height: 450,
                 loading: "eager",
                 fetchpriority: "high" %>
 <% end %>
@@ -42,7 +42,7 @@
     <h3>Finden Sie hier den passenden Bürodienstleister</h3>
     <p><b>Entlasten Sie sich mit erfahrenen Bürodienstleistern!</b><br />
       Auf <%= link_to "buero-dienstleistungen.com", root_path %> finden Sie Fachkräfte
-      für Büroservice, Buchhaltung, Telefonservice, digitale Assistenz und viele weitere
+      für <%=link_to "Büroservice", offer_path('bueroservice')%>, <%=link_to "Buchhaltung", offer_path('buchhaltungsservice')%>, <%=link_to "Telefonservice", offer_path('telefonservice')%>, <%=link_to "Virtuelle Assitenz", offer_path('virtuelle-assistenz')%> und viele weitere
       Aufgaben. Alle Dienstleister arbeiten eigenständig und rechnen direkt mit Ihnen ab –
       ohne Vermittlungsgebühren oder versteckte Kosten.
     </p>

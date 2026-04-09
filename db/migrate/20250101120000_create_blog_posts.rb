@@ -13,8 +13,8 @@ class CreateBlogPosts < ActiveRecord::Migration[8.0]
       t.integer :lesezeit, default: 1
       t.string :bildnachweis
       t.string :verweis
-      t.integer :count
-      t.integer :ratings_count
+      t.integer :count, default: 0
+      t.integer :ratings_count, default: 0
       t.integer :target_url
 
       t.timestamps

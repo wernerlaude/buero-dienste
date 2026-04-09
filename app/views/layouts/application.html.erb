@@ -39,8 +39,8 @@
                crossorigin: "anonymous" %>
 
   <%= stylesheet_link_tag :application, "data-turbo-track": "reload" %>
-  <%# Falls lexxy wirklich ein separates Bundle braucht: %>
   <%= stylesheet_link_tag "lexxy", "data-turbo-track": "reload" %>
+  <%= yield :page_styles %>
 
   <%= javascript_importmap_tags %>
   <%= yield :page_scripts %>

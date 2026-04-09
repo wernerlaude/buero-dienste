@@ -1,8 +1,7 @@
 class Offer < ApplicationRecord
   has_and_belongs_to_many :users
 
-  after_save :clear_offers_cache
-  after_destroy :clear_offers_cache
+  after_commit :clear_offers_cache
 
   scope :ranking, -> { order(:position) }
   scope :online, -> { where(online: true) }
