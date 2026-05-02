@@ -2,6 +2,7 @@
   <h1>Übersicht</h1>
 </div>
 
+
 <%# Besucher Stats %>
 <div class="admin-stats">
   <div class="admin-stat">
@@ -17,3 +18,56 @@
     <div class="admin-stat__label"><%=@views_by_page %>page viewBesucher heute</div>
   </div>
 </div>
+
+<%# Besucher Stats %>
+<div class="content-box content-box--compact">
+  <h3 class="content-box__section-title">Besucher letzte 30 Tage</h3>
+  <canvas id="visitorChart" height="80"></canvas>
+</div>
+
+<script type="module">
+    import "chart"
+
+    const labels = <%= raw @chart_data.keys.to_json %>;
+    const data   = <%= raw @chart_data.values.to_json %>;
+
+    new window.Chart(document.getElementById("visitorChart"), {
+        type: "line",
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Besucher",
+                data: data,
+                borderColor: "#2c5282",
+                backgroundColor: "rgba(44, 82, 130, 0.08)",
+                borderWidth: 2,
+                pointRadius: 3,
+                pointHoverRadius: 5,
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: {
+                x: {
+                    ticks: {
+                        maxTicksLimit: 10,
+                        maxRotation: 0,
+                        callback: function(value, index) {
+                            const label = this.getLabelForValue(value);
+                            const parts = label.split("-");
+                            return parts[2] + "." + parts[1] + ".";  // z.B. "07.02."
+                        }
+                    },
+                    grid: { display: false }
+                },
+                y: {
+                    beginAtZero: false,
+                    ticks: { stepSize: 50 }
+                }
+            }
+        }
+    });
+</script>

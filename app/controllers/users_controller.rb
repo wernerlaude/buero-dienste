@@ -31,6 +31,7 @@ class UsersController < ApplicationController
   def success; end
 
   def search
+    get_besucheranzahl
     plz = params[:plz]
     radius = params[:radius].present? ? params[:radius].to_f : 50.0
     @users = []

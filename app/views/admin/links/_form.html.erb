@@ -8,8 +8,8 @@
       <div class="form-group">
         <%= form.label :online, "Status" %>
         <%= form.select :online,
-            options_for_select([['Offline', false], ['Online', true]], link.online),
-            {}, class: "form-control" %>
+                        options_for_select([['Offline', false], ['Online', true]], link.online),
+                        {}, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= form.label :position %>
@@ -27,7 +27,8 @@
         <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-sm);">
           <%= image_tag link.header_image, style: "max-width: 200px; border-radius: var(--radius-sm);" %>
           <div>
-            <small><%= link.header_image.blob.filename %> (<%= number_to_human_size(link.header_image.blob.byte_size) %>)</small>
+            <small><%= link.header_image.blob.filename %> (<%= number_to_human_size(link.header_image.blob.byte_size) %>
+              )</small>
           </div>
         </div>
       <% end %>
@@ -57,10 +58,6 @@
   <div class="admin-actions">
     <%= form.submit link.persisted? ? "Änderungen speichern" : "Link erstellen", class: "btn btn--primary btn--lg" %>
     <%= link_to "Zurück", admin_links_path, class: "btn btn--ghost" %>
-    <% if link.persisted? %>
-      <%= button_to "Löschen", admin_link_path(link), method: :delete, class: "btn btn--danger",
-          form: { data: { turbo_confirm: "Link '#{link.bezeichner}' löschen?" } } %>
-    <% end %>
   </div>
 
 <% end %>

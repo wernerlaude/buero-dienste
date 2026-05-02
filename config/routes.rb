@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "pages#index"
 
+  get "/angebot/marketing-existenzgruendung", to: redirect("angebot/existenzgruendung-marketing", status: 301)
+
   get "/angebot/buero-ordnungssysteme", to: redirect("/angebot/buero-sortierdienst", status: 301)
   get "/angebot/virtuelles-buero-und-virtuelle-assistenz", to: redirect("/angebot/virtuelle-assistenz", status: 301)
 
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
   # Ganz oben bei den Redirects
   get "/buerodienstleister-in-ihrem-bundesland/*path", to: redirect("/", status: 301)
   get "/zielgruppe/*path", to: redirect("/", status: 301)
+
 
   get "fragen-und-antworten", to: "pages#faq", as: "faq"
   get "hilfreiche-links", to: "links#index", as: "links"

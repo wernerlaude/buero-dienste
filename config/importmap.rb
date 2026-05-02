@@ -10,5 +10,5 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "editor", to: "editor.js"  # separates Bundle
 pin "lexxy", to: "lexxy.js"
 pin "@rails/activestorage", to: "activestorage.esm.js"
-pin "trix"
 pin "@rails/actiontext", to: "actiontext.esm.js"
+pin "chart", to: "chart.umd.min.js"

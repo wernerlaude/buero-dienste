@@ -1,3 +1,23 @@
+<% content_for :hero_content do %>
+  <span class="hero__eyebrow">✦ Über <%= User.online.count %> erfahrene Dienstleister</span>
+  <h1 class="hero__title">Bürodienstleistungen - Büroservice</h1>
+  <p class="hero__subtitle">Erfahrene Anbieter für Büroservice, digitale Assistenz und Dokumentenmanagement –
+    bundesweit, flexibel und zuverlässig.</p>
+
+  <%= render "shared/hero_stats" %>
+
+<% end %>
+<% content_for :hero_picture do %>
+  <%= image_tag "hero/buero-frau.webp",
+                alt: "Büroservice Bürodienstleister",
+                width: 600,
+                height: 450,
+                loading: "eager",
+                fetchpriority: "high" %>
+<% end %>
+
+
+
 <h2 class="section-header__title">Suchergebnis für PLZ <%= params[:plz] %></h2>
 <%= render "pages/search_results", users: @users %>
 

@@ -3,7 +3,7 @@
 
   <div class="category-card__icon">
     <%= image_tag(offer.card_image.present? ? "svg/#{offer.card_image}" : "svg/lamp-desk.svg",
-                  alt: "",
+                  alt: "#{offer.header_title}",
                   width: 48,
                   height: 48,
                   class: "service-icon"

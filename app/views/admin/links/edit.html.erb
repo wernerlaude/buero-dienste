@@ -22,6 +22,12 @@
     <div class="admin-stat__value"><%= @link.has_header_image? ? '🖼️' : '—' %></div>
     <div class="admin-stat__label">Bild</div>
   </div>
+  <div class="admin-stat">
+    <% if @link.persisted? %>
+      <%= button_to "Löschen", admin_link_path(@link), method: :delete, class: "btn btn--danger",
+                    form: { data: { turbo_confirm: "Link '#{@link.bezeichner}' löschen?" } } %>
+    <% end %>
+  </div>
 </div>
 
 <%= render "form", link: @link %>

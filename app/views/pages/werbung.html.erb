@@ -4,8 +4,6 @@
   <p class="hero__subtitle">Diese WebPage wird laufend gepflegt und basiert auf modernsten Technologien. Unser Ranking wird täglich
     überwacht und der WebAuftritt optimiert.</p>
 
-
-
   <div class="hero__stats">
     <div>
       <div class="hero__stat-value"><%= User.online.count %></div>
@@ -16,8 +14,8 @@
       <div class="hero__stat-label">Angesehen / Tag</div>
     </div>
     <div>
-      <div class="hero__stat-value"><%= Offer.count %></div>
-      <div class="hero__stat-label">Fachbereiche</div>
+      <div class="hero__stat-value"><%= @visits_all %></div>
+      <div class="hero__stat-label">Besuchte Angebote</div>
     </div>
   </div>
 <% end %>

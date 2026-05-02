@@ -21,7 +21,9 @@ class PagesController < ApplicationController
     end
   end
 
-  def werbung; end
+  def werbung
+    get_besucheranzahl
+  end
   def impressum; end
   def datenschutz; end
 

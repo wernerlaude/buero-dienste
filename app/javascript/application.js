@@ -2,6 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
+import "lexxy"
 
 document.addEventListener("turbo:frame-missing", (event) => {
     const {detail: {response, visit}} = event;
